@@ -519,7 +519,7 @@ public class ChangeOfServiceCondition
         if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
         {
 	        sb.append("userLocationInformation=[");
-	        sb.append(this.userLocationInformation.printDataArr(getUserLocationInformation()));
+	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
 	        sb.append("]");
         }
         
@@ -556,7 +556,7 @@ public class ChangeOfServiceCondition
         if(threeGPP2UserLocationInformation!=null && threeGPP2UserLocationInformation.getValue()!=null)
         {
 	        sb.append("threeGPP2UserLocationInformation=[");
-	        sb.append(this.threeGPP2UserLocationInformation.printDataArr(getThreeGPP2UserLocationInformation()));
+	        sb.append(ASNOctetString.printDataArr(getThreeGPP2UserLocationInformation()));
 	        sb.append("]");
         }
         

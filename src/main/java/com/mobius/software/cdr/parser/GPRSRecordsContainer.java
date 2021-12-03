@@ -29,31 +29,31 @@ import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNWrappedTag;
 public class GPRSRecordsContainer 
 {
 	@ASNChoise
-	private List<GPRSRecord> records;
+	private List<GPRSRecord> gprsRecords;
 	
 	public GPRSRecordsContainer()
 	{
 		
 	}
 	
-	public GPRSRecordsContainer(List<GPRSRecord> records)
+	public GPRSRecordsContainer(List<GPRSRecord> gprsRecords)
 	{
-		this.records=records;
+		this.gprsRecords=gprsRecords;
 	}
 	
-	public List<GPRSRecord> getRecords()
+	public List<GPRSRecord> getGPRSRecords()
 	{
-		return records;
+		return gprsRecords;
 	}
 	
 	@Override
 	public String toString() 
 	{
         StringBuilder sb = new StringBuilder();
-        if(records!=null && records.size()>0)
+        if(gprsRecords!=null && gprsRecords.size()>0)
         {
         	int index=0;
-        	for(GPRSRecord record:records)
+        	for(GPRSRecord record:gprsRecords)
         	{
         		if(index!=0)
         			sb.append(",");
@@ -61,7 +61,6 @@ public class GPRSRecordsContainer
         		sb.append(record);
         	}
         }
-        
         return sb.toString();
 	}
 }

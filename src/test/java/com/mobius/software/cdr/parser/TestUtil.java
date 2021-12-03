@@ -45,6 +45,9 @@ public class TestUtil
 
 	public static File[] getFilesList(String folder) throws IOException
 	{
+		if(TestUtil.class.getClassLoader().getResource(folder)==null)
+			return new File[0];
+		
 		File currFile = new File(TestUtil.class.getClassLoader().getResource(folder).getPath());
 		File[] allFiles = currFile.listFiles();
 

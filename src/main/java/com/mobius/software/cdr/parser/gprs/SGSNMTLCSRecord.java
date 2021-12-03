@@ -1,4 +1,5 @@
 package com.mobius.software.cdr.parser.gprs;
+import com.mobius.software.cdr.parser.primitives.ASNRecordType;
 /*
  * Mobius Software LTD
  * Copyright 2021, Mobius Software LTD and individual contributors
@@ -18,6 +19,7 @@ package com.mobius.software.cdr.parser.gprs;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
+import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNProperty;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNTag;
 /**
  * @author yulian.oifa
@@ -26,5 +28,8 @@ import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNTag;
 @ASNTag(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 25,constructed = true,lengthIndefinite = false)
 public class SGSNMTLCSRecord 
 {
-
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 0,constructed = false,index = -1)
+	private ASNRecordType recordType;
+	
+	
 }

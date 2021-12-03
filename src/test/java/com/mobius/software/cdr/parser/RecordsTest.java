@@ -47,11 +47,13 @@ import io.netty.buffer.Unpooled;
  * @author yulian.oifa
  *
  */
-public class GPRSRecordsTest 
+public class RecordsTest 
 {
-	private static Logger logger=LogManager.getLogger(GPRSRecordsTest.class);
+	private static Logger logger=LogManager.getLogger(RecordsTest.class);
 	private static List<File> samples;
+	private static List<File> cssamples;
 	private static ObjectMapper mapper = new ObjectMapper();
+	
 	@BeforeClass
 	public static void setUp() throws Exception 
 	{
@@ -61,6 +63,9 @@ public class GPRSRecordsTest
 	    
 	    File[] files = TestUtil.getFilesList("captures");
 		samples = Arrays.asList(files);
+		
+		files = TestUtil.getFilesList("cscaptures");
+		cssamples = Arrays.asList(files);
 	}
 	
 	@Test
@@ -84,15 +89,51 @@ public class GPRSRecordsTest
 				assertFalse(result.getHadErrors());
 				assertTrue(result.getResult() instanceof GPRSRecordsContainer);
 				GPRSRecordsContainer currContainer=((GPRSRecordsContainer)result.getResult());
-				if(currContainer.getRecords()!=null && currContainer.getRecords().size()>0)
+				if(currContainer.getGPRSRecords()!=null && currContainer.getGPRSRecords().size()>0)
 				{
-					for(GPRSRecord curr:currContainer.getRecords())
+					for(GPRSRecord curr:currContainer.getGPRSRecords())
 					{							
 						logger.info("TEXT:" + curr.toString());
 						logger.info("JSON:" + mapper.writeValueAsString(curr));
 						count++;
 					}
-				}												
+				}	
+			}
+			
+			logger.info("Total records in file:" + count);
+			logger.info("=======================================================================");
+		}
+	}
+
+	@Test
+	public void testCSRecords() throws ASNException, IOException
+	{
+		ASNParser parser=new ASNParser();
+		parser.loadClass(CSRecordsContainer.class);
+		for (File file : cssamples)
+		{
+			logger.info("=======================================================================");
+			logger.info("Reading file:" + file.getAbsolutePath());
+			logger.info("=======================================================================");
+			byte[] arr = Files.readAllBytes(file.toPath());
+			ByteBuf in = Unpooled.copiedBuffer(arr);
+			int count=0;
+			while(in.readableBytes()>0)
+			{
+				ASNDecodeResult result=parser.decode(in);
+				assertNotNull(result);
+				assertFalse(result.getHadErrors());
+				assertTrue(result.getResult() instanceof CSRecordsContainer);
+				CSRecordsContainer currContainer=((CSRecordsContainer)result.getResult());
+				if(currContainer.getCSRecords()!=null && currContainer.getCSRecords().size()>0)
+				{
+					for(CSRecord curr:currContainer.getCSRecords())
+					{							
+						logger.info("TEXT:" + curr.toString());
+						logger.info("JSON:" + mapper.writeValueAsString(curr));
+						count++;
+					}
+				}	
 			}
 			
 			logger.info("Total records in file:" + count);

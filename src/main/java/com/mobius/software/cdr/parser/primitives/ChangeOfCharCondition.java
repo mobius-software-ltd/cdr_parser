@@ -73,6 +73,11 @@ public class ChangeOfCharCondition
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 9,constructed = true,index = -1)
 	private EPCQoSInformation ePCQoSInformation;
 	
+	public ChangeOfCharCondition()
+	{
+		
+	}
+	
 	public ChangeOfCharCondition(byte[] qosRequested,byte[] qosNegotiated,Integer dataVolumeGPRSUplink,Integer dataVolumeGPRSDownlink,
 			ChangeCondition changeCondition,TimeStamp changeTime,byte[] userLocationInformation,EPCQoSInformation ePCQoSInformation)
 	{
@@ -201,14 +206,14 @@ public class ChangeOfCharCondition
         if(qosRequested!=null && qosRequested.getValue()!=null)
         {
 	        sb.append("qosRequested=[");
-	        sb.append(this.qosRequested.printDataArr(getQOSRequested()));
+	        sb.append(ASNOctetString.printDataArr(getQOSRequested()));
 	        sb.append("]");
         }
         
         if(qosNegotiated!=null && qosNegotiated.getValue()!=null)
         {
 	        sb.append("qosNegotiated=[");
-	        sb.append(this.qosNegotiated.printDataArr(getQOSNegotiated()));
+	        sb.append(ASNOctetString.printDataArr(getQOSNegotiated()));
 	        sb.append("]");
         }
         
@@ -243,7 +248,7 @@ public class ChangeOfCharCondition
         if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
         {
 	        sb.append("userLocationInformation=[");
-	        sb.append(this.userLocationInformation.printDataArr(getUserLocationInformation()));
+	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
 	        sb.append("]");
         }
         

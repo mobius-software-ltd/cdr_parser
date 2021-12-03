@@ -83,7 +83,7 @@ public class PSFurnishChargingInformation
         if(pSFreeFormatData!=null && pSFreeFormatData.getValue()!=null)
         {
 	        sb.append("freeFormData=[");
-	        sb.append(this.pSFreeFormatData.printDataArr(getpSFreeFormatData()));
+	        sb.append(ASNOctetString.printDataArr(getpSFreeFormatData()));
 	        sb.append("]");
         }
         

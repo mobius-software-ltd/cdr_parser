@@ -926,7 +926,7 @@ public class PGWRecord
         if(recordExtensions!=null && recordExtensions.getValue()!=null)
         {
 	        sb.append("recordExtensions=[");
-	        sb.append(this.recordExtensions.printDataArr(getRecordExtensions()));
+	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
 	        sb.append("]");
         }
         
@@ -971,7 +971,7 @@ public class PGWRecord
         if(externalChargingID!=null && externalChargingID.getValue()!=null)
         {
 	        sb.append("externalChargingID=[");
-	        sb.append(this.externalChargingID.printDataArr(getExternalChargingID()));
+	        sb.append(ASNOctetString.printDataArr(getExternalChargingID()));
 	        sb.append("]");
         }
         
@@ -1013,14 +1013,14 @@ public class PGWRecord
         if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
         {
 	        sb.append("userLocationInformation=[");
-	        sb.append(this.userLocationInformation.printDataArr(getUserLocationInformation()));
+	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
 	        sb.append("]");
         }
         
         if(cAMELChargingInformation!=null && cAMELChargingInformation.getValue()!=null)
         {
 	        sb.append("cAMELChargingInformation=[");
-	        sb.append(this.cAMELChargingInformation.printDataArr(getcAMELChargingInformation()));
+	        sb.append(ASNOctetString.printDataArr(getcAMELChargingInformation()));
 	        sb.append("]");
         }
         
@@ -1087,7 +1087,7 @@ public class PGWRecord
         if(served3gpp2MEID!=null && served3gpp2MEID.getValue()!=null)
         {
 	        sb.append("served3gpp2MEID=[");
-	        sb.append(this.served3gpp2MEID.printDataArr(getServed3gpp2MEID()));
+	        sb.append(ASNOctetString.printDataArr(getServed3gpp2MEID()));
 	        sb.append("]");
         }
         
@@ -1111,7 +1111,7 @@ public class PGWRecord
         if(threeGPP2UserLocationInformation!=null && threeGPP2UserLocationInformation.getValue()!=null)
         {
 	        sb.append("threeGPP2UserLocationInformation=[");
-	        sb.append(this.threeGPP2UserLocationInformation.printDataArr(getThreeGPP2UserLocationInformation()));
+	        sb.append(ASNOctetString.printDataArr(getThreeGPP2UserLocationInformation()));
 	        sb.append("]");
         }
         

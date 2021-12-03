@@ -852,7 +852,7 @@ public class SGWRecord
        if(recordExtensions!=null && recordExtensions.getValue()!=null)
        {
 	        sb.append("recordExtensions=[");
-	        sb.append(this.recordExtensions.printDataArr(getRecordExtensions()));
+	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
 	        sb.append("]");
        }
        
@@ -925,7 +925,7 @@ public class SGWRecord
        if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
        {
 	        sb.append("userLocationInformation=[");
-	        sb.append(this.userLocationInformation.printDataArr(getUserLocationInformation()));
+	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
 	        sb.append("]");
        }
        

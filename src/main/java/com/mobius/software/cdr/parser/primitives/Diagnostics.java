@@ -282,14 +282,14 @@ public class Diagnostics
         if(this.getNetworkSpecificCause()!=null)
         {
         	sb.append("networkSpecificCause=[");
-            sb.append(this.networkSpecificCause.printDataArr(getNetworkSpecificCause()));
+            sb.append(ASNOctetString.printDataArr(getNetworkSpecificCause()));
             sb.append("]");
         }
         
         if(this.getManufacturerSpecificCause()!=null)
         {
         	sb.append("manufacturerSpecificCause=[");
-            sb.append(this.manufacturerSpecificCause.printDataArr(getManufacturerSpecificCause()));
+            sb.append(ASNOctetString.printDataArr(getManufacturerSpecificCause()));
             sb.append("]");
         }
         

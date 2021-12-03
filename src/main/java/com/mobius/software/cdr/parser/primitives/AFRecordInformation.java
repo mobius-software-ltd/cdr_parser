@@ -89,7 +89,7 @@ public class AFRecordInformation
         if(aFChargingIdentifier!=null && aFChargingIdentifier.getValue()!=null)
         {
 	        sb.append("AF Charging Identifier=[");
-	        sb.append(this.aFChargingIdentifier.printDataArr(getaFChargingIdentifier()));
+	        sb.append(ASNOctetString.printDataArr(getaFChargingIdentifier()));
 	        sb.append("]");
         }
         

@@ -40,7 +40,6 @@ import java.net.InetAddress;
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNProperty;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNTag;
-import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNIA5String;
 import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNOctetString;
 
 import io.netty.buffer.ByteBuf;
@@ -105,7 +104,7 @@ public class IPBinaryAddress
 			
 		}
 		
-		return iPV4Address.printDataArr(data);
+		return ASNOctetString.printDataArr(data);
 	}
 
 	public String getIPV6Address() 
@@ -130,7 +129,7 @@ public class IPBinaryAddress
 			
 		}
 		
-		return iPV6Address.printDataArr(data);
+		return ASNOctetString.printDataArr(data);
 	}
 	
 	public String toString() {
