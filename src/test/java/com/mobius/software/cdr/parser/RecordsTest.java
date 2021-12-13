@@ -52,6 +52,7 @@ public class RecordsTest
 	private static Logger logger=LogManager.getLogger(RecordsTest.class);
 	private static List<File> samples;
 	private static List<File> cssamples;
+	private static List<File> imssamples;
 	private static ObjectMapper mapper = new ObjectMapper();
 	
 	@BeforeClass
@@ -66,6 +67,9 @@ public class RecordsTest
 		
 		files = TestUtil.getFilesList("cscaptures");
 		cssamples = Arrays.asList(files);
+		
+		files = TestUtil.getFilesList("imscaptures");
+		imssamples = Arrays.asList(files);
 	}
 	
 	@Test
@@ -128,6 +132,42 @@ public class RecordsTest
 				if(currContainer.getCSRecords()!=null && currContainer.getCSRecords().size()>0)
 				{
 					for(CSRecord curr:currContainer.getCSRecords())
+					{							
+						logger.info("TEXT:" + curr.toString());
+						logger.info("JSON:" + mapper.writeValueAsString(curr));
+						count++;
+					}
+				}	
+			}
+			
+			logger.info("Total records in file:" + count);
+			logger.info("=======================================================================");
+		}
+	}
+
+	@Test
+	public void testIMSRecords() throws ASNException, IOException
+	{
+		ASNParser parser=new ASNParser(true);
+		parser.loadClass(IMSRecordsContainer.class);
+		for (File file : imssamples)
+		{
+			logger.info("=======================================================================");
+			logger.info("Reading file:" + file.getAbsolutePath());
+			logger.info("=======================================================================");
+			byte[] arr = Files.readAllBytes(file.toPath());
+			ByteBuf in = Unpooled.copiedBuffer(arr);
+			int count=0;
+			while(in.readableBytes()>0)
+			{
+				ASNDecodeResult result=parser.decode(in);
+				assertNotNull(result);
+				//assertFalse(result.getHadErrors());
+				assertTrue(result.getResult() instanceof IMSRecordsContainer);
+				IMSRecordsContainer currContainer=((IMSRecordsContainer)result.getResult());
+				if(currContainer.getIMSRecords()!=null && currContainer.getIMSRecords().size()>0)
+				{
+					for(IMSRecord curr:currContainer.getIMSRecords())
 					{							
 						logger.info("TEXT:" + curr.toString());
 						logger.info("JSON:" + mapper.writeValueAsString(curr));

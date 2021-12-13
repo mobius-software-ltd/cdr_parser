@@ -20,7 +20,7 @@ package com.mobius.software.cdr.parser.primitives;
 
 import java.util.List;
 
-import org.restcomm.protocols.ss7.map.api.service.sms.SM_RP_SMEAImpl;
+import org.restcomm.protocols.ss7.map.service.sms.SM_RP_SMEAImpl;
 
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNProperty;

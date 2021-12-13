@@ -1,6 +1,6 @@
 package com.mobius.software.cdr.parser.primitives;
-import org.restcomm.protocols.ss7.cap.api.service.circuitSwitchedCall.primitive.DestinationRoutingAddressImpl;
-import org.restcomm.protocols.ss7.map.api.service.sms.SM_RP_SMEAImpl;
+import org.restcomm.protocols.ss7.cap.service.circuitSwitchedCall.primitive.DestinationRoutingAddressImpl;
+import org.restcomm.protocols.ss7.map.service.sms.SM_RP_SMEAImpl;
 
 /*
  * Mobius Software LTD

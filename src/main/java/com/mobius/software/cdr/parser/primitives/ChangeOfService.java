@@ -1,6 +1,5 @@
 package com.mobius.software.cdr.parser.primitives;
-import org.restcomm.protocols.ss7.map.api.service.mobility.subscriberManagement.BasicServiceCodeImpl;
-import org.restcomm.protocols.ss7.map.api.service.supplementary.ASNSingleByte;
+import org.restcomm.protocols.ss7.map.service.mobility.subscriberManagement.BasicServiceCodeImpl;
 
 /*
  * Mobius Software LTD
@@ -23,6 +22,7 @@ import org.restcomm.protocols.ss7.map.api.service.supplementary.ASNSingleByte;
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNProperty;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNTag;
+import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNSingleByte;
 /*
 ChangeOfService ::= SEQUENCE
 {

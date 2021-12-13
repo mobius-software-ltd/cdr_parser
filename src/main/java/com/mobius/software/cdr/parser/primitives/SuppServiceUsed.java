@@ -1,5 +1,5 @@
 package com.mobius.software.cdr.parser.primitives;
-import org.restcomm.protocols.ss7.map.api.service.supplementary.SSCodeImpl;
+import org.restcomm.protocols.ss7.map.service.supplementary.SSCodeImpl;
 
 /*
  * Mobius Software LTD
