@@ -1744,7 +1744,7 @@ public class ASRecord
 		{
 			sb.append("mscAddress=[");
 			sb.append(mscAddress);
-			sb.append("]");
+			sb.append("]"); 
 		}
         
 		if(threeGPPPSDataOffStatus!=null && threeGPPPSDataOffStatus.getStatus()!=null)
