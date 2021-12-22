@@ -2,7 +2,7 @@ package com.mobius.software.cdr.parser.primitives;
 
 import org.restcomm.protocols.ss7.commonapp.api.APPException;
 import org.restcomm.protocols.ss7.commonapp.api.APPParsingComponentException;
-import org.restcomm.protocols.ss7.commonapp.primitives.TbcdStringImpl;
+import org.restcomm.protocols.ss7.commonapp.api.APPParsingComponentExceptionReason;
 
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
 import com.mobius.software.telco.protocols.ss7.asn.ASNParser;
@@ -35,6 +35,11 @@ BCDDirectoryNumber        ::= OCTET STRING
 @ASNTag(asnClass = ASNClass.UNIVERSAL,tag = 4,constructed = false,lengthIndefinite = false)
 public class BCDDirectoryNumber  
 {
+	protected static int DIGIT_1_MASK = 0x0F;
+    protected static int DIGIT_2_MASK = 0xF0;
+
+    protected static int DIGIT_MASK = 0xFF;
+
 	protected String address;
 
     public BCDDirectoryNumber() 
@@ -56,7 +61,10 @@ public class BCDDirectoryNumber
     }
     
     public Integer getLength() {
-    	return TbcdStringImpl.getLength(false, null, address) + 1;
+    	if(address.length()%2==0)
+    		return address.length()/2;
+    	else
+    		return address.length()/2+1;
 	}
     
     @ASNEncode
@@ -65,8 +73,66 @@ public class BCDDirectoryNumber
     }
     
     public void encode(ByteBuf buffer) throws APPException {
-    	TbcdStringImpl.encodeString(buffer, address);		
+    	char[] chars = address.toCharArray();
+        for (int i = 0; i < chars.length; i = i + 2) {
+            char a = chars[i];
+
+            int digit1 = encodeNumber(a);
+            int digit2;
+            if ((i + 1) == chars.length) {
+                // add the filler instead
+                digit2 = 15;
+            } else {
+                char b = chars[i + 1];
+                digit2 = encodeNumber(b);
+            }
+
+            int digit = (digit1 << 4) | digit2;
+            buffer.writeByte(digit);
+        }
 	}
+
+    protected static int encodeNumber(char c) throws APPException {
+        switch (c) {
+            case '0':
+                return 0;
+            case '1':
+                return 1;
+            case '2':
+                return 2;
+            case '3':
+                return 3;
+            case '4':
+                return 4;
+            case '5':
+                return 5;
+            case '6':
+                return 6;
+            case '7':
+                return 7;
+            case '8':
+                return 8;
+            case '9':
+                return 9;
+            case '*':
+                return 10;
+            case '#':
+                return 11;
+            case 'a':
+            case 'A':
+                return 12;
+            case 'b':
+            case 'B':
+                return 13;
+            case 'c':
+            case 'C':
+                return 14;
+            default:
+                throw new APPException(
+                        "char should be between 0 - 9, *, #, a, b, c for Telephony Binary Coded Decimal String. Received " + c);
+
+        }
+    }
     
     @ASNDecode
 	public Boolean decode(ASNParser parser,Object parent,ByteBuf buffer,Boolean skipErrors) throws APPParsingComponentException {
@@ -75,9 +141,72 @@ public class BCDDirectoryNumber
     }
     
     public void decode(ByteBuf buffer) throws APPParsingComponentException {
-    	this.address=TbcdStringImpl.decodeString(buffer);		
+    	StringBuilder s = new StringBuilder();
+        while (buffer.readableBytes()>0) {
+            int b = buffer.readByte();
+
+            int digit2 = ((b & DIGIT_2_MASK) >> 4);
+            if (digit2 == 15) {
+                // this is mask
+            } else {
+                s.append(decodeNumber(digit2));
+            }
+            
+            int digit1 = (b & DIGIT_1_MASK);
+            if (digit1 == 15) {
+                // this is mask
+            } else {
+                s.append(decodeNumber(digit1));
+            }
+
+            
+        }
+
+        address = s.toString();
 	}
 
+    protected static char decodeNumber(int i) throws APPParsingComponentException {
+        switch (i) {
+            case 0:
+                return '0';
+            case 1:
+                return '1';
+            case 2:
+                return '2';
+            case 3:
+                return '3';
+            case 4:
+                return '4';
+            case 5:
+                return '5';
+            case 6:
+                return '6';
+            case 7:
+                return '7';
+            case 8:
+                return '8';
+            case 9:
+                return '9';
+            case 10:
+                return '*';
+            case 11:
+                return '#';
+            case 12:
+                return 'a';
+            case 13:
+                return 'b';
+            case 14:
+                return 'c';
+                // case 15:
+                // return 'd';
+            default:
+                throw new APPParsingComponentException(
+                        "Integer should be between 0 - 15 for Telephony Binary Coded Decimal String. Received " + i,
+                        APPParsingComponentExceptionReason.MistypedParameter);
+
+        }
+    }
+    
     @Override
     public String toString() {
         return "BCDDirectoryNumber[Address=" + this.address + "]";
