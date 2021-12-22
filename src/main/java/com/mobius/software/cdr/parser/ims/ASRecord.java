@@ -2,7 +2,7 @@ package com.mobius.software.cdr.parser.ims;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.restcomm.protocols.ss7.map.primitives.AddressStringImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.AddressStringImpl;
 
 import com.mobius.software.cdr.parser.primitives.ASNCauseForRecordClosing;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;

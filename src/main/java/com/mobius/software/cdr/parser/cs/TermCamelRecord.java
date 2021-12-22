@@ -1,21 +1,21 @@
 package com.mobius.software.cdr.parser.cs;
 import java.util.List;
 
-import org.restcomm.protocols.ss7.cap.service.circuitSwitchedCall.primitive.DestinationRoutingAddressImpl;
+import org.restcomm.protocols.ss7.commonapp.callhandling.CallReferenceNumberImpl;
+import org.restcomm.protocols.ss7.commonapp.circuitSwitchedCall.DestinationRoutingAddressImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.AddressStringImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.IMSIImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.ISDNAddressStringImpl;
 import org.restcomm.protocols.ss7.map.api.service.mobility.subscriberManagement.DefaultCallHandling;
-import org.restcomm.protocols.ss7.map.primitives.AddressStringImpl;
-import org.restcomm.protocols.ss7.map.primitives.IMSIImpl;
-import org.restcomm.protocols.ss7.map.primitives.ISDNAddressStringImpl;
-import org.restcomm.protocols.ss7.map.service.callhandling.CallReferenceNumberImpl;
 import org.restcomm.protocols.ss7.map.service.mobility.subscriberInformation.RouteingNumberImpl;
 import org.restcomm.protocols.ss7.map.service.mobility.subscriberManagement.ASNDefaultCallHandling;
-import org.restcomm.protocols.ss7.map.service.sms.SM_RP_SMEAImpl;
 
 import com.mobius.software.cdr.parser.primitives.ASNCauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberQueryStatus;
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberSourceIndicator;
 import com.mobius.software.cdr.parser.primitives.ASNPartialRecordType;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
+import com.mobius.software.cdr.parser.primitives.BCDDirectoryNumber;
 import com.mobius.software.cdr.parser.primitives.CAMELInformation;
 import com.mobius.software.cdr.parser.primitives.CamelInformationListWrapper;
 import com.mobius.software.cdr.parser.primitives.CauseForRecClosing;
@@ -128,10 +128,10 @@ public class TermCamelRecord
 	private ASNOctetString recordExtensions;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 12,constructed = false,index = -1)
-	private SM_RP_SMEAImpl calledNumber;
+	private BCDDirectoryNumber calledNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 13,constructed = false,index = -1)
-	private SM_RP_SMEAImpl callingNumber;
+	private BCDDirectoryNumber callingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 14,constructed = true,index = -1)
 	private TrunkGroup mscIncomingTKGP;
@@ -224,7 +224,7 @@ public class TermCamelRecord
 	{		
 	}
 	
-	public TermCamelRecord(RecordType recordType,IMSIImpl servedIMSI,ISDNAddressStringImpl servedMSISDN,AddressStringImpl recordingEntity,TimeStamp interrogationTime,DestinationRoutingAddressImpl destinationRoutingAddress,ISDNAddressStringImpl gsmSCFAddress,Long serviceKey,CallReferenceNumberImpl networkCallReference,AddressStringImpl mscAddress,DefaultCallHandling defaultCallHandling,byte[] recordExtensions,SM_RP_SMEAImpl calledNumber,SM_RP_SMEAImpl callingNumber,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime, Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,Integer numberOfDPEncountered,LevelOfCAMELService levelOfCAMELService,byte[] freeFormatData,List<CAMELInformation> camelCallLegInformation, Boolean freeFormatDataAppend,DefaultCallHandling defaultCallHandling2,ISDNAddressStringImpl gsmSCFAddress2,Long serviceKey2,byte[] freeFormatData2,Boolean freeFormatDataAppend2,Boolean mscServerIndication, RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,PartialRecordType partialRecordType)
+	public TermCamelRecord(RecordType recordType,IMSIImpl servedIMSI,ISDNAddressStringImpl servedMSISDN,AddressStringImpl recordingEntity,TimeStamp interrogationTime,DestinationRoutingAddressImpl destinationRoutingAddress,ISDNAddressStringImpl gsmSCFAddress,Long serviceKey,CallReferenceNumberImpl networkCallReference,AddressStringImpl mscAddress,DefaultCallHandling defaultCallHandling,byte[] recordExtensions,BCDDirectoryNumber calledNumber,BCDDirectoryNumber callingNumber,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime, Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,Integer numberOfDPEncountered,LevelOfCAMELService levelOfCAMELService,byte[] freeFormatData,List<CAMELInformation> camelCallLegInformation, Boolean freeFormatDataAppend,DefaultCallHandling defaultCallHandling2,ISDNAddressStringImpl gsmSCFAddress2,Long serviceKey2,byte[] freeFormatData2,Boolean freeFormatDataAppend2,Boolean mscServerIndication, RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,PartialRecordType partialRecordType)
 	{
 		if(recordType!=null)
 		{
@@ -459,12 +459,12 @@ public class TermCamelRecord
 		return data;
 	}
 
-	public SM_RP_SMEAImpl getCalledNumber() 
+	public BCDDirectoryNumber getCalledNumber() 
 	{
 		return calledNumber;
 	}
 
-	public SM_RP_SMEAImpl getCallingNumber() 
+	public BCDDirectoryNumber getCallingNumber() 
 	{
 		return callingNumber;
 	}

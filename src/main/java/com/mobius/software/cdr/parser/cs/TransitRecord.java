@@ -1,14 +1,14 @@
 package com.mobius.software.cdr.parser.cs;
-import org.restcomm.protocols.ss7.map.primitives.AddressStringImpl;
-import org.restcomm.protocols.ss7.map.service.callhandling.CallReferenceNumberImpl;
+import org.restcomm.protocols.ss7.commonapp.callhandling.CallReferenceNumberImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.AddressStringImpl;
 import org.restcomm.protocols.ss7.map.service.mobility.subscriberInformation.RouteingNumberImpl;
-import org.restcomm.protocols.ss7.map.service.sms.SM_RP_SMEAImpl;
 
 import com.mobius.software.cdr.parser.primitives.ASNBasicService;
 import com.mobius.software.cdr.parser.primitives.ASNCauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberQueryStatus;
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberSourceIndicator;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
+import com.mobius.software.cdr.parser.primitives.BCDDirectoryNumber;
 import com.mobius.software.cdr.parser.primitives.BasicService;
 import com.mobius.software.cdr.parser.primitives.CauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.Diagnostics;
@@ -91,10 +91,10 @@ public class TransitRecord
 	private TrunkGroup mscOutgoingTKGP;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 4,constructed = false,index = -1)
-	private SM_RP_SMEAImpl callingNumber;
+	private BCDDirectoryNumber callingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 5,constructed = false,index = -1)
-	private SM_RP_SMEAImpl calledNumber;
+	private BCDDirectoryNumber calledNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 6,constructed = false,index = -1)
 	private ASNBasicService isdnBasicService;
@@ -152,7 +152,7 @@ public class TransitRecord
 		
 	}
 	
-	public TransitRecord(RecordType recordType,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,SM_RP_SMEAImpl callingNumber,SM_RP_SMEAImpl calledNumber,BasicService isdnBasicService,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus)
+	public TransitRecord(RecordType recordType,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,BCDDirectoryNumber callingNumber,BCDDirectoryNumber calledNumber,BasicService isdnBasicService,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus)
 	{
 		if(recordType!=null)
 		{
@@ -261,12 +261,12 @@ public class TransitRecord
 		return mscOutgoingTKGP;
 	}
 
-	public SM_RP_SMEAImpl getCallingNumber() 
+	public BCDDirectoryNumber getCallingNumber() 
 	{
 		return callingNumber;
 	}
 
-	public SM_RP_SMEAImpl getCalledNumber() 
+	public BCDDirectoryNumber getCalledNumber() 
 	{
 		return calledNumber;
 	}

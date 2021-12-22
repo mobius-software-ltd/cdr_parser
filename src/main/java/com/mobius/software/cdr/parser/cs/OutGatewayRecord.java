@@ -1,14 +1,14 @@
 package com.mobius.software.cdr.parser.cs;
-import org.restcomm.protocols.ss7.map.primitives.AddressStringImpl;
-import org.restcomm.protocols.ss7.map.service.callhandling.CallReferenceNumberImpl;
+import org.restcomm.protocols.ss7.commonapp.callhandling.CallReferenceNumberImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.AddressStringImpl;
 import org.restcomm.protocols.ss7.map.service.mobility.subscriberInformation.RouteingNumberImpl;
-import org.restcomm.protocols.ss7.map.service.sms.SM_RP_SMEAImpl;
 
 import com.mobius.software.cdr.parser.primitives.ASNCauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberQueryStatus;
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberSourceIndicator;
 import com.mobius.software.cdr.parser.primitives.ASNReasonForServiceChange;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
+import com.mobius.software.cdr.parser.primitives.BCDDirectoryNumber;
 import com.mobius.software.cdr.parser.primitives.CauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.Diagnostics;
 import com.mobius.software.cdr.parser.primitives.LocationRoutingNumberQueryStatus;
@@ -85,10 +85,10 @@ public class OutGatewayRecord
 	private ASNRecordType recordType;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 1,constructed = false,index = -1)
-	private SM_RP_SMEAImpl callingNumber;
+	private BCDDirectoryNumber callingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
-	private SM_RP_SMEAImpl calledNumber;
+	private BCDDirectoryNumber calledNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 3,constructed = false,index = -1)
 	private AddressStringImpl recordingEntity;
@@ -158,7 +158,7 @@ public class OutGatewayRecord
 		
 	}
 	
-	public OutGatewayRecord(RecordType recordType,SM_RP_SMEAImpl callingNumber,SM_RP_SMEAImpl calledNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,ReasonForServiceChange reasonForServiceChange, Boolean serviceChangeInitiator)
+	public OutGatewayRecord(RecordType recordType,BCDDirectoryNumber callingNumber,BCDDirectoryNumber calledNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,ReasonForServiceChange reasonForServiceChange, Boolean serviceChangeInitiator)
 	{
 		if(recordType!=null)
 		{
@@ -257,12 +257,12 @@ public class OutGatewayRecord
 		return recordType.getType();
 	}
 
-	public SM_RP_SMEAImpl getCallingNumber() 
+	public BCDDirectoryNumber getCallingNumber() 
 	{
 		return callingNumber;
 	}
 
-	public SM_RP_SMEAImpl getCalledNumber() 
+	public BCDDirectoryNumber getCalledNumber() 
 	{
 		return calledNumber;
 	}

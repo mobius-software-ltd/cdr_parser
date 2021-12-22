@@ -1,3 +1,4 @@
+package com.mobius.software.cdr.parser;
 /*
  * Mobius Software LTD
  * Copyright 2021, Mobius Software LTD and individual contributors
@@ -16,31 +17,51 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
-package com.mobius.software.cdr.parser.primitives;
-
 import java.util.List;
 
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
-import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNProperty;
+import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNChoise;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNTag;
-
 /**
  * @author yulian.oifa
  *
  */
-@ASNTag(asnClass=ASNClass.UNIVERSAL,tag=16,constructed=true,lengthIndefinite=false)
-public class AddressFieldListWrapper {
-	@ASNProperty(asnClass=ASNClass.UNIVERSAL,tag=16,constructed=true,index=-1)
-    private List<BCDDirectoryNumber> addressField;
-
-    public AddressFieldListWrapper() {
-    }
-
-    public AddressFieldListWrapper(List<BCDDirectoryNumber> addressField) {
-        this.addressField = addressField;
-    }
-
-    public List<BCDDirectoryNumber> getAddressFieldImpl() {
-    	return addressField;
-    }
+@ASNTag(asnClass = ASNClass.UNIVERSAL,tag = 16,constructed = true,lengthIndefinite = false)
+public class WrappedIMSRecordsContainer 
+{
+	@ASNChoise
+	private List<IMSRecord> imsRecords;
+	
+	public WrappedIMSRecordsContainer()
+	{
+		
+	}
+	
+	public WrappedIMSRecordsContainer(List<IMSRecord> imsRecords)
+	{
+		this.imsRecords=imsRecords;
+	}
+	
+	public List<IMSRecord> getIMSRecords()
+	{
+		return imsRecords;
+	}
+	
+	@Override
+	public String toString() 
+	{
+        StringBuilder sb = new StringBuilder();
+        if(imsRecords!=null && imsRecords.size()>0)
+        {
+        	int index=0;
+        	for(IMSRecord record:imsRecords)
+        	{
+        		if(index!=0)
+        			sb.append(",");
+        		
+        		sb.append(record);
+        	}
+        }
+        return sb.toString();
+	}
 }

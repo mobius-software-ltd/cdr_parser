@@ -1,8 +1,7 @@
 package com.mobius.software.cdr.parser.primitives;
 import java.util.List;
 
-import org.restcomm.protocols.ss7.inap.isup.CallingPartysCategoryInapImpl;
-import org.restcomm.protocols.ss7.map.service.sms.SM_RP_SMEAImpl;
+import org.restcomm.protocols.ss7.commonapp.isup.CallingPartysCategoryIsupImpl;
 
 /*
  * Mobius Software LTD
@@ -48,24 +47,24 @@ CAMELModificationParameters ::= SET
 public class CAMELModificationParameters 
 {
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
-	private SM_RP_SMEAImpl callingPartyNumber;
+	private BCDDirectoryNumber callingPartyNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
-	private CallingPartysCategoryInapImpl callingPartyCategory;
+	private CallingPartysCategoryIsupImpl callingPartyCategory;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
-	private SM_RP_SMEAImpl originalCalledPartyNumber;
+	private BCDDirectoryNumber originalCalledPartyNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 3,constructed = true,index = -1)
 	private AddressFieldListWrapper genericNumbers;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 4,constructed = false,index = -1)
-	private SM_RP_SMEAImpl redirectingPartyNumber;
+	private BCDDirectoryNumber redirectingPartyNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 5,constructed = false,index = -1)
 	private ASNInteger redirectionCounter;
 	
-	public CAMELModificationParameters(SM_RP_SMEAImpl callingPartyNumber,CallingPartysCategoryInapImpl callingPartyCategory,SM_RP_SMEAImpl originalCalledPartyNumber,List<SM_RP_SMEAImpl> genericNumbers,SM_RP_SMEAImpl redirectingPartyNumber,Integer redirectionCounter)
+	public CAMELModificationParameters(BCDDirectoryNumber callingPartyNumber,CallingPartysCategoryIsupImpl callingPartyCategory,BCDDirectoryNumber originalCalledPartyNumber,List<BCDDirectoryNumber> genericNumbers,BCDDirectoryNumber redirectingPartyNumber,Integer redirectionCounter)
 	{
 		this.callingPartyNumber=callingPartyNumber;
 		this.callingPartyCategory=callingPartyCategory;
@@ -82,22 +81,22 @@ public class CAMELModificationParameters
 		}
 	}
 
-	public SM_RP_SMEAImpl getCallingPartyNumber() 
+	public BCDDirectoryNumber getCallingPartyNumber() 
 	{
 		return callingPartyNumber;
 	}
 	
-	public CallingPartysCategoryInapImpl getCallingPartyCategory() 
+	public CallingPartysCategoryIsupImpl getCallingPartyCategory() 
 	{
 		return callingPartyCategory;
 	}
 
-	public SM_RP_SMEAImpl getOriginalCalledPartyNumber() 
+	public BCDDirectoryNumber getOriginalCalledPartyNumber() 
 	{
 		return originalCalledPartyNumber;
 	}
 
-	public List<SM_RP_SMEAImpl> getGenericNumbers() 
+	public List<BCDDirectoryNumber> getGenericNumbers() 
 	{
 		if(genericNumbers==null)
 			return null;
@@ -105,7 +104,7 @@ public class CAMELModificationParameters
 		return genericNumbers.getAddressFieldImpl();
 	}
 
-	public SM_RP_SMEAImpl getRedirectingPartyNumber() 
+	public BCDDirectoryNumber getRedirectingPartyNumber() 
 	{
 		return redirectingPartyNumber;
 	}
@@ -148,7 +147,7 @@ public class CAMELModificationParameters
         {
 	        sb.append(", genericNumbers=[");
 	        int index=0;
-	        for(SM_RP_SMEAImpl curr:genericNumbers.getAddressFieldImpl())
+	        for(BCDDirectoryNumber curr:genericNumbers.getAddressFieldImpl())
 	        {
 	        	if(index!=0)
 	        		sb.append(",");

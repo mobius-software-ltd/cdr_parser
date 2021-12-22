@@ -1,6 +1,5 @@
 package com.mobius.software.cdr.parser.primitives;
-import org.restcomm.protocols.ss7.cap.service.circuitSwitchedCall.primitive.DestinationRoutingAddressImpl;
-import org.restcomm.protocols.ss7.map.service.sms.SM_RP_SMEAImpl;
+import org.restcomm.protocols.ss7.commonapp.circuitSwitchedCall.DestinationRoutingAddressImpl;
 
 /*
  * Mobius Software LTD
@@ -62,10 +61,10 @@ public class CAMELInformation
 	private DestinationRoutingAddressImpl camelDestinationNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
-	private SM_RP_SMEAImpl connectedNumber;
+	private BCDDirectoryNumber connectedNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 3,constructed = false,index = -1)
-	private SM_RP_SMEAImpl roamingNumber;
+	private BCDDirectoryNumber roamingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 4,constructed = true,index = -1)
 	private TrunkGroup mscOutgoingTKGP;
@@ -109,7 +108,7 @@ public class CAMELInformation
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 17,constructed = false,index = -1)
 	private ASNBoolean freeFormatDataAppend2;
 	
-	public CAMELInformation(DestinationRoutingAddressImpl camelDestinationNumber,SM_RP_SMEAImpl connectedNumber,SM_RP_SMEAImpl roamingNumber,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CAMELInitCFIndicator camelInitCFIndicator,CauseForRecClosing causeForTerm,ChangeParameters changeParameters,byte[] freeFormatData,Diagnostics diagnostics,Boolean freeFormatDataAppend,byte[] freeFormatData2,Boolean freeFormatDataAppend2)
+	public CAMELInformation(DestinationRoutingAddressImpl camelDestinationNumber,BCDDirectoryNumber connectedNumber,BCDDirectoryNumber roamingNumber,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CAMELInitCFIndicator camelInitCFIndicator,CauseForRecClosing causeForTerm,ChangeParameters changeParameters,byte[] freeFormatData,Diagnostics diagnostics,Boolean freeFormatDataAppend,byte[] freeFormatData2,Boolean freeFormatDataAppend2)
 	{
 		this.camelDestinationNumber=camelDestinationNumber;
 		this.connectedNumber=connectedNumber;
@@ -177,12 +176,12 @@ public class CAMELInformation
 		return camelDestinationNumber;
 	}
 
-	public SM_RP_SMEAImpl getConnectedNumber() 
+	public BCDDirectoryNumber getConnectedNumber() 
 	{
 		return connectedNumber;
 	}
 
-	public SM_RP_SMEAImpl getRoamingNumber() 
+	public BCDDirectoryNumber getRoamingNumber() 
 	{
 		return roamingNumber;
 	}

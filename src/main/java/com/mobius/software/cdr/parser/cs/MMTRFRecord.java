@@ -1,15 +1,15 @@
 package com.mobius.software.cdr.parser.cs;
-import org.restcomm.protocols.ss7.map.primitives.AddressStringImpl;
-import org.restcomm.protocols.ss7.map.primitives.IMEIImpl;
-import org.restcomm.protocols.ss7.map.primitives.IMSIImpl;
-import org.restcomm.protocols.ss7.map.primitives.ISDNAddressStringImpl;
-import org.restcomm.protocols.ss7.map.service.callhandling.CallReferenceNumberImpl;
-import org.restcomm.protocols.ss7.map.service.sms.SM_RP_SMEAImpl;
+import org.restcomm.protocols.ss7.commonapp.callhandling.CallReferenceNumberImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.AddressStringImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.IMEIImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.IMSIImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.ISDNAddressStringImpl;
 
 import com.mobius.software.cdr.parser.primitives.ASNBasicService;
 import com.mobius.software.cdr.parser.primitives.ASNCauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.ASNPartialRecordType;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
+import com.mobius.software.cdr.parser.primitives.BCDDirectoryNumber;
 import com.mobius.software.cdr.parser.primitives.BasicService;
 import com.mobius.software.cdr.parser.primitives.CauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.Diagnostics;
@@ -91,10 +91,10 @@ public class MMTRFRecord
 	private ISDNAddressStringImpl servedMSISDN;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 4,constructed = false,index = -1)
-	private SM_RP_SMEAImpl callingNumber;
+	private BCDDirectoryNumber callingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 5,constructed = false,index = -1)
-	private SM_RP_SMEAImpl roamingNumber;
+	private BCDDirectoryNumber roamingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 6,constructed = false,index = -1)
 	private AddressStringImpl recordingEntity;
@@ -142,7 +142,7 @@ public class MMTRFRecord
 	{		
 	}
 	
-	public MMTRFRecord(RecordType recordType,IMSIImpl servedIMSI,IMEIImpl servedIMEI,ISDNAddressStringImpl servedMSISDN,SM_RP_SMEAImpl callingNumber,SM_RP_SMEAImpl roamingNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,BasicService isdnBasicService,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime, Integer callDuration,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,PartialRecordType partialRecordType)
+	public MMTRFRecord(RecordType recordType,IMSIImpl servedIMSI,IMEIImpl servedIMEI,ISDNAddressStringImpl servedMSISDN,BCDDirectoryNumber callingNumber,BCDDirectoryNumber roamingNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,BasicService isdnBasicService,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime, Integer callDuration,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,PartialRecordType partialRecordType)
 	{
 		if(recordType!=null)
 		{
@@ -226,12 +226,12 @@ public class MMTRFRecord
 		return servedMSISDN;
 	}
 
-	public SM_RP_SMEAImpl getCallingNumber() 
+	public BCDDirectoryNumber getCallingNumber() 
 	{
 		return callingNumber;
 	}
 
-	public SM_RP_SMEAImpl getRoamingNumber() 
+	public BCDDirectoryNumber getRoamingNumber() 
 	{
 		return roamingNumber;
 	}

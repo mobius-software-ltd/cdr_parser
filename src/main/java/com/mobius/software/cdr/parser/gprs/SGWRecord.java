@@ -2,11 +2,11 @@ package com.mobius.software.cdr.parser.gprs;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.restcomm.protocols.ss7.map.primitives.IMEIImpl;
-import org.restcomm.protocols.ss7.map.primitives.IMSIImpl;
-import org.restcomm.protocols.ss7.map.primitives.ISDNAddressStringImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.IMEIImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.IMSIImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.ISDNAddressStringImpl;
+import org.restcomm.protocols.ss7.commonapp.subscriberInformation.UserCSGInformationImpl;
 import org.restcomm.protocols.ss7.map.primitives.PlmnIdImpl;
-import org.restcomm.protocols.ss7.map.service.mobility.subscriberInformation.UserCSGInformationImpl;
 import org.restcomm.protocols.ss7.map.service.mobility.subscriberManagement.ChargingCharacteristicsImpl;
 import org.restcomm.protocols.ss7.map.service.mobility.subscriberManagement.PDPTypeImpl;
 

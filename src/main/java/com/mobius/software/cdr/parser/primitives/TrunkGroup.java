@@ -42,6 +42,11 @@ public class TrunkGroup
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 1,constructed = false,index = -1)
 	private ASNGraphicString tkgpName;
 	
+	public TrunkGroup()
+	{
+		
+	}
+	
 	public TrunkGroup(Integer tkgpNumber,String tkgpName)
 	{
 		if(tkgpNumber!=null)
