@@ -3,3 +3,4 @@
 /src/test/resources/captures/*.dat
 /src/test/resources/cscaptures/*.dat
 /src/test/resources/imscaptures/*.dat
+/src/test/resources/huawei/*.dat
