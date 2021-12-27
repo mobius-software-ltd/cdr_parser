@@ -15,7 +15,6 @@ import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberQuerySt
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberSourceIndicator;
 import com.mobius.software.cdr.parser.primitives.ASNPartialRecordType;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
-import com.mobius.software.cdr.parser.primitives.BCDDirectoryNumber;
 import com.mobius.software.cdr.parser.primitives.CAMELInformation;
 import com.mobius.software.cdr.parser.primitives.CamelInformationListWrapper;
 import com.mobius.software.cdr.parser.primitives.CauseForRecClosing;
@@ -128,10 +127,10 @@ public class TermCamelRecord
 	private ASNOctetString recordExtensions;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 12,constructed = false,index = -1)
-	private BCDDirectoryNumber calledNumber;
+	private AddressStringImpl calledNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 13,constructed = false,index = -1)
-	private BCDDirectoryNumber callingNumber;
+	private AddressStringImpl callingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 14,constructed = true,index = -1)
 	private TrunkGroup mscIncomingTKGP;
@@ -224,7 +223,7 @@ public class TermCamelRecord
 	{		
 	}
 	
-	public TermCamelRecord(RecordType recordType,IMSIImpl servedIMSI,ISDNAddressStringImpl servedMSISDN,AddressStringImpl recordingEntity,TimeStamp interrogationTime,DestinationRoutingAddressImpl destinationRoutingAddress,ISDNAddressStringImpl gsmSCFAddress,Long serviceKey,CallReferenceNumberImpl networkCallReference,AddressStringImpl mscAddress,DefaultCallHandling defaultCallHandling,byte[] recordExtensions,BCDDirectoryNumber calledNumber,BCDDirectoryNumber callingNumber,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime, Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,Integer numberOfDPEncountered,LevelOfCAMELService levelOfCAMELService,byte[] freeFormatData,List<CAMELInformation> camelCallLegInformation, Boolean freeFormatDataAppend,DefaultCallHandling defaultCallHandling2,ISDNAddressStringImpl gsmSCFAddress2,Long serviceKey2,byte[] freeFormatData2,Boolean freeFormatDataAppend2,Boolean mscServerIndication, RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,PartialRecordType partialRecordType)
+	public TermCamelRecord(RecordType recordType,IMSIImpl servedIMSI,ISDNAddressStringImpl servedMSISDN,AddressStringImpl recordingEntity,TimeStamp interrogationTime,DestinationRoutingAddressImpl destinationRoutingAddress,ISDNAddressStringImpl gsmSCFAddress,Long serviceKey,CallReferenceNumberImpl networkCallReference,AddressStringImpl mscAddress,DefaultCallHandling defaultCallHandling,byte[] recordExtensions,AddressStringImpl calledNumber,AddressStringImpl callingNumber,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime, Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,Integer numberOfDPEncountered,LevelOfCAMELService levelOfCAMELService,byte[] freeFormatData,List<CAMELInformation> camelCallLegInformation, Boolean freeFormatDataAppend,DefaultCallHandling defaultCallHandling2,ISDNAddressStringImpl gsmSCFAddress2,Long serviceKey2,byte[] freeFormatData2,Boolean freeFormatDataAppend2,Boolean mscServerIndication, RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,PartialRecordType partialRecordType)
 	{
 		if(recordType!=null)
 		{
@@ -459,12 +458,12 @@ public class TermCamelRecord
 		return data;
 	}
 
-	public BCDDirectoryNumber getCalledNumber() 
+	public AddressStringImpl getCalledNumber() 
 	{
 		return calledNumber;
 	}
 
-	public BCDDirectoryNumber getCallingNumber() 
+	public AddressStringImpl getCallingNumber() 
 	{
 		return callingNumber;
 	}

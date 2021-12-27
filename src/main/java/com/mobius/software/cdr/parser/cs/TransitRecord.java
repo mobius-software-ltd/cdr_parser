@@ -8,7 +8,6 @@ import com.mobius.software.cdr.parser.primitives.ASNCauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberQueryStatus;
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberSourceIndicator;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
-import com.mobius.software.cdr.parser.primitives.BCDDirectoryNumber;
 import com.mobius.software.cdr.parser.primitives.BasicService;
 import com.mobius.software.cdr.parser.primitives.CauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.Diagnostics;
@@ -91,10 +90,10 @@ public class TransitRecord
 	private TrunkGroup mscOutgoingTKGP;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 4,constructed = false,index = -1)
-	private BCDDirectoryNumber callingNumber;
+	private AddressStringImpl callingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 5,constructed = false,index = -1)
-	private BCDDirectoryNumber calledNumber;
+	private AddressStringImpl calledNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 6,constructed = false,index = -1)
 	private ASNBasicService isdnBasicService;
@@ -152,7 +151,7 @@ public class TransitRecord
 		
 	}
 	
-	public TransitRecord(RecordType recordType,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,BCDDirectoryNumber callingNumber,BCDDirectoryNumber calledNumber,BasicService isdnBasicService,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus)
+	public TransitRecord(RecordType recordType,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,AddressStringImpl callingNumber,AddressStringImpl calledNumber,BasicService isdnBasicService,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus)
 	{
 		if(recordType!=null)
 		{
@@ -261,12 +260,12 @@ public class TransitRecord
 		return mscOutgoingTKGP;
 	}
 
-	public BCDDirectoryNumber getCallingNumber() 
+	public AddressStringImpl getCallingNumber() 
 	{
 		return callingNumber;
 	}
 
-	public BCDDirectoryNumber getCalledNumber() 
+	public AddressStringImpl getCalledNumber() 
 	{
 		return calledNumber;
 	}

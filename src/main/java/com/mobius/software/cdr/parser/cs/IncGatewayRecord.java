@@ -8,7 +8,6 @@ import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberQuerySt
 import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberSourceIndicator;
 import com.mobius.software.cdr.parser.primitives.ASNReasonForServiceChange;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
-import com.mobius.software.cdr.parser.primitives.BCDDirectoryNumber;
 import com.mobius.software.cdr.parser.primitives.CauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.Diagnostics;
 import com.mobius.software.cdr.parser.primitives.LocationRoutingNumberQueryStatus;
@@ -85,10 +84,10 @@ public class IncGatewayRecord
 	private ASNRecordType recordType;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 1,constructed = false,index = -1)
-	private BCDDirectoryNumber callingNumber;
+	private AddressStringImpl callingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
-	private BCDDirectoryNumber calledNumber;
+	private AddressStringImpl calledNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 3,constructed = false,index = -1)
 	private AddressStringImpl recordingEntity;
@@ -158,7 +157,7 @@ public class IncGatewayRecord
 		
 	}
 	
-	public IncGatewayRecord(RecordType recordType,BCDDirectoryNumber callingNumber,BCDDirectoryNumber calledNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,ReasonForServiceChange reasonForServiceChange, Boolean serviceChangeInitiator)
+	public IncGatewayRecord(RecordType recordType,AddressStringImpl callingNumber,AddressStringImpl calledNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,ReasonForServiceChange reasonForServiceChange, Boolean serviceChangeInitiator)
 	{
 		if(recordType!=null)
 		{
@@ -257,12 +256,12 @@ public class IncGatewayRecord
 		return recordType.getType();
 	}
 
-	public BCDDirectoryNumber getCallingNumber() 
+	public AddressStringImpl getCallingNumber() 
 	{
 		return callingNumber;
 	}
 
-	public BCDDirectoryNumber getCalledNumber() 
+	public AddressStringImpl getCalledNumber() 
 	{
 		return calledNumber;
 	}

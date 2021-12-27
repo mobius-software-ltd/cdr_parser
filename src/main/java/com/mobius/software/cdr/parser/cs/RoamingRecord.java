@@ -14,7 +14,6 @@ import com.mobius.software.cdr.parser.primitives.ASNLocationRoutingNumberSourceI
 import com.mobius.software.cdr.parser.primitives.ASNPartialRecordType;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
 import com.mobius.software.cdr.parser.primitives.ASNTransparencyInd;
-import com.mobius.software.cdr.parser.primitives.BCDDirectoryNumber;
 import com.mobius.software.cdr.parser.primitives.BasicService;
 import com.mobius.software.cdr.parser.primitives.CauseForRecClosing;
 import com.mobius.software.cdr.parser.primitives.ChangeOfService;
@@ -108,10 +107,10 @@ public class RoamingRecord
 	private ISDNAddressStringImpl servedMSISDN;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 3,constructed = false,index = -1)
-	private BCDDirectoryNumber callingNumber;
+	private AddressStringImpl callingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 4,constructed = false,index = -1)
-	private BCDDirectoryNumber roamingNumber;
+	private AddressStringImpl roamingNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 5,constructed = false,index = -1)
 	private AddressStringImpl recordingEntity;
@@ -195,7 +194,7 @@ public class RoamingRecord
 	{		
 	}
 	
-	public RoamingRecord(RecordType recordType,IMSIImpl servedIMSI,ISDNAddressStringImpl servedMSISDN,BCDDirectoryNumber callingNumber,BCDDirectoryNumber roamingNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,BasicService isdnBasicService,TransparencyInd transparencyInd,List<ChangeOfService> changeOfService,List<SuppServiceUsed> supplServicesUsed, TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,CallReferenceNumberImpl networkCallReference,AddressStringImpl mscAddress,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,PartialRecordType partialRecordType)
+	public RoamingRecord(RecordType recordType,IMSIImpl servedIMSI,ISDNAddressStringImpl servedMSISDN,AddressStringImpl callingNumber,AddressStringImpl roamingNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,BasicService isdnBasicService,TransparencyInd transparencyInd,List<ChangeOfService> changeOfService,List<SuppServiceUsed> supplServicesUsed, TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,CallReferenceNumberImpl networkCallReference,AddressStringImpl mscAddress,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,PartialRecordType partialRecordType)
 	{
 		if(recordType!=null)
 		{
@@ -321,12 +320,12 @@ public class RoamingRecord
 		return servedMSISDN;
 	}
 
-	public BCDDirectoryNumber getCallingNumber() 
+	public AddressStringImpl getCallingNumber() 
 	{
 		return callingNumber;
 	}
 
-	public BCDDirectoryNumber getRoamingNumber() 
+	public AddressStringImpl getRoamingNumber() 
 	{
 		return roamingNumber;
 	}

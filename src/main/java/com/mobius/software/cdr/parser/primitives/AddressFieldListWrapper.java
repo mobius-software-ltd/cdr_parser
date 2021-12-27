@@ -20,6 +20,8 @@ package com.mobius.software.cdr.parser.primitives;
 
 import java.util.List;
 
+import org.restcomm.protocols.ss7.commonapp.primitives.AddressStringImpl;
+
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNProperty;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNTag;
@@ -31,16 +33,16 @@ import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNTag;
 @ASNTag(asnClass=ASNClass.UNIVERSAL,tag=16,constructed=true,lengthIndefinite=false)
 public class AddressFieldListWrapper {
 	@ASNProperty(asnClass=ASNClass.UNIVERSAL,tag=16,constructed=true,index=-1)
-    private List<BCDDirectoryNumber> addressField;
+    private List<AddressStringImpl> addressField;
 
     public AddressFieldListWrapper() {
     }
 
-    public AddressFieldListWrapper(List<BCDDirectoryNumber> addressField) {
+    public AddressFieldListWrapper(List<AddressStringImpl> addressField) {
         this.addressField = addressField;
     }
 
-    public List<BCDDirectoryNumber> getAddressFieldImpl() {
+    public List<AddressStringImpl> getAddressFieldImpl() {
     	return addressField;
     }
 }

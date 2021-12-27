@@ -2,6 +2,7 @@ package com.mobius.software.cdr.parser.primitives;
 import java.util.List;
 
 import org.restcomm.protocols.ss7.commonapp.isup.CallingPartysCategoryIsupImpl;
+import org.restcomm.protocols.ss7.commonapp.primitives.AddressStringImpl;
 
 /*
  * Mobius Software LTD
@@ -47,24 +48,24 @@ CAMELModificationParameters ::= SET
 public class CAMELModificationParameters 
 {
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
-	private BCDDirectoryNumber callingPartyNumber;
+	private AddressStringImpl callingPartyNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
 	private CallingPartysCategoryIsupImpl callingPartyCategory;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 2,constructed = false,index = -1)
-	private BCDDirectoryNumber originalCalledPartyNumber;
+	private AddressStringImpl originalCalledPartyNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 3,constructed = true,index = -1)
 	private AddressFieldListWrapper genericNumbers;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 4,constructed = false,index = -1)
-	private BCDDirectoryNumber redirectingPartyNumber;
+	private AddressStringImpl redirectingPartyNumber;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 5,constructed = false,index = -1)
 	private ASNInteger redirectionCounter;
 	
-	public CAMELModificationParameters(BCDDirectoryNumber callingPartyNumber,CallingPartysCategoryIsupImpl callingPartyCategory,BCDDirectoryNumber originalCalledPartyNumber,List<BCDDirectoryNumber> genericNumbers,BCDDirectoryNumber redirectingPartyNumber,Integer redirectionCounter)
+	public CAMELModificationParameters(AddressStringImpl callingPartyNumber,CallingPartysCategoryIsupImpl callingPartyCategory,AddressStringImpl originalCalledPartyNumber,List<AddressStringImpl> genericNumbers,AddressStringImpl redirectingPartyNumber,Integer redirectionCounter)
 	{
 		this.callingPartyNumber=callingPartyNumber;
 		this.callingPartyCategory=callingPartyCategory;
@@ -81,7 +82,7 @@ public class CAMELModificationParameters
 		}
 	}
 
-	public BCDDirectoryNumber getCallingPartyNumber() 
+	public AddressStringImpl getCallingPartyNumber() 
 	{
 		return callingPartyNumber;
 	}
@@ -91,12 +92,12 @@ public class CAMELModificationParameters
 		return callingPartyCategory;
 	}
 
-	public BCDDirectoryNumber getOriginalCalledPartyNumber() 
+	public AddressStringImpl getOriginalCalledPartyNumber() 
 	{
 		return originalCalledPartyNumber;
 	}
 
-	public List<BCDDirectoryNumber> getGenericNumbers() 
+	public List<AddressStringImpl> getGenericNumbers() 
 	{
 		if(genericNumbers==null)
 			return null;
@@ -104,7 +105,7 @@ public class CAMELModificationParameters
 		return genericNumbers.getAddressFieldImpl();
 	}
 
-	public BCDDirectoryNumber getRedirectingPartyNumber() 
+	public AddressStringImpl getRedirectingPartyNumber() 
 	{
 		return redirectingPartyNumber;
 	}
@@ -147,7 +148,7 @@ public class CAMELModificationParameters
         {
 	        sb.append(", genericNumbers=[");
 	        int index=0;
-	        for(BCDDirectoryNumber curr:genericNumbers.getAddressFieldImpl())
+	        for(AddressStringImpl curr:genericNumbers.getAddressFieldImpl())
 	        {
 	        	if(index!=0)
 	        		sb.append(",");
