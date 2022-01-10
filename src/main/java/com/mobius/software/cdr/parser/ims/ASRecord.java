@@ -4,22 +4,34 @@ import java.util.List;
 
 import org.restcomm.protocols.ss7.commonapp.primitives.AddressStringImpl;
 
+import com.mobius.software.cdr.parser.primitives.ASNAccountingRecordType;
+import com.mobius.software.cdr.parser.primitives.ASNCallProperty;
 import com.mobius.software.cdr.parser.primitives.ASNCauseForRecordClosing;
+import com.mobius.software.cdr.parser.primitives.ASNChargingCategory;
+import com.mobius.software.cdr.parser.primitives.ASNOnlineChargingFlag;
 import com.mobius.software.cdr.parser.primitives.ASNRecordType;
 import com.mobius.software.cdr.parser.primitives.ASNRoleOfNode;
+import com.mobius.software.cdr.parser.primitives.ASNSDPMediaIdentifier;
 import com.mobius.software.cdr.parser.primitives.ASNSessionPriority;
+import com.mobius.software.cdr.parser.primitives.ASNTADSIndication;
 import com.mobius.software.cdr.parser.primitives.ASNThreeGPPPSDataOffStatus;
 import com.mobius.software.cdr.parser.primitives.AccessNetworkInfoChange;
 import com.mobius.software.cdr.parser.primitives.AccessTransferInformation;
+import com.mobius.software.cdr.parser.primitives.AccountingRecordType;
+import com.mobius.software.cdr.parser.primitives.CallProperty;
 import com.mobius.software.cdr.parser.primitives.CalledIdentityChange;
 import com.mobius.software.cdr.parser.primitives.CauseForRecordClosing;
+import com.mobius.software.cdr.parser.primitives.ChargingCategory;
 import com.mobius.software.cdr.parser.primitives.EarlyMediaComponentList;
+import com.mobius.software.cdr.parser.primitives.InInformation;
+import com.mobius.software.cdr.parser.primitives.InInformationListWrapper;
 import com.mobius.software.cdr.parser.primitives.IncompleteCDRIndication;
 import com.mobius.software.cdr.parser.primitives.InterOperatorIdentifiers;
 import com.mobius.software.cdr.parser.primitives.InterOperatorIdentifiersListWrapper;
 import com.mobius.software.cdr.parser.primitives.InvolvedParty;
 import com.mobius.software.cdr.parser.primitives.InvolvedPartyListWrapper;
 import com.mobius.software.cdr.parser.primitives.InvolvedPartyWrapper;
+import com.mobius.software.cdr.parser.primitives.MMTelInformation;
 import com.mobius.software.cdr.parser.primitives.MSTimezone;
 import com.mobius.software.cdr.parser.primitives.MediaComponentList;
 import com.mobius.software.cdr.parser.primitives.MediaComponentListWrapper;
@@ -27,14 +39,19 @@ import com.mobius.software.cdr.parser.primitives.MessageBody;
 import com.mobius.software.cdr.parser.primitives.NNIInformation;
 import com.mobius.software.cdr.parser.primitives.NodeAddress;
 import com.mobius.software.cdr.parser.primitives.NodeAddressWrapper;
+import com.mobius.software.cdr.parser.primitives.OnlineChargingFlag;
+import com.mobius.software.cdr.parser.primitives.PrivateUserEquipmentInfo;
 import com.mobius.software.cdr.parser.primitives.RealTimeTariffInformation;
 import com.mobius.software.cdr.parser.primitives.RecordType;
 import com.mobius.software.cdr.parser.primitives.RoleOfNode;
+import com.mobius.software.cdr.parser.primitives.SDPMediaIdentifier;
 import com.mobius.software.cdr.parser.primitives.ServiceSpecificInfo;
 import com.mobius.software.cdr.parser.primitives.SessionPriority;
 import com.mobius.software.cdr.parser.primitives.SubscriberEquipmentNumber;
 import com.mobius.software.cdr.parser.primitives.SubscriptionID;
+import com.mobius.software.cdr.parser.primitives.SubscriptionIDListWrapper;
 import com.mobius.software.cdr.parser.primitives.TADIdentifier;
+import com.mobius.software.cdr.parser.primitives.TADSIndication;
 import com.mobius.software.cdr.parser.primitives.ThreeGPPPSDataOffStatus;
 import com.mobius.software.cdr.parser.primitives.TimeStamp;
 /*
@@ -136,6 +153,24 @@ ASRecord ::= SET
  threeGPPPSDataOffStatus [112] ThreeGPPPSDataOffStatus OPTIONAL,
  fEIdentifierList [113] FEIdentifierList OPTIONAL
 } 
+
+HAWEI ADDITIONAL DATA
+{
+ mMTelInformation [110] mMTelInformation OPTIONAL,
+ onlineChargingFlag [150] OnlineChargingFlag OPTIONAL,
+ charged-party [156] InvolvedParty OPTIONAL,
+ duration [200] INTEGER OPTIONAL,
+ ringing-duration [200] INTEGER OPTIONAL,
+ dialed-party-address [203] InvolvedParty OPTIONAL,
+ chargingCategory [216] ChargingCategory OPTIONAL,
+ call-property [222] CallProperty OPTIONAL,
+ accountingRecordType [227] AccountingRecordType OPTIONAL,
+ sdpMediaIdentifier [233] SDPMediaIdentifier OPTIONAL,
+ mscNumber [235] UTF8String OPTIONAL,
+ TADS-Indication [410] TADS-Indication OPTIONAL
+ List-Of-IN-Information [413] List-Of-IN-Information OPTIONAL
+ PrivateUserEquipmentInfo [418] PrivateUserEquipmentInfo OPTIONAL
+}
  */
 /**
  * @author yulian.oifa
@@ -232,7 +267,7 @@ public class ASRecord
 	private ASNUTF8String serviceContextID;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 31,constructed = true,index = -1)
-	private List<SubscriptionID> listOfSubscriptionID;
+	private SubscriptionIDListWrapper listOfSubscriptionID;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 32,constructed = true,index = -1)
 	private List<EarlyMediaComponentList> listOfEarlySDPMediaComponents; 
@@ -330,8 +365,11 @@ public class ASRecord
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 109,constructed = true,index = -1)
 	private TADIdentifier tadsIdentifier;
 	
-	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 110,constructed = true,index = -1)
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 110,constructed = false,index = -1)
 	private AddressStringImpl vlrNumber;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 110,constructed = true,index = -1)
+	private MMTelInformation mMTelInformation;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 111,constructed = false,index = -1)
 	private AddressStringImpl mscAddress;
@@ -341,6 +379,46 @@ public class ASRecord
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 113,constructed = false,index = -1)
 	private List<ASNGraphicString> fEIdentifierList;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 150,constructed = false,index = -1)
+	private ASNOnlineChargingFlag onlineChargingFlagEnum;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 156,constructed = true,index = -1)
+	private InvolvedPartyWrapper chargedParty;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 200,constructed = false,index = -1)
+	private ASNInteger duration;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 203,constructed = true,index = -1)
+	private InvolvedPartyWrapper dialedPartyAddress;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 204,constructed = false,index = -1)
+	private ASNInteger ringingDuration;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 216,constructed = false,index = -1)
+	private ASNChargingCategory chargingCategory;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 222,constructed = false,index = -1)
+	private ASNCallProperty callProperty;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 227,constructed = false,index = -1)
+	private ASNAccountingRecordType accountingRecordType;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 233,constructed = false,index = -1)
+	private ASNSDPMediaIdentifier sdpMediaIdentifier;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 235,constructed = false,index = -1)
+	private ASNUTF8String mscNumber;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 410,constructed = false,index = -1)
+	private ASNTADSIndication tadsIndication;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 413,constructed = true,index = -1)
+	private InInformationListWrapper inInformation;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 418,constructed = true,index = -1)
+	private PrivateUserEquipmentInfo privateUserEquipmentInfo;
+	
 	
 	public ASRecord()
 	{
@@ -376,8 +454,12 @@ public class ASRecord
 			List<InvolvedParty> listOfCalledAssertedIdentity, String alternateChargedPartyAddress,
 			String outgoingSessionID, byte[] initialIMSChargingIdentifier,
 			List<AccessTransferInformation> listOfAccessTransferInformation, TADIdentifier tadsIdentifier,
-			AddressStringImpl vlrNumber, AddressStringImpl mscAddress, ThreeGPPPSDataOffStatus threeGPPPSDataOffStatus,
-			List<String> fEIdentifierList) 
+			AddressStringImpl vlrNumber, MMTelInformation mMTelInformation, AddressStringImpl mscAddress, ThreeGPPPSDataOffStatus threeGPPPSDataOffStatus,
+			List<String> fEIdentifierList,OnlineChargingFlag onlineChargingFlagEnum,InvolvedParty chargedParty,
+			Integer duration,InvolvedParty dialedPartyAddress,Integer ringingDuration,
+			CallProperty callProperty,ChargingCategory chargingCategory,AccountingRecordType accountingRecordType,
+			SDPMediaIdentifier sdpMediaIdentifier,String mscNumber,TADSIndication tadsIndication,List<InInformation> inInformation,
+			PrivateUserEquipmentInfo privateUserEquipmentInfo) 
 	{
 		if(recordType!=null)
 		{
@@ -500,7 +582,9 @@ public class ASRecord
 			this.serviceContextID.setValue(serviceContextID);
 		}
 		
-		this.listOfSubscriptionID = listOfSubscriptionID;
+		if(listOfSubscriptionID!=null)
+			this.listOfSubscriptionID = new SubscriptionIDListWrapper(listOfSubscriptionID);
+		
 		this.listOfEarlySDPMediaComponents = listOfEarlySDPMediaComponents;
 		
 		if(imsCommunicationServiceIdentifier!=null)
@@ -648,6 +732,7 @@ public class ASRecord
 		this.listOfAccessTransferInformation = listOfAccessTransferInformation;
 		this.tadsIdentifier = tadsIdentifier;
 		this.vlrNumber = vlrNumber;
+		this.mMTelInformation = mMTelInformation;
 		this.mscAddress = mscAddress;
 		
 		if(threeGPPPSDataOffStatus!=null)
@@ -665,7 +750,72 @@ public class ASRecord
 				currStr.setValue(curr);
 				this.fEIdentifierList.add(currStr);
 			}
-		}				
+		}		
+		
+		if(onlineChargingFlagEnum!=null) 
+		{
+			this.onlineChargingFlagEnum=new ASNOnlineChargingFlag();
+			this.onlineChargingFlagEnum.setType(onlineChargingFlagEnum);
+		}
+		
+		if(chargedParty!=null)
+			this.chargedParty=new InvolvedPartyWrapper(chargedParty);
+		
+		if(duration!=null)
+		{
+			this.duration=new ASNInteger();
+			this.duration.setValue(duration.longValue());
+		}
+		
+		if(dialedPartyAddress!=null)
+			this.dialedPartyAddress=new InvolvedPartyWrapper(dialedPartyAddress);
+		
+		if(ringingDuration!=null)
+		{
+			this.ringingDuration=new ASNInteger();
+			this.ringingDuration.setValue(ringingDuration.longValue());
+		}
+		
+		if(chargingCategory!=null)
+		{
+			this.chargingCategory=new ASNChargingCategory();
+			this.chargingCategory.setType(chargingCategory);
+		}
+		
+		if(callProperty!=null)
+		{
+			this.callProperty=new ASNCallProperty();
+			this.callProperty.setType(callProperty);
+		}
+		
+		if(accountingRecordType!=null)
+		{
+			this.accountingRecordType=new ASNAccountingRecordType();
+			this.accountingRecordType.setType(accountingRecordType);
+		}
+		
+		if(sdpMediaIdentifier!=null)
+		{
+			this.sdpMediaIdentifier=new ASNSDPMediaIdentifier();
+			this.sdpMediaIdentifier.setType(sdpMediaIdentifier);
+		}
+		
+		if(mscNumber!=null)
+		{
+			this.mscNumber=new ASNUTF8String();
+			this.mscNumber.setValue(mscNumber);
+		}
+		
+		if(tadsIndication!=null)
+		{
+			this.tadsIndication=new ASNTADSIndication();
+			this.tadsIndication.setType(tadsIndication);
+		}
+		
+		if(inInformation!=null)
+			this.inInformation=new InInformationListWrapper(inInformation);
+		
+		this.privateUserEquipmentInfo=privateUserEquipmentInfo;		
 	}
 
 	public RecordType getRecordType() 
@@ -810,6 +960,23 @@ public class ASRecord
 		return data;
 	}
 
+	public String getImsChargingIdentifierStr() 
+	{
+		byte[] data=getImsChargingIdentifier();
+		if(data==null || data.length==0)
+			return "";
+		
+		String result="";
+		try {
+			result=new String(data);
+		}
+		catch(Exception ex) {
+			
+		}
+		
+		return result;
+	}
+
 	public List<MediaComponentList> getMediaComponentList() 
 	{
 		if(mediaComponentList==null)
@@ -877,6 +1044,23 @@ public class ASRecord
 		return data;
 	}
 
+	public String getAccessNetworkInformationStr()
+	{
+		byte[] data=getAccessNetworkInformation();
+		if(data==null || data.length==0)
+			return "";
+		
+		String result="";
+		try {
+			result=new String(data);
+		}
+		catch(Exception ex) {
+			
+		}
+		
+		return result;
+	}
+	
 	public String getServiceContextID() 
 	{
 		if(serviceContextID==null)
@@ -887,7 +1071,10 @@ public class ASRecord
 
 	public List<SubscriptionID> getListOfSubscriptionID() 
 	{
-		return listOfSubscriptionID;
+		if(listOfSubscriptionID==null) 
+			return null;
+		
+		return listOfSubscriptionID.getSubscriptionIDs();
 	}
 
 	public List<EarlyMediaComponentList> getListOfEarlySDPMediaComponents() 
@@ -1162,6 +1349,11 @@ public class ASRecord
 		return vlrNumber;
 	}
 
+	public MMTelInformation getmMTelInformation() 
+	{
+		return mMTelInformation;
+	}
+
 	public AddressStringImpl getMscAddress() 
 	{
 		return mscAddress;
@@ -1173,6 +1365,107 @@ public class ASRecord
 			return null;
 		
 		return threeGPPPSDataOffStatus.getStatus();
+	}
+	
+	public OnlineChargingFlag getOnlineChargingFlagEnum() 
+	{
+		if(onlineChargingFlagEnum==null || onlineChargingFlagEnum.getType()==null)
+			return null;
+		
+		return onlineChargingFlagEnum.getType();
+	}
+	
+	public InvolvedParty getChargedParty() 
+	{
+		if(chargedParty==null || chargedParty.getInvolvedParty()==null)
+			return null;
+		
+		return chargedParty.getInvolvedParty();
+	}
+	
+	public Integer getDuration() 
+	{
+		if(duration==null || duration.getValue()==null)
+			return null;
+		
+		return duration.getValue().intValue();
+	}
+	
+	public InvolvedParty getDialedPartyAddress() 
+	{
+		if(dialedPartyAddress==null || dialedPartyAddress.getInvolvedParty()==null)
+			return null;
+		
+		return dialedPartyAddress.getInvolvedParty();
+	}
+	
+	public Integer getRingingDuration() 
+	{
+		if(ringingDuration==null || ringingDuration.getValue()==null)
+			return null;
+		
+		return ringingDuration.getValue().intValue();
+	}
+	
+	public ChargingCategory getChargingCategory() 
+	{
+		if(chargingCategory==null)
+			return null;
+		
+		return chargingCategory.getType();
+	}
+	
+	public CallProperty getCallProperty() 
+	{
+		if(callProperty==null)
+			return null;
+		
+		return callProperty.getType();
+	}
+	
+	public AccountingRecordType getAccountingRecordType() 
+	{
+		if(accountingRecordType==null)
+			return null;
+		
+		return accountingRecordType.getType();
+	}
+	
+	public SDPMediaIdentifier getSDPMediaIdentifier() 
+	{
+		if(sdpMediaIdentifier==null)
+			return null;
+		
+		return sdpMediaIdentifier.getIdentifier();
+	}
+	
+	public String getMSCNumber() 
+	{
+		if(mscNumber==null)
+			return null;
+		
+		return mscNumber.getValue();
+	}
+	
+	public TADSIndication getTADSIndication() 
+	{
+		if(tadsIndication==null)
+			return null;
+		
+		return tadsIndication.getType();
+	}
+	
+	public List<InInformation> getInInformation() 
+	{
+		if(inInformation==null)
+			return null;
+		
+		return inInformation.getInInformation();
+	}
+	
+	public PrivateUserEquipmentInfo getPrivateUserEquipmentInfo() 
+	{
+		return privateUserEquipmentInfo;
 	}
 	
 	@Override
@@ -1336,6 +1629,13 @@ public class ASRecord
 	        sb.append("]");
         }
         
+        if(imsChargingIdentifier!=null && imsChargingIdentifier.getValue()!=null)
+        {
+	        sb.append(" imsChargingIdentifierStr=[");
+	        sb.append(getImsChargingIdentifierStr());
+	        sb.append("]");
+        }
+        
         if(mediaComponentList!=null && mediaComponentList.getMediaComponentList()!=null)
         {
 	        sb.append("mediaComponentList=[");
@@ -1403,8 +1703,15 @@ public class ASRecord
         
         if(accessNetworkInformation!=null && accessNetworkInformation.getValue()!=null)
         {
-	        sb.append("accessNetworkInformation=[");
+	        sb.append(" accessNetworkInformation=[");
 	        sb.append(ASNOctetString.printDataArr(getAccessNetworkInformation()));
+	        sb.append("]");
+        }
+        
+        if(accessNetworkInformation!=null && accessNetworkInformation.getValue()!=null)
+        {
+	        sb.append(" accessNetworkInformationStr=[");
+	        sb.append(getAccessNetworkInformationStr());
 	        sb.append("]");
         }
         
@@ -1415,11 +1722,11 @@ public class ASRecord
 	        sb.append("]");
         }
         
-        if(listOfSubscriptionID!=null)
+        if(listOfSubscriptionID!=null && listOfSubscriptionID.getSubscriptionIDs()!=null)
         {
 	        sb.append("listOfSubscriptionID=[");
 	        Boolean isFirst=false;
-	        for(SubscriptionID curr:listOfSubscriptionID)
+	        for(SubscriptionID curr:listOfSubscriptionID.getSubscriptionIDs())
 	        {
 	        	if(!isFirst)
 	        		sb.append(",");
@@ -1740,6 +2047,13 @@ public class ASRecord
 			sb.append("]");
 		}
         
+		if(mMTelInformation!=null)
+		{
+			sb.append("mMTelInformation=[");
+			sb.append(mMTelInformation);
+			sb.append("]");
+		}
+        
 		if(mscAddress!=null)
 		{
 			sb.append("mscAddress=[");
@@ -1769,6 +2083,105 @@ public class ASRecord
 	        sb.append("]");
         }
         
+        if(onlineChargingFlagEnum!=null && onlineChargingFlagEnum.getType()!=null)
+		{
+			sb.append("onlineChargingFlag=[");
+			sb.append(onlineChargingFlagEnum.getType());
+			sb.append("]");
+		}
+        
+        if(chargedParty!=null && chargedParty.getInvolvedParty()!=null)
+		{
+			sb.append("chargedParty=[");
+			sb.append(chargedParty.getInvolvedParty());
+			sb.append("]");
+		}
+        
+        if(duration!=null && duration.getValue()!=null)
+		{
+			sb.append("duration=[");
+			sb.append(duration.getValue());
+			sb.append("]");
+		}
+        
+        if(dialedPartyAddress!=null && dialedPartyAddress.getInvolvedParty()!=null)
+		{
+			sb.append("dialedPartyAddress=[");
+			sb.append(dialedPartyAddress.getInvolvedParty());
+			sb.append("]");
+		}
+        
+        if(ringingDuration!=null && ringingDuration.getValue()!=null)
+		{
+			sb.append("ringingDuration=[");
+			sb.append(ringingDuration.getValue());
+			sb.append("]");
+		}
+        
+        if(chargingCategory!=null && chargingCategory.getType()!=null)
+		{
+			sb.append("chargingCategory=[");
+			sb.append(chargingCategory.getType());
+			sb.append("]");
+		}
+        
+        if(callProperty!=null && callProperty.getType()!=null)
+		{
+			sb.append("callProperty=[");
+			sb.append(callProperty.getType());
+			sb.append("]");
+		}
+        
+        if(accountingRecordType!=null && accountingRecordType.getType()!=null)
+		{
+			sb.append("accountingRecordType=[");
+			sb.append(accountingRecordType.getType());
+			sb.append("]");
+		}
+        
+        if(sdpMediaIdentifier!=null && sdpMediaIdentifier.getIdentifier()!=null)
+		{
+			sb.append("sdpMediaIdentifier=[");
+			sb.append(sdpMediaIdentifier.getIdentifier());
+			sb.append("]");
+		}
+        
+        if(mscNumber!=null && mscNumber.getValue()!=null)
+		{
+			sb.append("mscNumber=[");
+			sb.append(mscNumber.getValue());
+			sb.append("]");
+		}
+        
+        if(tadsIndication!=null && tadsIndication.getType()!=null)
+		{
+			sb.append("tadsIndication=[");
+			sb.append(tadsIndication.getType());
+			sb.append("]");
+		}
+        
+        if(inInformation!=null && inInformation.getInInformation()!=null)
+        {
+	        sb.append("inInformation=[");
+	        Boolean isFirst=false;
+	        for(InInformation curr:inInformation.getInInformation())
+	        {
+	        	if(!isFirst)
+	        		sb.append(",");
+	        	
+	        	sb.append(curr);
+	        }
+	        
+	        sb.append("]");
+        }
+        
+        if(privateUserEquipmentInfo!=null)
+		{
+			sb.append("privateUserEquipmentInfo=[");
+			sb.append(privateUserEquipmentInfo);
+			sb.append("]");
+		}
+                
         sb.append("]");
         return sb.toString();
     }	

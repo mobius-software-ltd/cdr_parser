@@ -501,6 +501,23 @@ public class BGCFRecord
 		return data;
 	}
 
+	public String getImsChargingIdentifierStr() 
+	{
+		byte[] data=getImsChargingIdentifier();
+		if(data==null || data.length==0)
+			return "";
+		
+		String result="";
+		try {
+			result=new String(data);
+		}
+		catch(Exception ex) {
+			
+		}
+		
+		return result;
+	}
+
 	public String getServiceReasonReturnCode() 
 	{
 		if(serviceReasonReturnCode==null)
@@ -789,6 +806,13 @@ public class BGCFRecord
         {
 	        sb.append("imsChargingIdentifier=[");
 	        sb.append(ASNOctetString.printDataArr(getImsChargingIdentifier()));
+	        sb.append("]");
+        }
+        
+        if(imsChargingIdentifier!=null && imsChargingIdentifier.getValue()!=null)
+        {
+	        sb.append(" imsChargingIdentifierStr=[");
+	        sb.append(getImsChargingIdentifierStr());
 	        sb.append("]");
         }
         

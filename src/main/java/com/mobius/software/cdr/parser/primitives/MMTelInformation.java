@@ -1,4 +1,6 @@
 package com.mobius.software.cdr.parser.primitives;
+import java.util.List;
+
 /*
  * Mobius Software LTD
  * Copyright 2021, Mobius Software LTD and individual contributors
@@ -20,80 +22,84 @@ package com.mobius.software.cdr.parser.primitives;
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNProperty;
 import com.mobius.software.telco.protocols.ss7.asn.annotations.ASNTag;
-import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNUTF8String;
-
 /*
- SubscriptionID ::= SET
+MMTelInformation ::= SET
 {
-subscriptionIDType [0] SubscriptionIDType,
-subscriptionIDData [1] UTF8String
-}
+ 	ListOfSupplServices [0] SEQUENCE OF SupplService OPTIONAL,
+ 	subscriberRole [1] SubscriberRole OPTIONAL
+} 
  */
 /**
  * @author yulian.oifa
  *
  */
 @ASNTag(asnClass = ASNClass.UNIVERSAL,tag = 16,constructed = true,lengthIndefinite = false)
-public class SubscriptionID 
+public class MMTelInformation 
 {
-	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 0,constructed = false,index = -1)
-	private ASNSubscriptionIDType subscriptionIDType;
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 0,constructed = true,index = -1)
+	private SupplServiceListWrapper listOfSupplServices;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 1,constructed = false,index = -1)
-	private ASNUTF8String subscriptionIDData;
+	private ASNSubscriberRole subscriberRole;
 	
-	public SubscriptionID()
+	public MMTelInformation()
 	{
 		
 	}
 	
-	public SubscriptionID(SubscriptionIDType subscriptionIDType,String subscriptionIDData)
+	public MMTelInformation(List<SupplService> listOfSupplServices,SubscriberRole subscriberRole)
 	{
-		if(subscriptionIDType!=null)
-		{
-			this.subscriptionIDType=new ASNSubscriptionIDType();
-			this.subscriptionIDType.setType(subscriptionIDType);
-		}
+		if(listOfSupplServices!=null)
+			this.listOfSupplServices=new SupplServiceListWrapper(listOfSupplServices);
 		
-		if(subscriptionIDData!=null)
+		if(subscriberRole!=null)
 		{
-			this.subscriptionIDData=new ASNUTF8String();
-			this.subscriptionIDData.setValue(subscriptionIDData);
-		}
+			this.subscriberRole=new ASNSubscriberRole();
+			this.subscriberRole.setType(subscriberRole);
+		}		
 	}
-
-	public SubscriptionIDType getSubscriptionIDType() 
+	
+	public List<SupplService> getSupplService() 
 	{
-		if(subscriptionIDType==null)
+		if(listOfSupplServices==null)
 			return null;
 		
-		return subscriptionIDType.getType();
+		return listOfSupplServices.getSupplService();
 	}
 
-	public String getSubscriptionIDData() 
+	public SubscriberRole getSubscriberRole() 
 	{
-		if(subscriptionIDData==null)
+		if(subscriberRole==null)
 			return null;
 		
-		return subscriptionIDData.getValue();
+		return subscriberRole.getType();
 	}
-	
+
 	public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("SubscriptionID");
+        sb.append("MMTelInformation");
         sb.append(" [");
-        
-        if(subscriptionIDType!=null && subscriptionIDType.getValue()!=null)
+
+        if(listOfSupplServices!=null && listOfSupplServices.getSupplService()!=null)
         {
-	        sb.append(", subscriptionIDType=[");
-	        sb.append(this.subscriptionIDType.getType());
+	        sb.append("listOfSupplServices=[");
+	        Boolean isFirst=true;
+	        for(SupplService curr:listOfSupplServices.getSupplService()) 
+	        {
+	        	if(!isFirst)
+	        		sb.append(",");
+	        	
+	        	sb.append(curr);
+	        	isFirst=false;
+	        }
+	        
 	        sb.append("]");
         }
         
-        if(subscriptionIDData!=null && subscriptionIDData.getValue()!=null)
+        if(subscriberRole!=null && subscriberRole.getType()!=null)
         {
-	        sb.append(", subscriptionIDData=[");
-	        sb.append(this.subscriptionIDData.getValue());
+	        sb.append("subscriberRole=[");
+	        sb.append(subscriberRole.getType());
 	        sb.append("]");
         }
         

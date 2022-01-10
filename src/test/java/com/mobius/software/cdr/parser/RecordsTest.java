@@ -152,7 +152,7 @@ public class RecordsTest
 	@Test
 	public void testIMSRecords() throws ASNException, IOException
 	{
-		ASNParser parser=new ASNParser(true);
+		ASNParser parser=new ASNParser(false);
 		parser.loadClass(IMSRecordsContainer.class);
 		for (File file : imssamples)
 		{

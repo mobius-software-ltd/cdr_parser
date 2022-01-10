@@ -625,6 +625,23 @@ public class TFRRecord
 		return data;
 	}
 
+	public String getImsChargingIdentifierStr() 
+	{
+		byte[] data=getImsChargingIdentifier();
+		if(data==null || data.length==0)
+			return "";
+		
+		String result="";
+		try {
+			result=new String(data);
+		}
+		catch(Exception ex) {
+			
+		}
+		
+		return result;
+	}
+
 	public List<MediaComponentList> getMediaComponentList() 
 	{
 		if(mediaComponentList==null)
@@ -996,6 +1013,13 @@ public class TFRRecord
         {
 	        sb.append("imsChargingIdentifier=[");
 	        sb.append(ASNOctetString.printDataArr(getImsChargingIdentifier()));
+	        sb.append("]");
+        }
+        
+        if(imsChargingIdentifier!=null && imsChargingIdentifier.getValue()!=null)
+        {
+	        sb.append(" imsChargingIdentifierStr=[");
+	        sb.append(getImsChargingIdentifierStr());
 	        sb.append("]");
         }
         

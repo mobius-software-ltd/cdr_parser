@@ -25,8 +25,8 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNUTF8String;
 /*
  SubscriptionID ::= SET
 {
-subscriptionIDType [0] SubscriptionIDType,
-subscriptionIDData [1] UTF8String
+privateUserEquipmentInfoType [0] PrivateUserEquipmentInfoType,
+PrivateUserEquipmentInfoValue [1] UTF8String
 }
  */
 /**
@@ -34,66 +34,66 @@ subscriptionIDData [1] UTF8String
  *
  */
 @ASNTag(asnClass = ASNClass.UNIVERSAL,tag = 16,constructed = true,lengthIndefinite = false)
-public class SubscriptionID 
+public class PrivateUserEquipmentInfo 
 {
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 0,constructed = false,index = -1)
-	private ASNSubscriptionIDType subscriptionIDType;
+	private ASNPrivateUserEquipmentInfoType privateUserEquipmentInfoType;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 1,constructed = false,index = -1)
-	private ASNUTF8String subscriptionIDData;
+	private ASNUTF8String privateUserEquipmentInfoValue;
 	
-	public SubscriptionID()
+	public PrivateUserEquipmentInfo()
 	{
 		
 	}
 	
-	public SubscriptionID(SubscriptionIDType subscriptionIDType,String subscriptionIDData)
+	public PrivateUserEquipmentInfo(PrivateUserEquipmentInfoType privateUserEquipmentInfoType,String privateUserEquipmentInfoValue)
 	{
-		if(subscriptionIDType!=null)
+		if(privateUserEquipmentInfoType!=null)
 		{
-			this.subscriptionIDType=new ASNSubscriptionIDType();
-			this.subscriptionIDType.setType(subscriptionIDType);
+			this.privateUserEquipmentInfoType=new ASNPrivateUserEquipmentInfoType();
+			this.privateUserEquipmentInfoType.setType(privateUserEquipmentInfoType);
 		}
 		
-		if(subscriptionIDData!=null)
+		if(privateUserEquipmentInfoValue!=null)
 		{
-			this.subscriptionIDData=new ASNUTF8String();
-			this.subscriptionIDData.setValue(subscriptionIDData);
+			this.privateUserEquipmentInfoValue=new ASNUTF8String();
+			this.privateUserEquipmentInfoValue.setValue(privateUserEquipmentInfoValue);
 		}
 	}
 
-	public SubscriptionIDType getSubscriptionIDType() 
+	public PrivateUserEquipmentInfoType getPrivateUserEquipmentInfoType() 
 	{
-		if(subscriptionIDType==null)
+		if(privateUserEquipmentInfoType==null)
 			return null;
 		
-		return subscriptionIDType.getType();
+		return privateUserEquipmentInfoType.getType();
 	}
 
-	public String getSubscriptionIDData() 
+	public String getPrivateUserEquipmentInfoValue() 
 	{
-		if(subscriptionIDData==null)
+		if(privateUserEquipmentInfoValue==null)
 			return null;
 		
-		return subscriptionIDData.getValue();
+		return privateUserEquipmentInfoValue.getValue();
 	}
 	
 	public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("SubscriptionID");
+        sb.append("PrivateUserEquipmentInfo");
         sb.append(" [");
         
-        if(subscriptionIDType!=null && subscriptionIDType.getValue()!=null)
+        if(privateUserEquipmentInfoType!=null && privateUserEquipmentInfoType.getValue()!=null)
         {
-	        sb.append(", subscriptionIDType=[");
-	        sb.append(this.subscriptionIDType.getType());
+	        sb.append(", privateUserEquipmentInfoType=[");
+	        sb.append(this.privateUserEquipmentInfoType.getType());
 	        sb.append("]");
         }
         
-        if(subscriptionIDData!=null && subscriptionIDData.getValue()!=null)
+        if(privateUserEquipmentInfoValue!=null && privateUserEquipmentInfoValue.getValue()!=null)
         {
-	        sb.append(", subscriptionIDData=[");
-	        sb.append(this.subscriptionIDData.getValue());
+	        sb.append(", privateUserEquipmentInfoValue=[");
+	        sb.append(this.privateUserEquipmentInfoValue.getValue());
 	        sb.append("]");
         }
         

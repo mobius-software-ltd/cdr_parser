@@ -23,6 +23,7 @@ import com.mobius.software.cdr.parser.primitives.NodeAddressWrapper;
 import com.mobius.software.cdr.parser.primitives.RecordType;
 import com.mobius.software.cdr.parser.primitives.SessionPriority;
 import com.mobius.software.cdr.parser.primitives.SubscriptionID;
+import com.mobius.software.cdr.parser.primitives.SubscriptionIDListWrapper;
 import com.mobius.software.cdr.parser.primitives.TimeStamp;
 /*
  * Mobius Software LTD
@@ -190,7 +191,7 @@ public class MRFCRecord
 	private ASNUTF8String serviceContextID;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 31,constructed = true,index = -1)
-	private List<SubscriptionID> listOfSubscriptionID;
+	private SubscriptionIDListWrapper listOfSubscriptionID;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 32,constructed = true,index = -1)
 	private List<EarlyMediaComponentList> listOfEarlySDPMediaComponents; 
@@ -383,7 +384,9 @@ public class MRFCRecord
 			this.serviceContextID.setValue(serviceContextID);
 		}
 		
-		this.listOfSubscriptionID = listOfSubscriptionID;
+		if(listOfSubscriptionID!=null)
+			this.listOfSubscriptionID = new SubscriptionIDListWrapper(listOfSubscriptionID);
+		
 		this.listOfEarlySDPMediaComponents = listOfEarlySDPMediaComponents;
 		
 		if(sessionPriority!=null)
@@ -610,6 +613,23 @@ public class MRFCRecord
 		return data;
 	}
 
+	public String getImsChargingIdentifierStr() 
+	{
+		byte[] data=getImsChargingIdentifier();
+		if(data==null || data.length==0)
+			return "";
+		
+		String result="";
+		try {
+			result=new String(data);
+		}
+		catch(Exception ex) {
+			
+		}
+		
+		return result;
+	}
+
 	public List<MediaComponentList> getMediaComponentList() 
 	{
 		if(mediaComponentList==null)
@@ -682,7 +702,10 @@ public class MRFCRecord
 
 	public List<SubscriptionID> getListOfSubscriptionID() 
 	{
-		return listOfSubscriptionID;
+		if(listOfSubscriptionID==null) 
+			return null;
+		
+		return listOfSubscriptionID.getSubscriptionIDs();
 	}
 
 	public List<EarlyMediaComponentList> getListOfEarlySDPMediaComponents() 
@@ -989,6 +1012,13 @@ public class MRFCRecord
 	        sb.append("]");
         }
         
+        if(imsChargingIdentifier!=null && imsChargingIdentifier.getValue()!=null)
+        {
+	        sb.append(" imsChargingIdentifierStr=[");
+	        sb.append(getImsChargingIdentifierStr());
+	        sb.append("]");
+        }
+        
         if(mediaComponentList!=null && mediaComponentList.getMediaComponentList()!=null)
         {
 	        sb.append("mediaComponentList=[");
@@ -1053,11 +1083,11 @@ public class MRFCRecord
 	        sb.append("]");
         }
         
-        if(listOfSubscriptionID!=null)
+        if(listOfSubscriptionID!=null && listOfSubscriptionID.getSubscriptionIDs()!=null)
         {
 	        sb.append("listOfSubscriptionID=[");
 	        Boolean isFirst=false;
-	        for(SubscriptionID curr:listOfSubscriptionID)
+	        for(SubscriptionID curr:listOfSubscriptionID.getSubscriptionIDs())
 	        {
 	        	if(!isFirst)
 	        		sb.append(",");
