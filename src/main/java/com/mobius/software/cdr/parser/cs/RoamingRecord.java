@@ -197,10 +197,7 @@ public class RoamingRecord
 	public RoamingRecord(RecordType recordType,IMSIImpl servedIMSI,ISDNAddressStringImpl servedMSISDN,AddressStringImpl callingNumber,AddressStringImpl roamingNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,BasicService isdnBasicService,TransparencyInd transparencyInd,List<ChangeOfService> changeOfService,List<SuppServiceUsed> supplServicesUsed, TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime,Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,CallReferenceNumberImpl networkCallReference,AddressStringImpl mscAddress,RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,PartialRecordType partialRecordType)
 	{
 		if(recordType!=null)
-		{
-			this.recordType=new ASNRecordType(); 
-			this.recordType.setType(recordType);
-		}
+			this.recordType=new ASNRecordType(recordType);
 		
 		this.servedIMSI=servedIMSI;
 		this.servedMSISDN=servedMSISDN;		
@@ -211,16 +208,10 @@ public class RoamingRecord
 		this.mscOutgoingTKGP=mscOutgoingTKGP;
 		
 		if(isdnBasicService!=null)
-		{
-			this.isdnBasicService=new ASNBasicService();
-			this.isdnBasicService.setType(isdnBasicService);
-		}
+			this.isdnBasicService=new ASNBasicService(isdnBasicService);
 		
 		if(transparencyInd!=null)
-		{
-			this.transparencyInd=new ASNTransparencyInd();
-			this.transparencyInd.setType(transparencyInd);
-		}
+			this.transparencyInd=new ASNTransparencyInd(transparencyInd);
 		
 		if(changeOfService!=null)
 			this.changeOfService=new ChangeOfServiceListWrapper(changeOfService);
@@ -233,73 +224,43 @@ public class RoamingRecord
 		this.releaseTime=releaseTime;
 		
 		if(callDuration!=null)
-		{
-			this.callDuration=new ASNInteger();
-			this.callDuration.setValue(callDuration.longValue());
-		}
+			this.callDuration=new ASNInteger(callDuration.longValue());
 		
 		if(dataVolume!=null)
-		{
-			this.dataVolume=new ASNInteger();
-			this.dataVolume.setValue(dataVolume.longValue());
-		}
+			this.dataVolume=new ASNInteger(dataVolume.longValue());
 		
 		if(causeForTerm!=null)
-		{
-			this.causeForTerm=new ASNCauseForRecClosing();
-			this.causeForTerm.setType(causeForTerm);
-		}
+			this.causeForTerm=new ASNCauseForRecClosing(causeForTerm);
 		
 		this.diagnostics=diagnostics;
 		this.callReferenceNumber=callReferenceNumber;
 		
 		if(sequenceNumber!=null)
-		{
-			this.sequenceNumber=new ASNInteger();
-			this.sequenceNumber.setValue(sequenceNumber.longValue());
-		}
+			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue());
 		
 		if(recordExtensions!=null)
-		{
-			this.recordExtensions=new ASNOctetString();
-			this.recordExtensions.setValue(Unpooled.wrappedBuffer(recordExtensions));
-		}
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
 		
 		this.networkCallReference=networkCallReference;
 		this.mscAddress=mscAddress;
 		this.locationRoutNum=locationRoutNum;
 		
 		if(locationRoutingNumberSourceIndicator!=null)
-		{
-			this.locationRoutingNumberSourceIndicator= new ASNLocationRoutingNumberSourceIndicator();
-			this.locationRoutingNumberSourceIndicator.setType(locationRoutingNumberSourceIndicator);
-		}
+			this.locationRoutingNumberSourceIndicator= new ASNLocationRoutingNumberSourceIndicator(locationRoutingNumberSourceIndicator);
 		
 		if(locationRoutingNumberQueryStatus!=null)
-		{
-			this.locationRoutingNumberQueryStatus=new ASNLocationRoutingNumberQueryStatus();
-			this.locationRoutingNumberQueryStatus.setType(locationRoutingNumberQueryStatus);
-		}
+			this.locationRoutingNumberQueryStatus=new ASNLocationRoutingNumberQueryStatus(locationRoutingNumberQueryStatus);
 		
 		this.jIPPara=jIPPara;
 		
 		if(jIPSoInd!=null)
-		{
-			this.jIPSoInd=new ASNLocationRoutingNumberSourceIndicator();
-			this.jIPSoInd.setType(jIPSoInd);
-		}
+			this.jIPSoInd=new ASNLocationRoutingNumberSourceIndicator(jIPSoInd);
 		
 		if(jIPQuryStatus!=null)
-		{
-			this.jIPQuryStatus=new ASNLocationRoutingNumberQueryStatus();
-			this.jIPQuryStatus.setType(jIPQuryStatus);
-		}
+			this.jIPQuryStatus=new ASNLocationRoutingNumberQueryStatus(jIPQuryStatus);
 		
 		if(partialRecordType!=null)
-		{
-			this.partialRecordType=new ASNPartialRecordType();
-			this.partialRecordType.setType(partialRecordType);
-		}
+			this.partialRecordType=new ASNPartialRecordType(partialRecordType);		
 	}
 
 	public RecordType getRecordType() 
@@ -683,7 +644,7 @@ public class RoamingRecord
         if(recordExtensions!=null && recordExtensions.getValue()!=null)
         {
 	        sb.append(", recordExtensions=[");
-	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
+	        sb.append(recordExtensions.printDataArr());
 	        sb.append("]");
         }
         

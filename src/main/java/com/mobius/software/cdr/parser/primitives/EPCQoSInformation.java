@@ -77,52 +77,28 @@ public class EPCQoSInformation
 	public EPCQoSInformation(Long qCI,Long maxRequestedBandwithUL,Long maxRequestedBandwithDL,Long guaranteedBitrateUL,Long guaranteedBitrateDL,Long aRP,Long aPNAggregateMaxBitrateUL,Long aPNAggregateMaxBitrateDL)
 	{
 		if(qCI!=null)
-		{
-			this.qCI=new ASNInteger();
-			this.qCI.setValue(qCI.longValue());
-		}
+			this.qCI=new ASNInteger(qCI.longValue());
 		
 		if(maxRequestedBandwithDL!=null)
-		{
-			this.maxRequestedBandwithDL=new ASNInteger();
-			this.maxRequestedBandwithDL.setValue(maxRequestedBandwithDL.longValue());
-		}
+			this.maxRequestedBandwithDL=new ASNInteger(maxRequestedBandwithDL.longValue());
 		
 		if(maxRequestedBandwithDL!=null)
-		{
-			this.maxRequestedBandwithDL=new ASNInteger();
-			this.maxRequestedBandwithDL.setValue(maxRequestedBandwithDL.longValue());
-		}
+			this.maxRequestedBandwithDL=new ASNInteger(maxRequestedBandwithDL.longValue());
 		
 		if(guaranteedBitrateUL!=null)
-		{
-			this.guaranteedBitrateUL=new ASNInteger();
-			this.guaranteedBitrateUL.setValue(guaranteedBitrateUL.longValue());
-		}
+			this.guaranteedBitrateUL=new ASNInteger(guaranteedBitrateUL.longValue());
 		
 		if(guaranteedBitrateDL!=null)
-		{
-			this.guaranteedBitrateDL=new ASNInteger();
-			this.guaranteedBitrateDL.setValue(guaranteedBitrateDL.longValue());
-		}
+			this.guaranteedBitrateDL=new ASNInteger(guaranteedBitrateDL.longValue());
 		
 		if(aRP!=null)
-		{
-			this.aRP=new ASNInteger();
-			this.aRP.setValue(aRP.longValue());
-		}
+			this.aRP=new ASNInteger(aRP.longValue());
 		
 		if(aPNAggregateMaxBitrateUL!=null)
-		{
-			this.aPNAggregateMaxBitrateUL=new ASNInteger();
-			this.aPNAggregateMaxBitrateUL.setValue(aPNAggregateMaxBitrateUL.longValue());
-		}
+			this.aPNAggregateMaxBitrateUL=new ASNInteger(aPNAggregateMaxBitrateUL.longValue());
 		
 		if(aPNAggregateMaxBitrateDL!=null)
-		{
-			this.aPNAggregateMaxBitrateDL=new ASNInteger();
-			this.aPNAggregateMaxBitrateDL.setValue(qCI.longValue());
-		}
+			this.aPNAggregateMaxBitrateDL=new ASNInteger(qCI.longValue());		
 	}
 
 	public Long getqCI() 

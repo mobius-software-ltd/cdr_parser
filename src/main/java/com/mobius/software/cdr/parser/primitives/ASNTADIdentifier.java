@@ -24,9 +24,13 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNTADIdentifier extends ASNEnumerated 
 {
-	public void setType(TADIdentifier t) 
+	public ASNTADIdentifier() {
+		
+	}
+	
+	public ASNTADIdentifier(TADIdentifier t) 
 	{
-		super.setValue(Long.valueOf(t.getTAD()));
+		super(Long.valueOf(t.getTAD()));
 	}
 	
 	public TADIdentifier getType() 

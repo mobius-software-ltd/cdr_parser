@@ -23,8 +23,12 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNSubscriberEquipmentType extends ASNEnumerated {
-	public void setType(SubscriberEquipmentType t) {
-		super.setValue(Long.valueOf(t.getType()));
+	public ASNSubscriberEquipmentType() {
+		
+	}
+	
+	public ASNSubscriberEquipmentType(SubscriberEquipmentType t) {
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public SubscriberEquipmentType getType() {

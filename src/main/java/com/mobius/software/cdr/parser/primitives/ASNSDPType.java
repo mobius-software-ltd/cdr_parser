@@ -23,8 +23,12 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNSDPType extends ASNEnumerated {
-	public void setType(SDPType t) {
-		super.setValue(Long.valueOf(t.getType()));
+	public ASNSDPType() {
+		
+	}
+	
+	public ASNSDPType(SDPType t) {
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public SDPType getType() {

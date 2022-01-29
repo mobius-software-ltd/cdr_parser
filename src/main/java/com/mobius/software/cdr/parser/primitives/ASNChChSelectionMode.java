@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNChChSelectionMode extends ASNEnumerated 
 {
-	public void setType(ChChSelectionMode t) 
+	public ASNChChSelectionMode()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNChChSelectionMode(ChChSelectionMode t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public ChChSelectionMode getType() 

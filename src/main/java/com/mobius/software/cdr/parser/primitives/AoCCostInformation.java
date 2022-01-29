@@ -48,20 +48,14 @@ public class AoCCostInformation
 	
 	public AoCCostInformation(Double accumulatedCost,Double incrementalCost,Integer currencyCode)
 	{
-		if(accumulatedCost!=null) {
-			this.accumulatedCost=new ASNReal();
-			this.accumulatedCost.setValue(accumulatedCost);
-		}
+		if(accumulatedCost!=null)
+			this.accumulatedCost=new ASNReal(accumulatedCost);
 		
-		if(incrementalCost!=null) {
-			this.incrementalCost=new ASNReal();
-			this.incrementalCost.setValue(incrementalCost);
-		}
+		if(incrementalCost!=null)
+			this.incrementalCost=new ASNReal(incrementalCost);
 		
-		if(currencyCode!=null) {
-			this.currencyCode=new ASNInteger();
-			this.currencyCode.setValue(currencyCode.longValue());
-		}
+		if(currencyCode!=null)
+			this.currencyCode=new ASNInteger(currencyCode.longValue());		
 	}
 
 	public Double getAccumulatedCost() 

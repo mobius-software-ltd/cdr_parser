@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNTransparencyInd extends ASNEnumerated 
 {
-	public void setType(TransparencyInd t) 
+	public ASNTransparencyInd()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNTransparencyInd(TransparencyInd t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public TransparencyInd getInd() 

@@ -60,24 +60,15 @@ public class ChangeOfService
 		this.basicService=basicService;
 		
 		if(transparencyInd!=null)
-		{
-			this.transparencyInd=new ASNTransparencyInd();
-			this.transparencyInd.setType(transparencyInd);
-		}
+			this.transparencyInd=new ASNTransparencyInd(transparencyInd);
 		
 		this.changeTime=changeTime;
 		
 		if(rateIndication!=null)
-		{
-			this.rateIndication=new ASNSingleByte();
-			this.rateIndication.setValue(rateIndication);
-		}
+			this.rateIndication=new ASNSingleByte(rateIndication);
 		
 		if(fnur!=null)
-		{
-			this.fnur=new ASNFnur();
-			this.fnur.setType(fnur);
-		}				
+			this.fnur=new ASNFnur(fnur);
 	}
 
 	public BasicServiceCodeImpl getBasicService() 

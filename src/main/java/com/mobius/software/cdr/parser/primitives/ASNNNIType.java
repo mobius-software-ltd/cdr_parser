@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNNNIType extends ASNEnumerated 
 {
-	public void setType(NNIType t) 
+	public ASNNNIType()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNNNIType(NNIType t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public NNIType getType() 

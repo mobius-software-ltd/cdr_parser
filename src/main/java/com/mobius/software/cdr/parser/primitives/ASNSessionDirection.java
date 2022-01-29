@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNSessionDirection extends ASNEnumerated 
 {
-	public void setType(SessionDirection t) 
+	public ASNSessionDirection()
 	{
-		super.setValue(Long.valueOf(t.getDirection()));
+		
+	}
+	
+	public ASNSessionDirection(SessionDirection t) 
+	{
+		super(Long.valueOf(t.getDirection()));
 	}
 	
 	public SessionDirection getType() 

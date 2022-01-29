@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNThreeGPPPSDataOffStatus extends ASNEnumerated 
 {
-	public void setType(ThreeGPPPSDataOffStatus t) 
+	public ASNThreeGPPPSDataOffStatus() 
 	{
-		super.setValue(Long.valueOf(t.getStatus()));
+		
+	}
+	
+	public ASNThreeGPPPSDataOffStatus(ThreeGPPPSDataOffStatus t) 
+	{
+		super(Long.valueOf(t.getStatus()));
 	}
 	
 	public ThreeGPPPSDataOffStatus getStatus() 

@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNParticipantActionType extends ASNEnumerated 
 {
-	public void setType(ParticipantActionType t) 
+	public ASNParticipantActionType()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNParticipantActionType(ParticipantActionType t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public ParticipantActionType getType() 

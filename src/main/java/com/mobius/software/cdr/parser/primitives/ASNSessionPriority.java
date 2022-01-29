@@ -23,8 +23,12 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNSessionPriority extends ASNEnumerated {
-	public void setType(SessionPriority t) {
-		super.setValue(Long.valueOf(t.getPriority()));
+	public ASNSessionPriority() {
+		
+	}
+	
+	public ASNSessionPriority(SessionPriority t) {
+		super(Long.valueOf(t.getPriority()));
 	}
 	
 	public SessionPriority getType() {

@@ -53,22 +53,13 @@ public class IncompleteCDRIndication
 	public IncompleteCDRIndication(Boolean acrStartLost,ACRInterimLost acrInterimLost,Boolean acrStopLost)
 	{
 		if(acrStartLost!=null)
-		{
-			this.acrStartLost=new ASNBoolean();
-			this.acrStartLost.setValue(acrStartLost);
-		}
+			this.acrStartLost=new ASNBoolean(acrStartLost);
 		
 		if(acrInterimLost!=null)
-		{
-			this.acrInterimLost=new ASNACRInterimLost();
-			this.acrInterimLost.setType(acrInterimLost);
-		}
+			this.acrInterimLost=new ASNACRInterimLost(acrInterimLost);
 		
 		if(acrStopLost!=null)
-		{
-			this.acrStopLost=new ASNBoolean();
-			this.acrStopLost.setValue(acrStopLost);
-		}				
+			this.acrStopLost=new ASNBoolean(acrStopLost);
 	}
 
 	public Boolean getACRStartLost() 

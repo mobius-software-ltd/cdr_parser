@@ -226,10 +226,7 @@ public class TermCamelRecord
 	public TermCamelRecord(RecordType recordType,IMSIImpl servedIMSI,ISDNAddressStringImpl servedMSISDN,AddressStringImpl recordingEntity,TimeStamp interrogationTime,DestinationRoutingAddressImpl destinationRoutingAddress,ISDNAddressStringImpl gsmSCFAddress,Long serviceKey,CallReferenceNumberImpl networkCallReference,AddressStringImpl mscAddress,DefaultCallHandling defaultCallHandling,byte[] recordExtensions,AddressStringImpl calledNumber,AddressStringImpl callingNumber,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime, Integer callDuration,Integer dataVolume,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,Integer numberOfDPEncountered,LevelOfCAMELService levelOfCAMELService,byte[] freeFormatData,List<CAMELInformation> camelCallLegInformation, Boolean freeFormatDataAppend,DefaultCallHandling defaultCallHandling2,ISDNAddressStringImpl gsmSCFAddress2,Long serviceKey2,byte[] freeFormatData2,Boolean freeFormatDataAppend2,Boolean mscServerIndication, RouteingNumberImpl locationRoutNum,LocationRoutingNumberSourceIndicator locationRoutingNumberSourceIndicator,LocationRoutingNumberQueryStatus locationRoutingNumberQueryStatus,RouteingNumberImpl jIPPara,LocationRoutingNumberSourceIndicator jIPSoInd,LocationRoutingNumberQueryStatus jIPQuryStatus,PartialRecordType partialRecordType)
 	{
 		if(recordType!=null)
-		{
-			this.recordType=new ASNRecordType(); 
-			this.recordType.setType(recordType);
-		}
+			this.recordType=new ASNRecordType(recordType);
 		
 		this.servedIMSI=servedIMSI;
 		this.servedMSISDN=servedMSISDN;		
@@ -239,25 +236,16 @@ public class TermCamelRecord
 		this.gsmSCFAddress=gsmSCFAddress;
 		
 		if(serviceKey!=null)
-		{
-			this.serviceKey=new ASNInteger();
-			this.serviceKey.setValue(serviceKey);
-		}
+			this.serviceKey=new ASNInteger(serviceKey);
 		
 		this.networkCallReference=networkCallReference;
 		this.mscAddress=mscAddress;
 		
 		if(defaultCallHandling!=null)
-		{
-			this.defaultCallHandling=new ASNDefaultCallHandling();
-			this.defaultCallHandling.setType(defaultCallHandling);
-		}
+			this.defaultCallHandling=new ASNDefaultCallHandling(defaultCallHandling);
 		
 		if(recordExtensions!=null)
-		{
-			this.recordExtensions=new ASNOctetString();
-			this.recordExtensions.setValue(Unpooled.wrappedBuffer(recordExtensions));
-		}
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
 		
 		this.calledNumber=calledNumber;
 		this.callingNumber=callingNumber;
@@ -268,119 +256,68 @@ public class TermCamelRecord
 		this.releaseTime=releaseTime;
 		
 		if(callDuration!=null)
-		{
-			this.callDuration=new ASNInteger();
-			this.callDuration.setValue(callDuration.longValue());
-		}
+			this.callDuration=new ASNInteger(callDuration.longValue());
 		
 		if(dataVolume!=null)
-		{
-			this.dataVolume=new ASNInteger();
-			this.dataVolume.setValue(dataVolume.longValue());
-		}
+			this.dataVolume=new ASNInteger(dataVolume.longValue());
 		
 		if(causeForTerm!=null)
-		{
-			this.causeForTerm=new ASNCauseForRecClosing();
-			this.causeForTerm.setType(causeForTerm);
-		}
+			this.causeForTerm=new ASNCauseForRecClosing(causeForTerm);
 		
 		this.diagnostics=diagnostics;
 		this.callReferenceNumber=callReferenceNumber;
 		
 		if(sequenceNumber!=null)
-		{
-			this.sequenceNumber=new ASNInteger();
-			this.sequenceNumber.setValue(sequenceNumber.longValue());
-		}
+			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue());
 		
 		if(numberOfDPEncountered!=null)
-		{
-			this.numberOfDPEncountered=new ASNInteger();
-			this.numberOfDPEncountered.setValue(numberOfDPEncountered.longValue());
-		}
+			this.numberOfDPEncountered=new ASNInteger(numberOfDPEncountered.longValue());
 		
 		this.levelOfCAMELService=levelOfCAMELService;
 		
 		if(freeFormatData!=null)
-		{
-			this.freeFormatData=new ASNOctetString();
-			this.freeFormatData.setValue(Unpooled.wrappedBuffer(freeFormatData));
-		}
+			this.freeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData));
 		
 		if(camelCallLegInformation!=null)
 			this.camelCallLegInformation=new CamelInformationListWrapper(camelCallLegInformation);
 		
 		if(freeFormatDataAppend!=null)
-		{
-			this.freeFormatDataAppend=new ASNBoolean();
-			this.freeFormatDataAppend.setValue(freeFormatDataAppend);
-		}
+			this.freeFormatDataAppend=new ASNBoolean(freeFormatDataAppend);
 		
 		if(defaultCallHandling2!=null)
-		{
-			this.defaultCallHandling2=new ASNDefaultCallHandling();
-			this.defaultCallHandling2.setType(defaultCallHandling2);
-		}
+			this.defaultCallHandling2=new ASNDefaultCallHandling(defaultCallHandling2);
 		
 		this.gsmSCFAddress2=gsmSCFAddress2;
 		if(serviceKey2!=null)
-		{
-			this.serviceKey2=new ASNInteger();
-			this.serviceKey2.setValue(serviceKey2);
-		}
+			this.serviceKey2=new ASNInteger(serviceKey2);
 		
 		if(freeFormatData2!=null)
-		{
-			this.freeFormatData2=new ASNOctetString();
-			this.freeFormatData2.setValue(Unpooled.wrappedBuffer(freeFormatData2));
-		}
+			this.freeFormatData2=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData2));
 		
 		if(freeFormatDataAppend2!=null)
-		{
-			this.freeFormatDataAppend2=new ASNBoolean();
-			this.freeFormatDataAppend2.setValue(freeFormatDataAppend2);
-		}
+			this.freeFormatDataAppend2=new ASNBoolean(freeFormatDataAppend2);
 		
 		if(mscServerIndication!=null)
-		{
-			this.mscServerIndication=new ASNBoolean();
-			this.mscServerIndication.setValue(mscServerIndication);
-		}
+			this.mscServerIndication=new ASNBoolean(mscServerIndication);
 		
 		this.locationRoutNum=locationRoutNum;
 		
 		if(locationRoutingNumberSourceIndicator!=null)
-		{
-			this.locationRoutingNumberSourceIndicator= new ASNLocationRoutingNumberSourceIndicator();
-			this.locationRoutingNumberSourceIndicator.setType(locationRoutingNumberSourceIndicator);
-		}
+			this.locationRoutingNumberSourceIndicator= new ASNLocationRoutingNumberSourceIndicator(locationRoutingNumberSourceIndicator);
 		
 		if(locationRoutingNumberQueryStatus!=null)
-		{
-			this.locationRoutingNumberQueryStatus=new ASNLocationRoutingNumberQueryStatus();
-			this.locationRoutingNumberQueryStatus.setType(locationRoutingNumberQueryStatus);
-		}
+			this.locationRoutingNumberQueryStatus=new ASNLocationRoutingNumberQueryStatus(locationRoutingNumberQueryStatus);
 		
 		this.jIPPara=jIPPara;
 		
 		if(jIPSoInd!=null)
-		{
-			this.jIPSoInd=new ASNLocationRoutingNumberSourceIndicator();
-			this.jIPSoInd.setType(jIPSoInd);
-		}
+			this.jIPSoInd=new ASNLocationRoutingNumberSourceIndicator(jIPSoInd);
 		
 		if(jIPQuryStatus!=null)
-		{
-			this.jIPQuryStatus=new ASNLocationRoutingNumberQueryStatus();
-			this.jIPQuryStatus.setType(jIPQuryStatus);
-		}
+			this.jIPQuryStatus=new ASNLocationRoutingNumberQueryStatus(jIPQuryStatus);
 		
 		if(partialRecordType!=null)
-		{
-			this.partialRecordType=new ASNPartialRecordType();
-			this.partialRecordType.setType(partialRecordType);
-		}
+			this.partialRecordType=new ASNPartialRecordType(partialRecordType);		
 	}
 
 	public RecordType getRecordType() 
@@ -763,7 +700,7 @@ public class TermCamelRecord
         if(recordExtensions!=null && recordExtensions.getValue()!=null)
         {
 	        sb.append(", recordExtensions=[");
-	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
+	        sb.append(recordExtensions.printDataArr());
 	        sb.append("]");
         }
         

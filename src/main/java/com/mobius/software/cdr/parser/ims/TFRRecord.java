@@ -277,34 +277,22 @@ public class TFRRecord
 			List<String> fEIdentifierList) 
 	{
 		if(recordType!=null)
-		{
-			this.recordType = new ASNRecordType();
-			this.recordType.setType(recordType);
-		}
+			this.recordType = new ASNRecordType(recordType);
 		
 		if(retransmission)
 			this.retransmission = new ASNNull();
 		
 		if(sipMethod!=null)
-		{
-			this.sipMethod = new ASNGraphicString();
-			this.sipMethod.setValue(sipMethod);
-		}
+			this.sipMethod = new ASNGraphicString(sipMethod);
 		
 		if(roleOfNode!=null)
-		{
-			this.roleOfNode = new ASNRoleOfNode();
-			this.roleOfNode.setType(roleOfNode);
-		}
+			this.roleOfNode = new ASNRoleOfNode(roleOfNode);
 		
 		if(nodeAddress!=null)
 			this.nodeAddress = new NodeAddressWrapper(nodeAddress);
 		
 		if(sessionID!=null)
-		{
-			this.sessionID = new ASNGraphicString();
-			this.sessionID.setValue(sessionID);
-		}
+			this.sessionID = new ASNGraphicString(sessionID);
 		
 		if(listOfCallingPartyAddress!=null)
 			this.listOfCallingPartyAddress = new InvolvedPartyListWrapper(listOfCallingPartyAddress);
@@ -322,109 +310,61 @@ public class TFRRecord
 			this.interOperatorIdentifiers = new InterOperatorIdentifiersListWrapper(interOperatorIdentifiers);
 		
 		if(localSequenceNumber!=null)
-		{
-			this.localSequenceNumber = new ASNInteger();
-			this.localSequenceNumber.setValue(localSequenceNumber.longValue());
-		}
+			this.localSequenceNumber = new ASNInteger(localSequenceNumber.longValue());
 		
 		if(recordSequenceNumber!=null)
-		{
-			this.recordSequenceNumber = new ASNInteger();
-			this.recordSequenceNumber.setValue(recordSequenceNumber.longValue());
-		}
+			this.recordSequenceNumber = new ASNInteger(recordSequenceNumber.longValue());
 		
 		if(causeForRecordClosing!=null)
-		{
-			this.causeForRecordClosing = new ASNCauseForRecordClosing();
-			this.causeForRecordClosing.setType(causeForRecordClosing);
-		}
+			this.causeForRecordClosing = new ASNCauseForRecordClosing(causeForRecordClosing);
 		
 		this.incompleteCDRIndication = incompleteCDRIndication;
 		
 		if(imsChargingIdentifier!=null)
-		{
-			this.imsChargingIdentifier = new ASNOctetString();
-			this.imsChargingIdentifier.setValue(Unpooled.wrappedBuffer(imsChargingIdentifier));
-		}
+			this.imsChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsChargingIdentifier));
 		
 		if(mediaComponentList!=null)
 			this.mediaComponentList = new MediaComponentListWrapper(mediaComponentList);
 		
 		if(serviceReasonReturnCode!=null)
-		{
-			this.serviceReasonReturnCode = new ASNUTF8String();
-			this.serviceReasonReturnCode.setValue(serviceReasonReturnCode);
-		}
+			this.serviceReasonReturnCode = new ASNUTF8String(serviceReasonReturnCode);
 		
 		this.listOfMessageBodies = listOfMessageBodies;
 		
 		if(recordExtensions!=null)
-		{
-			this.recordExtensions = new ASNOctetString();
-			this.recordExtensions.setValue(Unpooled.wrappedBuffer(recordExtensions));
-		}
+			this.recordExtensions = new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
 		
 		if(expiresInformation!=null)
-		{
-			this.expiresInformation = new ASNInteger();
-			this.expiresInformation.setValue(expiresInformation.longValue());
-		}
+			this.expiresInformation = new ASNInteger(expiresInformation.longValue());
 		
 		if(event!=null)
-		{
-			this.event = new ASNUTF8String();
-			this.event.setValue(event);
-		}
+			this.event = new ASNUTF8String(event);
 		
 		if(serviceContextID!=null)
-		{
-			this.serviceContextID = new ASNUTF8String();
-			this.serviceContextID.setValue(serviceContextID);
-		}
+			this.serviceContextID = new ASNUTF8String(serviceContextID);
 		
 		this.listOfEarlySDPMediaComponents = listOfEarlySDPMediaComponents;
 		
 		if(imsCommunicationServiceIdentifier!=null)
-		{
-			this.imsCommunicationServiceIdentifier = new ASNOctetString();
-			this.imsCommunicationServiceIdentifier.setValue(Unpooled.wrappedBuffer(imsCommunicationServiceIdentifier));
-		}
+			this.imsCommunicationServiceIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsCommunicationServiceIdentifier));
 		
 		if(numberPortabilityRouting!=null)
-		{
-			this.numberPortabilityRouting = new ASNGraphicString();
-			this.numberPortabilityRouting.setValue(numberPortabilityRouting);
-		}
+			this.numberPortabilityRouting = new ASNGraphicString(numberPortabilityRouting);
 		
 		if(carrierSelectRouting!=null)
-		{
-			this.carrierSelectRouting = new ASNGraphicString();
-			this.carrierSelectRouting.setValue(carrierSelectRouting);
-		}
+			this.carrierSelectRouting = new ASNGraphicString(carrierSelectRouting);
 		
 		if(sessionPriority!=null)
-		{
-			this.sessionPriority = new ASNSessionPriority();
-			this.sessionPriority.setType(sessionPriority);
-		}
+			this.sessionPriority = new ASNSessionPriority(sessionPriority);
 		
 		if(serviceRequestTimeStampFraction!=null)
-		{
-			this.serviceRequestTimeStampFraction = new ASNInteger();
-			this.serviceRequestTimeStampFraction.setValue(serviceRequestTimeStampFraction.longValue());
-		}
+			this.serviceRequestTimeStampFraction = new ASNInteger(serviceRequestTimeStampFraction.longValue());
 		
 		if(serviceDeliveryStartTimeStampFraction!=null)
-		{
-			this.serviceDeliveryStartTimeStampFraction = new ASNInteger();
-			this.serviceDeliveryStartTimeStampFraction.setValue(serviceDeliveryStartTimeStampFraction.longValue());
-		}
+			this.serviceDeliveryStartTimeStampFraction = new ASNInteger(serviceDeliveryStartTimeStampFraction.longValue());
 		
 		if(serviceDeliveryEndTimeStampFraction!=null)
-		{
-			this.serviceDeliveryEndTimeStampFraction = new ASNInteger();
-			this.serviceDeliveryEndTimeStampFraction.setValue(serviceDeliveryEndTimeStampFraction.longValue());
-		}
+			this.serviceDeliveryEndTimeStampFraction = new ASNInteger(serviceDeliveryEndTimeStampFraction.longValue());
 		
 		this.applicationServersInformation = applicationServersInformation;
 		
@@ -437,18 +377,14 @@ public class TFRRecord
 		this.nniInformation = nniInformation;
 		
 		if(fromAddress!=null)
-		{
-			this.fromAddress = new ASNOctetString();
-			this.fromAddress.setValue(Unpooled.wrappedBuffer(fromAddress));
-		}
+			this.fromAddress = new ASNOctetString(Unpooled.wrappedBuffer(fromAddress));
 		
 		if(transitIOILists!=null)
 		{
 			this.transitIOILists = new ArrayList<ASNGraphicString>();
 			for(String curr:transitIOILists)
 			{
-				ASNGraphicString currStr=new ASNGraphicString();
-				currStr.setValue(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr);
 				this.transitIOILists.add(currStr);
 			}
 		}
@@ -458,23 +394,16 @@ public class TFRRecord
 			this.listOfReasonHeader = new ArrayList<ASNGraphicString>();
 			for(String curr:listOfReasonHeader)
 			{
-				ASNGraphicString currStr=new ASNGraphicString();
-				currStr.setValue(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr);
 				this.listOfReasonHeader.add(currStr);
 			}
 		}
 		
 		if(routeHeaderReceived!=null)
-		{
-			this.routeHeaderReceived = new ASNOctetString();
-			this.routeHeaderReceived.setValue(Unpooled.wrappedBuffer(routeHeaderReceived));
-		}
+			this.routeHeaderReceived = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderReceived));
 		
 		if(routeHeaderTransmitted!=null)
-		{
-			this.routeHeaderTransmitted = new ASNOctetString();
-			this.routeHeaderTransmitted.setValue(Unpooled.wrappedBuffer(routeHeaderTransmitted));
-		}
+			this.routeHeaderTransmitted = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderTransmitted));
 		
 		this.listOfCalledIdentityChanges = listOfCalledIdentityChanges;
 		
@@ -484,8 +413,7 @@ public class TFRRecord
 			this.fEIdentifierList = new ArrayList<ASNGraphicString>();
 			for(String curr:fEIdentifierList)
 			{
-				ASNGraphicString currStr=new ASNGraphicString();
-				currStr.setValue(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr);
 				this.fEIdentifierList.add(currStr);
 			}
 		}
@@ -1012,7 +940,7 @@ public class TFRRecord
         if(imsChargingIdentifier!=null && imsChargingIdentifier.getValue()!=null)
         {
 	        sb.append("imsChargingIdentifier=[");
-	        sb.append(ASNOctetString.printDataArr(getImsChargingIdentifier()));
+	        sb.append(imsChargingIdentifier.printDataArr());
 	        sb.append("]");
         }
         
@@ -1063,7 +991,7 @@ public class TFRRecord
         if(recordExtensions!=null && recordExtensions.getValue()!=null)
         {
 	        sb.append("recordExtensions=[");
-	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
+	        sb.append(recordExtensions.printDataArr());
 	        sb.append("]");
         }
         
@@ -1106,7 +1034,7 @@ public class TFRRecord
         if(imsCommunicationServiceIdentifier!=null && imsCommunicationServiceIdentifier.getValue()!=null)
         {
 	        sb.append("imsCommunicationServiceIdentifier=[");
-	        sb.append(ASNOctetString.printDataArr(getImsCommunicationServiceIdentifier()));
+	        sb.append(imsCommunicationServiceIdentifier.printDataArr());
 	        sb.append("]");
         }
         
@@ -1199,7 +1127,7 @@ public class TFRRecord
         if(fromAddress!=null && fromAddress.getValue()!=null)
         {
 	        sb.append("fromAddress=[");
-	        sb.append(ASNOctetString.printDataArr(getFromAddress()));
+	        sb.append(fromAddress.printDataArr());
 	        sb.append("]");
         }
         
@@ -1236,14 +1164,14 @@ public class TFRRecord
         if(routeHeaderReceived!=null && routeHeaderReceived.getValue()!=null)
         {
 	        sb.append("routeHeaderReceived=[");
-	        sb.append(ASNOctetString.printDataArr(getRouteHeaderReceived()));
+	        sb.append(routeHeaderReceived.printDataArr());
 	        sb.append("]");
         }
         
         if(routeHeaderTransmitted!=null && routeHeaderTransmitted.getValue()!=null)
         {
 	        sb.append("routeHeaderTransmitted=[");
-	        sb.append(ASNOctetString.printDataArr(getRouteHeaderTransmitted()));
+	        sb.append(routeHeaderTransmitted.printDataArr());
 	        sb.append("]");
         }
         

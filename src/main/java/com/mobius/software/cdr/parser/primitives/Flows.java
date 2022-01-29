@@ -56,18 +56,14 @@ public class Flows
 	public Flows(Integer mediaComponentNumber,List<Integer> flowNumber)
 	{
 		if(mediaComponentNumber!=null)
-		{
-			this.mediaComponentNumber=new ASNInteger();
-			this.mediaComponentNumber.setValue(mediaComponentNumber.longValue());
-		}
+			this.mediaComponentNumber=new ASNInteger(mediaComponentNumber.longValue());
 		
 		if(flowNumber!=null)
 		{
 			this.flowNumber=new ArrayList<ASNInteger>();
 			for(Integer curr:flowNumber)
 			{
-				ASNInteger currValue=new ASNInteger();
-				currValue.setValue(curr.longValue());
+				ASNInteger currValue=new ASNInteger(curr.longValue());
 				this.flowNumber.add(currValue);
 			}
 		}

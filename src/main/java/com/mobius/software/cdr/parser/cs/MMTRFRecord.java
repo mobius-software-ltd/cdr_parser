@@ -144,10 +144,7 @@ public class MMTRFRecord
 	public MMTRFRecord(RecordType recordType,IMSIImpl servedIMSI,IMEIImpl servedIMEI,ISDNAddressStringImpl servedMSISDN,AddressStringImpl callingNumber,AddressStringImpl roamingNumber,AddressStringImpl recordingEntity,TrunkGroup mscIncomingTKGP,TrunkGroup mscOutgoingTKGP,BasicService isdnBasicService,TimeStamp seizureTime,TimeStamp answerTime,TimeStamp releaseTime, Integer callDuration,CauseForRecClosing causeForTerm,Diagnostics diagnostics,CallReferenceNumberImpl callReferenceNumber,Integer sequenceNumber,byte[] recordExtensions,PartialRecordType partialRecordType)
 	{
 		if(recordType!=null)
-		{
-			this.recordType=new ASNRecordType(); 
-			this.recordType.setType(recordType);
-		}
+			this.recordType=new ASNRecordType(recordType);
 		
 		this.servedIMSI=servedIMSI;
 		this.servedIMEI=servedIMEI;
@@ -159,47 +156,29 @@ public class MMTRFRecord
 		this.mscOutgoingTKGP=mscOutgoingTKGP;
 		
 		if(isdnBasicService!=null)
-		{
-			this.isdnBasicService=new ASNBasicService();
-			this.isdnBasicService.setType(isdnBasicService);
-		}
+			this.isdnBasicService=new ASNBasicService(isdnBasicService);
 		
 		this.seizureTime=seizureTime;
 		this.answerTime=answerTime;
 		this.releaseTime=releaseTime;
 		
 		if(callDuration!=null)
-		{
-			this.callDuration=new ASNInteger();
-			this.callDuration.setValue(callDuration.longValue());
-		}
+			this.callDuration=new ASNInteger(callDuration.longValue());
 		
 		if(causeForTerm!=null)
-		{
-			this.causeForTerm=new ASNCauseForRecClosing();
-			this.causeForTerm.setType(causeForTerm);
-		}
+			this.causeForTerm=new ASNCauseForRecClosing(causeForTerm);
 		
 		this.diagnostics=diagnostics;
 		this.callReferenceNumber=callReferenceNumber;
 		
 		if(sequenceNumber!=null)
-		{
-			this.sequenceNumber=new ASNInteger();
-			this.sequenceNumber.setValue(sequenceNumber.longValue());
-		}
+			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue());
 		
 		if(recordExtensions!=null)
-		{
-			this.recordExtensions=new ASNOctetString();
-			this.recordExtensions.setValue(Unpooled.wrappedBuffer(recordExtensions));
-		}
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
 		
 		if(partialRecordType!=null)
-		{
-			this.partialRecordType=new ASNPartialRecordType();
-			this.partialRecordType.setType(partialRecordType);
-		}
+			this.partialRecordType=new ASNPartialRecordType(partialRecordType);		
 	}
 
 	public RecordType getRecordType() 
@@ -463,7 +442,7 @@ public class MMTRFRecord
         if(recordExtensions!=null && recordExtensions.getValue()!=null)
         {
 	        sb.append(", recordExtensions=[");
-	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
+	        sb.append(recordExtensions.printDataArr());
 	        sb.append("]");
         }
         

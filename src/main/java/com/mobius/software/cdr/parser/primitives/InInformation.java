@@ -164,166 +164,85 @@ public class InInformation
 			String inCompositeCDR,String cgiInformation,String mscGTWhenINBypass,String vlrGTWhenINBypass)
 	{
 		if(serviceKey!=null)
-		{
-			this.serviceKey=new ASNInteger();
-			this.serviceKey.setValue(serviceKey.longValue());
-		}
+			this.serviceKey=new ASNInteger(serviceKey.longValue());
 		
 		if(serviceNumber!=null)
-		{
-			this.serviceNumber=new ASNUTF8String();
-			this.serviceNumber.setValue(serviceNumber);
-		}
+			this.serviceNumber=new ASNUTF8String(serviceNumber);
 		
 		if(fciFreeFormatData!=null)
-		{
-			this.fciFreeFormatData=new ASNOctetString();
-			this.fciFreeFormatData.setValue(Unpooled.wrappedBuffer(fciFreeFormatData));
-		}
+			this.fciFreeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(fciFreeFormatData));
 		
 		if(fciFreeFormatDataManner!=null)
-		{
-			this.fciFreeFormatDataManner=new ASNFciFreeFormatDataManner();
-			this.fciFreeFormatDataManner.setType(fciFreeFormatDataManner);
-		}
+			this.fciFreeFormatDataManner=new ASNFciFreeFormatDataManner(fciFreeFormatDataManner);
 		
 		if(defaultCallHandling!=null)
-		{
-			this.defaultCallHandling=new ASNDefaultCallHandling();
-			this.defaultCallHandling.setType(defaultCallHandling);
-		}
+			this.defaultCallHandling=new ASNDefaultCallHandling(defaultCallHandling);
 		
 		if(scfAddress!=null)
-		{
-			this.scfAddress=new ASNOctetString();
-			this.scfAddress.setValue(Unpooled.wrappedBuffer(scfAddress));
-		}
+			this.scfAddress=new ASNOctetString(Unpooled.wrappedBuffer(scfAddress));
 		
 		if(genericNumber!=null)
-		{
-			this.genericNumber=new ASNUTF8String();
-			this.genericNumber.setValue(genericNumber);
-		}
+			this.genericNumber=new ASNUTF8String(genericNumber);
 		
 		if(levelOfCamelService!=null)
-		{
-			this.levelOfCamelService=new ASNUTF8String();
-			this.levelOfCamelService.setValue(levelOfCamelService);
-		}
+			this.levelOfCamelService=new ASNUTF8String(levelOfCamelService);
 		
 		if(chargeClass!=null)
-		{
-			this.chargeClass=new ASNInteger();
-			this.chargeClass.setValue(chargeClass.longValue());
-		}
+			this.chargeClass=new ASNInteger(chargeClass.longValue());
 		
 		if(inBypass!=null)
-		{
-			this.inBypass=new ASNInteger();
-			this.inBypass.setValue(inBypass.longValue());
-		}
+			this.inBypass=new ASNInteger(inBypass.longValue());
 		
 		if(camelDestinationNumber!=null)
-		{
-			this.camelDestinationNumber=new ASNUTF8String();
-			this.camelDestinationNumber.setValue(camelDestinationNumber);
-		}
+			this.camelDestinationNumber=new ASNUTF8String(camelDestinationNumber);
 		
 		if(camelDestinationNumberType!=null)
-		{
-			this.camelDestinationNumberType=new ASNCamelDestinationNumberType();
-			this.camelDestinationNumberType.setType(camelDestinationNumberType);
-		}
+			this.camelDestinationNumberType=new ASNCamelDestinationNumberType(camelDestinationNumberType);
 		
 		if(sciChargeNumber!=null)
-		{
-			this.sciChargeNumber=new ASNUTF8String();
-			this.sciChargeNumber.setValue(sciChargeNumber);
-		}
+			this.sciChargeNumber=new ASNUTF8String(sciChargeNumber);
 		
 		if(fciChargeNumber!=null)
-		{
-			this.fciChargeNumber=new ASNUTF8String();
-			this.fciChargeNumber.setValue(fciChargeNumber);
-		}
+			this.fciChargeNumber=new ASNUTF8String(fciChargeNumber);
 		
 		if(fciChargedPartyID!=null)
-		{
-			this.fciChargedPartyID=new ASNUTF8String();
-			this.fciChargedPartyID.setValue(fciChargedPartyID);
-		}
+			this.fciChargedPartyID=new ASNUTF8String(fciChargedPartyID);
 		
 		if(aOCParameters!=null)
-		{
-			this.aOCParameters=new ASNOctetString();
-			this.aOCParameters.setValue(Unpooled.wrappedBuffer(aOCParameters));
-		}
+			this.aOCParameters=new ASNOctetString(Unpooled.wrappedBuffer(aOCParameters));
 		
 		if(interactionWithIP!=null)
-		{
-			this.interactionWithIP=new ASNUTF8String();
-			this.interactionWithIP.setValue(interactionWithIP);
-		}
+			this.interactionWithIP=new ASNUTF8String(interactionWithIP);
 		
 		if(resourceChargeIPNumber!=null)
-		{
-			this.resourceChargeIPNumber=new ASNUTF8String();
-			this.resourceChargeIPNumber.setValue(resourceChargeIPNumber);
-		}
+			this.resourceChargeIPNumber=new ASNUTF8String(resourceChargeIPNumber);
 		
 		if(triggerDetectionPoint!=null)
-		{
-			this.triggerDetectionPoint=new ASNUTF8String();
-			this.triggerDetectionPoint.setValue(triggerDetectionPoint);
-		}
+			this.triggerDetectionPoint=new ASNUTF8String(triggerDetectionPoint);
 		
 		if(timeForTHEOS!=null)
-		{
-			this.timeForTHEOS=new ASNUTF8String();
-			this.timeForTHEOS.setValue(timeForTHEOS);
-		}
+			this.timeForTHEOS=new ASNUTF8String(timeForTHEOS);
 		
 		if(inServiceTrigger!=null)
-		{
-			this.inServiceTrigger=new ASNUTF8String();
-			this.inServiceTrigger.setValue(inServiceTrigger);
-		}
+			this.inServiceTrigger=new ASNUTF8String(inServiceTrigger);
 		
 		if(ssfChargingCase!=null)
-		{
-			this.ssfChargingCase=new ASNUTF8String();
-			this.ssfChargingCase.setValue(ssfChargingCase);
-		}
+			this.ssfChargingCase=new ASNUTF8String(ssfChargingCase);
 		
 		if(globalTitleSubsystem!=null)
-		{
-			this.globalTitleSubsystem=new ASNUTF8String();
-			this.globalTitleSubsystem.setValue(globalTitleSubsystem);
-		}
+			this.globalTitleSubsystem=new ASNUTF8String(globalTitleSubsystem);
 		
 		if(inCompositeCDR!=null)
-		{
-			this.inCompositeCDR=new ASNUTF8String();
-			this.inCompositeCDR.setValue(inCompositeCDR);
-		}
+			this.inCompositeCDR=new ASNUTF8String(inCompositeCDR);
 		
 		if(cgiInformation!=null)
-		{
-			this.cgiInformation=new ASNUTF8String();
-			this.cgiInformation.setValue(cgiInformation);
-		}
+			this.cgiInformation=new ASNUTF8String(cgiInformation);
 		
 		if(mscGTWhenINBypass!=null)
-		{
-			this.mscGTWhenINBypass=new ASNUTF8String();
-			this.mscGTWhenINBypass.setValue(mscGTWhenINBypass);
-		}
+			this.mscGTWhenINBypass=new ASNUTF8String(mscGTWhenINBypass);
 		
 		if(vlrGTWhenINBypass!=null)
-		{
-			this.vlrGTWhenINBypass=new ASNUTF8String();
-			this.vlrGTWhenINBypass.setValue(vlrGTWhenINBypass);
-		}
+			this.vlrGTWhenINBypass=new ASNUTF8String(vlrGTWhenINBypass);		
 	}
 
 	public Integer getServiceKey() 
@@ -573,7 +492,7 @@ public class InInformation
         if(fciFreeFormatData!=null && fciFreeFormatData.getValue()!=null)
         {
 	        sb.append("fciFreeFormatData=[");
-	        sb.append(ASNOctetString.printDataArr(getFciFreeFormatData()));
+	        sb.append(fciFreeFormatData.printDataArr());
 	        sb.append("]");
         }
         
@@ -595,7 +514,7 @@ public class InInformation
         if(scfAddress!=null && scfAddress.getValue()!=null)
         {
 	        sb.append("scfAddress=[");
-	        sb.append(ASNOctetString.printDataArr(getScfAddress()));
+	        sb.append(scfAddress.printDataArr());
 	        sb.append("]");
         }
         
@@ -666,7 +585,7 @@ public class InInformation
         if(aOCParameters!=null && aOCParameters.getValue()!=null)
         {
 	        sb.append("aOCParameters=[");
-	        sb.append(ASNOctetString.printDataArr(getaOCParameters()));
+	        sb.append(aOCParameters.printDataArr());
 	        sb.append("]");
         }
         

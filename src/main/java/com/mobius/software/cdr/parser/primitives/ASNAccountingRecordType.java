@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNAccountingRecordType extends ASNEnumerated 
 {
-	public void setType(AccountingRecordType t) 
+	public ASNAccountingRecordType()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNAccountingRecordType(AccountingRecordType t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public AccountingRecordType getType() 

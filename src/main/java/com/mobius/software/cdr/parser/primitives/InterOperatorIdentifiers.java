@@ -49,16 +49,10 @@ public class InterOperatorIdentifiers
 	public InterOperatorIdentifiers(String originatingIOI,String terminatingIOI)
 	{
 		if(originatingIOI!=null)
-		{
-			this.originatingIOI=new ASNGraphicString();
-			this.originatingIOI.setValue(originatingIOI);
-		}
+			this.originatingIOI=new ASNGraphicString(originatingIOI);
 		
 		if(terminatingIOI!=null)
-		{
-			this.terminatingIOI=new ASNGraphicString();
-			this.terminatingIOI.setValue(terminatingIOI);
-		}
+			this.terminatingIOI=new ASNGraphicString(terminatingIOI);		
 	}
 
 	public String getoriginatingIOI() 

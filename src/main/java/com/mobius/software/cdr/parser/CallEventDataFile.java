@@ -72,10 +72,7 @@ public class CallEventDataFile
 			this.csRecordContaier=new WrappedCSRecordsContainer(csRecords);
 		
 		if(extensions!=null)
-		{
-			this.extensions=new ASNOctetString();
-			this.extensions.setValue(Unpooled.wrappedBuffer(extensions));
-		}
+			this.extensions=new ASNOctetString(Unpooled.wrappedBuffer(extensions));		
 	}
 	
 	public HeaderRecord getHeaderRecord()

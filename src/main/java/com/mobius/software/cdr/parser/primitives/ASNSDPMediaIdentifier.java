@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNSDPMediaIdentifier extends ASNEnumerated 
 {
-	public void setType(SDPMediaIdentifier t) 
+	public ASNSDPMediaIdentifier()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNSDPMediaIdentifier(SDPMediaIdentifier t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public SDPMediaIdentifier getIdentifier() 

@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNCallProperty extends ASNEnumerated 
 {
-	public void setType(CallProperty t) 
+	public ASNCallProperty()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNCallProperty(CallProperty t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public CallProperty getType() 

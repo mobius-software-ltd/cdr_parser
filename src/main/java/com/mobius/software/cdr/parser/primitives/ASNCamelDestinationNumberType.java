@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNCamelDestinationNumberType extends ASNEnumerated 
 {
-	public void setType(CamelDestinationNumberType t) 
+	public ASNCamelDestinationNumberType()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNCamelDestinationNumberType(CamelDestinationNumberType t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public CamelDestinationNumberType getIdentifier() 

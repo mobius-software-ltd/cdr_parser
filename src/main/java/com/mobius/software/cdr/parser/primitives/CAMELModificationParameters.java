@@ -76,10 +76,7 @@ public class CAMELModificationParameters
 		
 		this.redirectingPartyNumber=redirectingPartyNumber;
 		if(redirectionCounter!=null)
-		{
-			this.redirectionCounter=new ASNInteger();
-			this.redirectionCounter.setValue(redirectionCounter.longValue());
-		}
+			this.redirectionCounter=new ASNInteger(redirectionCounter.longValue());		
 	}
 
 	public AddressStringImpl getCallingPartyNumber() 

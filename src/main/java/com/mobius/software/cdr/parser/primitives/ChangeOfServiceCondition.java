@@ -146,37 +146,22 @@ public class ChangeOfServiceCondition
 	TimeQuotaMechanism timeQuotaMechanism,List<ServiceSpecificInfo> serviceSpecificInfo,byte[] threeGPP2UserLocationInformation)
 	{
 		if(ratingGroupId!=null)
-		{
-			this.ratingGroupId=new ASNInteger();
-			this.ratingGroupId.setValue(ratingGroupId.longValue());
-		}
+			this.ratingGroupId=new ASNInteger(ratingGroupId.longValue());
 		
 		if(chargingRuleBaseName!=null)
-		{
-			this.chargingRuleBaseName=new ASNIA5String();
-			this.chargingRuleBaseName.setValue(chargingRuleBaseName);
-		}
+			this.chargingRuleBaseName=new ASNIA5String(chargingRuleBaseName);
 		
 		if(resultCode!=null)
-		{
-			this.resultCode=new ASNInteger();
-			this.resultCode.setValue(resultCode.longValue());
-		}
+			this.resultCode=new ASNInteger(resultCode.longValue());
 		
 		if(localSequenceNumber!=null)
-		{
-			this.localSequenceNumber=new ASNInteger();
-			this.localSequenceNumber.setValue(localSequenceNumber.longValue());
-		}
+			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue());
 		
 		this.timeOfFirstUsage=timeOfFirstUsage;
 		this.timeOfLastUsage=timeOfLastUsage;
 		
 		if(timeUsage!=null)
-		{
-			this.timeUsage=new ASNInteger();
-			this.timeUsage.setValue(timeUsage.longValue());
-		}
+			this.timeUsage=new ASNInteger(timeUsage.longValue());
 		
 		this.serviceConditionChange=serviceConditionChange;
 		this.qoSInformationNeg=qoSInformationNeg;
@@ -185,49 +170,31 @@ public class ChangeOfServiceCondition
 			this.servingNodeAddress=new IPAddressWrapper(servingNodeAddress);
 
 		if(dataVolumeFBCUplink!=null)
-		{
-			this.dataVolumeFBCUplink=new ASNInteger();
-			this.dataVolumeFBCUplink.setValue(dataVolumeFBCUplink.longValue());
-		}
+			this.dataVolumeFBCUplink=new ASNInteger(dataVolumeFBCUplink.longValue());
 		
 		if(dataVolumeFBCDownlink!=null)
-		{
-			this.dataVolumeFBCDownlink=new ASNInteger();
-			this.dataVolumeFBCDownlink.setValue(dataVolumeFBCDownlink.longValue());
-		}
+			this.dataVolumeFBCDownlink=new ASNInteger(dataVolumeFBCDownlink.longValue());
 		
 		this.timeOfReport=timeOfReport;
 		
 		if(failureHandlingContinue!=null)
-		{
-			this.failureHandlingContinue=new ASNBoolean();
-			this.failureHandlingContinue.setValue(failureHandlingContinue);
-		}
+			this.failureHandlingContinue=new ASNBoolean(failureHandlingContinue);
 		
 		if(serviceIdentifier!=null)
-		{
-			this.serviceIdentifier=new ASNInteger();
-			this.serviceIdentifier.setValue(serviceIdentifier.longValue());
-		}
+			this.serviceIdentifier=new ASNInteger(serviceIdentifier.longValue());
 		
 		this.pSFurnishChargingInformation=pSFurnishChargingInformation;
 		this.aFRecordInformation=aFRecordInformation;
 		
 		if(userLocationInformation!=null)
-		{
-			this.userLocationInformation=new ASNOctetString();
-			this.userLocationInformation.setValue(Unpooled.wrappedBuffer(userLocationInformation));
-		}
+			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
 		
 		this.eventBasedChargingInformation=eventBasedChargingInformation;
 		this.timeQuotaMechanism=timeQuotaMechanism;
 		this.serviceSpecificInfo=serviceSpecificInfo;
 		
 		if(threeGPP2UserLocationInformation!=null)
-		{
-			this.threeGPP2UserLocationInformation=new ASNOctetString();
-			this.threeGPP2UserLocationInformation.setValue(Unpooled.wrappedBuffer(threeGPP2UserLocationInformation));
-		}
+			this.threeGPP2UserLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(threeGPP2UserLocationInformation));		
 	}
 
 	public Integer getRatingGroupId() 
@@ -519,7 +486,7 @@ public class ChangeOfServiceCondition
         if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
         {
 	        sb.append("userLocationInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
+	        sb.append(userLocationInformation.printDataArr());
 	        sb.append("]");
         }
         
@@ -556,7 +523,7 @@ public class ChangeOfServiceCondition
         if(threeGPP2UserLocationInformation!=null && threeGPP2UserLocationInformation.getValue()!=null)
         {
 	        sb.append("threeGPP2UserLocationInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getThreeGPP2UserLocationInformation()));
+	        sb.append(threeGPP2UserLocationInformation.printDataArr());
 	        sb.append("]");
         }
         

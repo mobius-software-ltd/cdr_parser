@@ -23,8 +23,12 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNAccessTransferType extends ASNEnumerated {
-	public void setType(AccessTransferType t) {
-		super.setValue(Long.valueOf(t.getType()));
+	public ASNAccessTransferType() {
+		
+	}
+	
+	public ASNAccessTransferType(AccessTransferType t) {
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public AccessTransferType getType() {

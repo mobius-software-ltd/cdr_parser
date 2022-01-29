@@ -55,10 +55,8 @@ public class ApplicationServersInformation
 		if(applicationProvidedCalledParties!=null)
 			this.applicationProvidedCalledParties=new InvolvedPartyListWrapper(applicationProvidedCalledParties);
 		
-		if(status!=null) {
-			this.status=new ASNStatus();
-			this.status.setType(status);
-		}
+		if(status!=null)
+			this.status=new ASNStatus(status);		
 	}
 
 	public NodeAddress getApplicationServersInvolved() 

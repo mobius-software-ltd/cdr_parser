@@ -67,18 +67,12 @@ public class IPBinaryAddress
 		if(isIPV6==null || !isIPV6)
 		{
 			if(data!=null)
-			{
-				this.iPV4Address=new ASNOctetString();
-				this.iPV4Address.setValue(Unpooled.wrappedBuffer(data));
-			}
+				this.iPV4Address=new ASNOctetString(Unpooled.wrappedBuffer(data));			
 		}
 		else
 		{
 			if(data!=null)
-			{
-				this.iPV6Address=new ASNOctetString();
-				this.iPV6Address.setValue(Unpooled.wrappedBuffer(data));
-			}
+				this.iPV6Address=new ASNOctetString(Unpooled.wrappedBuffer(data));			
 		}
 	}
 
@@ -104,7 +98,7 @@ public class IPBinaryAddress
 			
 		}
 		
-		return ASNOctetString.printDataArr(data);
+		return iPV4Address.printDataArr();
 	}
 
 	public String getIPV6Address() 
@@ -129,7 +123,7 @@ public class IPBinaryAddress
 			
 		}
 		
-		return ASNOctetString.printDataArr(data);
+		return iPV6Address.printDataArr();
 	}
 	
 	public String toString() {

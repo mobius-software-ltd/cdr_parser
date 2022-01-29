@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNCauseForRecClosing extends ASNEnumerated 
 {
-	public void setType(CauseForRecClosing t) 
+	public ASNCauseForRecClosing()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNCauseForRecClosing(CauseForRecClosing t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public CauseForRecClosing getType() 

@@ -53,10 +53,7 @@ public class AFRecordInformation
 	public AFRecordInformation(byte[] aFChargingIdentifier,Flows flows)
 	{
 		if(aFChargingIdentifier!=null)
-		{
-			this.aFChargingIdentifier=new ASNOctetString();
-			this.aFChargingIdentifier.setValue(Unpooled.wrappedBuffer(aFChargingIdentifier));
-		}
+			this.aFChargingIdentifier=new ASNOctetString(Unpooled.wrappedBuffer(aFChargingIdentifier));
 		
 		this.flows=flows;
 	}
@@ -89,7 +86,7 @@ public class AFRecordInformation
         if(aFChargingIdentifier!=null && aFChargingIdentifier.getValue()!=null)
         {
 	        sb.append("AF Charging Identifier=[");
-	        sb.append(ASNOctetString.printDataArr(getaFChargingIdentifier()));
+	        sb.append(aFChargingIdentifier.printDataArr());
 	        sb.append("]");
         }
         

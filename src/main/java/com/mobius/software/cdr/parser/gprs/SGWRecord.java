@@ -248,10 +248,7 @@ public class SGWRecord
 	PDPAddress servedPDPPDNAddressExt,boolean lowPriorityIndicator,Boolean dynamicAddressFlagExt)
 	{
 		if(recordType!=null)
-		{
-			this.recordType=new ASNRecordType();
-			this.recordType.setType(recordType);
-		}
+			this.recordType=new ASNRecordType(recordType);
 		
 		this.servedIMSI=servedIMSI;
 		
@@ -259,10 +256,7 @@ public class SGWRecord
 			this.sgwAddress=new IPAddressWrapper(sgwAddress);
 		
 		if(chargingID!=null)
-		{
-			this.chargingID=new ASNInteger();
-			this.chargingID.setValue(chargingID.longValue());
-		}
+			this.chargingID=new ASNInteger(chargingID.longValue());
 		
 		if(servingNodeAddress!=null)
 		{
@@ -272,10 +266,7 @@ public class SGWRecord
 		}
 		
 		if(accessPointNameNI!=null)
-		{
-			this.accessPointNameNI=new ASNIA5String();
-			this.accessPointNameNI.setValue(accessPointNameNI);
-		}
+			this.accessPointNameNI=new ASNIA5String(accessPointNameNI);
 		
 		this.pdpPDNType=pdpPDNType;
 		
@@ -283,10 +274,7 @@ public class SGWRecord
 			this.servedPDPPDNAddress=new PDPAddressWrapper(servedPDPPDNAddress);
 		
 		if(dynamicAddressFlag!=null)
-		{
-			this.dynamicAddressFlag=new ASNBoolean();
-			this.dynamicAddressFlag.setValue(dynamicAddressFlag);
-		}
+			this.dynamicAddressFlag=new ASNBoolean(dynamicAddressFlag);
 		
 		if(listOfTrafficVolumes!=null)
 			this.listOfTrafficVolumes=new ChangeOfCharConditionListWrapper(listOfTrafficVolumes);
@@ -294,57 +282,33 @@ public class SGWRecord
 		this.recordOpeningTime=recordOpeningTime;
 		
 		if(this.duration!=null)
-		{
-			this.duration=new ASNInteger();
-			this.duration.setValue(duration.longValue());
-		}
+			this.duration=new ASNInteger(duration.longValue());
 		
 		if(causeForRecClosing!=null)
-		{
-			this.causeForRecClosing=new ASNCauseForRecClosing();
-			this.causeForRecClosing.setType(causeForRecClosing);
-		}
+			this.causeForRecClosing=new ASNCauseForRecClosing(causeForRecClosing);
 		
 		this.diagnostics=diagnostics;
 		
 		if(recordSequenceNumber!=null)
-		{
-			this.recordSequenceNumber=new ASNCauseForRecClosing();
-			this.recordSequenceNumber.setValue(recordSequenceNumber.longValue());
-		}
+			this.recordSequenceNumber=new ASNInteger(recordSequenceNumber.longValue());
 		
 		if(nodeID!=null)
-		{
-			this.nodeID=new ASNIA5String();
-			this.nodeID.setValue(nodeID);
-		}
+			this.nodeID=new ASNIA5String(nodeID);
 		
 		if(recordExtensions!=null)
-		{
-			this.recordExtensions=new ASNOctetString();
-			this.recordExtensions.setValue(Unpooled.wrappedBuffer(recordExtensions));
-		}
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
 		
 		if(localSequenceNumber!=null)
-		{
-			this.localSequenceNumber=new ASNInteger();
-			this.localSequenceNumber.setValue(localSequenceNumber.longValue());
-		}
+			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue());
 		
 		if(apnSelectionMode!=null)
-		{
-			this.apnSelectionMode=new ASNAPNSelectionMode();
-			this.apnSelectionMode.setType(apnSelectionMode);
-		}
+			this.apnSelectionMode=new ASNAPNSelectionMode(apnSelectionMode);
 		
 		this.servedMSISDN=servedMSISDN;
 		this.chargingCharacteristics=chargingCharacteristics;
 		
 		if(chChSelectionMode!=null)
-		{
-			this.chChSelectionMode=new ASNChChSelectionMode();
-			this.chChSelectionMode.setType(chChSelectionMode);
-		}
+			this.chChSelectionMode=new ASNChChSelectionMode(chChSelectionMode);
 		
 		if(iMSsignalingContext)
 			this.iMSsignalingContext=new ASNNull();
@@ -353,32 +317,22 @@ public class SGWRecord
 		this.servedIMEISV=servedIMEISV;
 		
 		if(ratType!=null)
-		{
-			this.ratType=new ASNRatType();
-			this.ratType.setType(ratType);
-		}
+			this.ratType=new ASNRatType(ratType);
 		
 		this.mSTimeZone=mSTimeZone;
 		
 		if(userLocationInformation!=null)
-		{
-			this.userLocationInformation=new ASNOctetString();
-			this.userLocationInformation.setValue(Unpooled.wrappedBuffer(userLocationInformation));
-		}
+			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
 		
 		if(sGWChange!=null)
-		{
-			this.sGWChange=new ASNBoolean();
-			this.sGWChange.setValue(sGWChange);
-		}
+			this.sGWChange=new ASNBoolean(sGWChange);
 		
 		if(servingNodeType!=null)
 		{
 			List<ASNServingNodeType> currList=new ArrayList<ASNServingNodeType>();
 			for(ServingNodeType curr:servingNodeType)
 			{
-				ASNServingNodeType currType=new ASNServingNodeType();
-				currType.setType(curr);
+				ASNServingNodeType currType=new ASNServingNodeType(curr);
 				currList.add(currType);
 			}
 			
@@ -393,10 +347,7 @@ public class SGWRecord
 		this.stopTime=stopTime;
 		
 		if(pDNConnectionChargingID!=null)
-		{
-			this.pDNConnectionChargingID=new ASNInteger();
-			this.pDNConnectionChargingID.setValue(pDNConnectionChargingID.longValue());
-		}
+			this.pDNConnectionChargingID=new ASNInteger(pDNConnectionChargingID.longValue());
 		
 		if(iMSIunauthenticatedFlag)
 			this.iMSIunauthenticatedFlag=new ASNNull();
@@ -410,10 +361,7 @@ public class SGWRecord
 			this.lowPriorityIndicator=new ASNNull();
 		
 		if(dynamicAddressFlagExt!=null)
-		{
-			this.dynamicAddressFlagExt=new ASNBoolean();
-			this.dynamicAddressFlag.setValue(dynamicAddressFlagExt);
-		}		
+			this.dynamicAddressFlagExt=new ASNBoolean(dynamicAddressFlagExt);
 	}
 
 	public RecordType getRecordType() 
@@ -852,7 +800,7 @@ public class SGWRecord
        if(recordExtensions!=null && recordExtensions.getValue()!=null)
        {
 	        sb.append("recordExtensions=[");
-	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
+	        sb.append(recordExtensions.printDataArr());
 	        sb.append("]");
        }
        
@@ -925,7 +873,7 @@ public class SGWRecord
        if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
        {
 	        sb.append("userLocationInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
+	        sb.append(userLocationInformation.printDataArr());
 	        sb.append("]");
        }
        

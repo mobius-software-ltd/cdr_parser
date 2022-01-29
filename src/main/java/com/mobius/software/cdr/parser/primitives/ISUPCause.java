@@ -51,20 +51,14 @@ public class ISUPCause
 	
 	public ISUPCause(Integer isupCauseLocation,Integer isupCauseValue,byte[] isupCauseDiagnostics)
 	{
-		if(isupCauseLocation!=null) {
-			this.isupCauseLocation=new ASNInteger();
-			this.isupCauseLocation.setValue(isupCauseLocation.longValue());
-		}
+		if(isupCauseLocation!=null)
+			this.isupCauseLocation=new ASNInteger(isupCauseLocation.longValue());
 		
-		if(isupCauseValue!=null) {
-			this.isupCauseValue=new ASNInteger();
-			this.isupCauseValue.setValue(isupCauseValue.longValue());
-		}
+		if(isupCauseValue!=null)
+			this.isupCauseValue=new ASNInteger(isupCauseValue.longValue());
 		
-		if(isupCauseDiagnostics!=null) {
-			this.isupCauseDiagnostics=new ASNOctetString();
-			this.isupCauseDiagnostics.setValue(Unpooled.wrappedBuffer(isupCauseDiagnostics));
-		}
+		if(isupCauseDiagnostics!=null)
+			this.isupCauseDiagnostics=new ASNOctetString(Unpooled.wrappedBuffer(isupCauseDiagnostics));
 	}
 
 	public Integer getISUPCauseLocation() 
@@ -116,7 +110,7 @@ public class ISUPCause
         if(isupCauseDiagnostics!=null && isupCauseDiagnostics.getValue()!=null)
         {
         	sb.append("isupCauseDiagnostics=[");
-	        sb.append(ASNOctetString.printDataArr(getISUPCauseDiagnostics()));
+	        sb.append(isupCauseDiagnostics.printDataArr());
 	        sb.append("]");
         }
         

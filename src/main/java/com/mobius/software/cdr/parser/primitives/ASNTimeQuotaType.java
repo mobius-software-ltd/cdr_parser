@@ -24,9 +24,13 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNTimeQuotaType extends ASNEnumerated 
 {
-	public void setType(TimeQuotaType t) 
+	public ASNTimeQuotaType()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+	}
+	
+	public ASNTimeQuotaType(TimeQuotaType t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public TimeQuotaType getType() 

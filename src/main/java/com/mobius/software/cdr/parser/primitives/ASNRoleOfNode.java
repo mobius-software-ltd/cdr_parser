@@ -23,8 +23,12 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNRoleOfNode extends ASNEnumerated {
-	public void setType(RoleOfNode t) {
-		super.setValue(Long.valueOf(t.getCode()));
+	public ASNRoleOfNode() {
+		
+	}
+	
+	public ASNRoleOfNode(RoleOfNode t) {
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public RoleOfNode getType() {

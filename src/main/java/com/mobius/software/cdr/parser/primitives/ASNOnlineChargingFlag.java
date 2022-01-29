@@ -23,8 +23,13 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNOnlineChargingFlag extends ASNEnumerated {
-	public void setType(OnlineChargingFlag t) {
-		super.setValue(Long.valueOf(t.getType()));
+	public ASNOnlineChargingFlag()
+	{
+		
+	}
+	
+	public ASNOnlineChargingFlag(OnlineChargingFlag t) {
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public OnlineChargingFlag getType() {

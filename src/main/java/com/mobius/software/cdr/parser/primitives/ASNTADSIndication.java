@@ -24,9 +24,13 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNTADSIndication extends ASNEnumerated 
 {
-	public void setType(TADSIndication t) 
+	public ASNTADSIndication() {
+		
+	}
+	
+	public ASNTADSIndication(TADSIndication t) 
 	{
-		super.setValue(Long.valueOf(t.getTAD()));
+		super(Long.valueOf(t.getTAD()));
 	}
 	
 	public TADSIndication getType() 

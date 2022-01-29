@@ -271,10 +271,7 @@ public class PGWRecord
 	PDPAddress servedPDPPDNAddressExt,boolean lowPriorityIndicator,Boolean dynamicAddressFlagExt)
 	{
 		if(recordType!=null)
-		{
-			this.recordType=new ASNRecordType();
-			this.recordType.setType(recordType);
-		}
+			this.recordType=new ASNRecordType(recordType);
 		
 		this.servedIMSI=servedIMSI;
 		
@@ -282,10 +279,7 @@ public class PGWRecord
 			this.pgwAddress=new IPAddressWrapper(pgwAddress);
 		
 		if(chargingID!=null)
-		{
-			this.chargingID=new ASNInteger();
-			this.chargingID.setValue(chargingID.longValue());
-		}
+			this.chargingID=new ASNInteger(chargingID.longValue());
 		
 		if(servingNodeAddress!=null)
 		{
@@ -295,10 +289,7 @@ public class PGWRecord
 		}
 		
 		if(accessPointNameNI!=null)
-		{
-			this.accessPointNameNI=new ASNIA5String();
-			this.accessPointNameNI.setValue(accessPointNameNI);
-		}
+			this.accessPointNameNI=new ASNIA5String(accessPointNameNI);
 		
 		this.pdpPDNType=pdpPDNType;
 		
@@ -306,98 +297,59 @@ public class PGWRecord
 			this.servedPDPPDNAddress=new PDPAddressWrapper(servedPDPPDNAddress);
 		
 		if(dynamicAddressFlag!=null)
-		{
-			this.dynamicAddressFlag=new ASNBoolean();
-			this.dynamicAddressFlag.setValue(dynamicAddressFlag);
-		}
+			this.dynamicAddressFlag=new ASNBoolean(dynamicAddressFlag);
 		
 		this.recordOpeningTime=recordOpeningTime;
 		
 		if(this.duration!=null)
-		{
-			this.duration=new ASNInteger();
-			this.duration.setValue(duration.longValue());
-		}
+			this.duration=new ASNInteger(duration.longValue());
 		
 		if(causeForRecClosing!=null)
-		{
-			this.causeForRecClosing=new ASNCauseForRecClosing();
-			this.causeForRecClosing.setType(causeForRecClosing);
-		}
+			this.causeForRecClosing=new ASNCauseForRecClosing(causeForRecClosing);
 		
 		this.diagnostics=diagnostics;
 		
 		if(recordSequenceNumber!=null)
-		{
-			this.recordSequenceNumber=new ASNCauseForRecClosing();
-			this.recordSequenceNumber.setValue(recordSequenceNumber.longValue());
-		}
+			this.recordSequenceNumber=new ASNInteger(recordSequenceNumber.longValue());
 		
 		if(nodeID!=null)
-		{
-			this.nodeID=new ASNIA5String();
-			this.nodeID.setValue(nodeID);
-		}
+			this.nodeID=new ASNIA5String(nodeID);
 		
 		if(recordExtensions!=null)
-		{
-			this.recordExtensions=new ASNOctetString();
-			this.recordExtensions.setValue(Unpooled.wrappedBuffer(recordExtensions));
-		}
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
 		
 		if(localSequenceNumber!=null)
-		{
-			this.localSequenceNumber=new ASNInteger();
-			this.localSequenceNumber.setValue(localSequenceNumber.longValue());
-		}
+			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue());
 		
 		if(apnSelectionMode!=null)
-		{
-			this.apnSelectionMode=new ASNAPNSelectionMode();
-			this.apnSelectionMode.setType(apnSelectionMode);
-		}
+			this.apnSelectionMode=new ASNAPNSelectionMode(apnSelectionMode);
 		
 		this.servedMSISDN=servedMSISDN;
 		this.chargingCharacteristics=chargingCharacteristics;
 		
 		if(chChSelectionMode!=null)
-		{
-			this.chChSelectionMode=new ASNChChSelectionMode();
-			this.chChSelectionMode.setType(chChSelectionMode);
-		}
+			this.chChSelectionMode=new ASNChChSelectionMode(chChSelectionMode);
 		
 		if(iMSsignalingContext)
 			this.iMSsignalingContext=new ASNNull();
 		
 		if(externalChargingID!=null)
-		{
-			this.externalChargingID=new ASNOctetString();
-			this.externalChargingID.setValue(Unpooled.wrappedBuffer(externalChargingID));
-		}
+			this.externalChargingID=new ASNOctetString(Unpooled.wrappedBuffer(externalChargingID));
 		
 		this.plmnID=plmnID;
 		this.pSFurnishChargingInformation=pSFurnishChargingInformation;
 		this.servedIMEISV=servedIMEISV;
 		
 		if(ratType!=null)
-		{
-			this.ratType=new ASNRatType();
-			this.ratType.setType(ratType);
-		}
+			this.ratType=new ASNRatType(ratType);
 		
 		this.mSTimeZone=mSTimeZone;
 		
 		if(userLocationInformation!=null)
-		{
-			this.userLocationInformation=new ASNOctetString();
-			this.userLocationInformation.setValue(Unpooled.wrappedBuffer(userLocationInformation));
-		}
+			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
 		
 		if(cAMELChargingInformation!=null)
-		{
-			this.cAMELChargingInformation=new ASNOctetString();
-			this.cAMELChargingInformation.setValue(Unpooled.wrappedBuffer(cAMELChargingInformation));
-		}
+			this.cAMELChargingInformation=new ASNOctetString(Unpooled.wrappedBuffer(cAMELChargingInformation));
 		
 		if(listOfServiceData!=null)
 			this.listOfServiceData=new ChangeOfServiceConditionListWrapper(listOfServiceData);
@@ -407,8 +359,7 @@ public class PGWRecord
 			List<ASNServingNodeType> currList=new ArrayList<ASNServingNodeType>();
 			for(ServingNodeType curr:servingNodeType)
 			{
-				ASNServingNodeType currType=new ASNServingNodeType();
-				currType.setType(curr);
+				ASNServingNodeType currType=new ASNServingNodeType(curr);
 				currList.add(currType);
 			}
 			
@@ -421,16 +372,10 @@ public class PGWRecord
 		this.stopTime=stopTime;
 		
 		if(served3gpp2MEID!=null)
-		{
-			this.served3gpp2MEID=new ASNOctetString();
-			this.served3gpp2MEID.setValue(Unpooled.wrappedBuffer(served3gpp2MEID));
-		}
+			this.served3gpp2MEID=new ASNOctetString(Unpooled.wrappedBuffer(served3gpp2MEID));
 		
 		if(pDNConnectionChargingID!=null)
-		{
-			this.pDNConnectionChargingID=new ASNInteger();
-			this.pDNConnectionChargingID.setValue(pDNConnectionChargingID.longValue());
-		}
+			this.pDNConnectionChargingID=new ASNInteger(pDNConnectionChargingID.longValue());
 		
 		if(iMSIunauthenticatedFlag)
 			this.iMSIunauthenticatedFlag=new ASNNull();
@@ -438,10 +383,7 @@ public class PGWRecord
 		this.userCSGInformation=userCSGInformation;
 		
 		if(threeGPP2UserLocationInformation!=null)
-		{
-			this.threeGPP2UserLocationInformation=new ASNOctetString();
-			this.threeGPP2UserLocationInformation.setValue(Unpooled.wrappedBuffer(threeGPP2UserLocationInformation));
-		}
+			this.threeGPP2UserLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(threeGPP2UserLocationInformation));
 		
 		if(servedPDPPDNAddressExt!=null)
 			this.servedPDPPDNAddressExt=new PDPAddressWrapper(servedPDPPDNAddressExt);
@@ -450,10 +392,7 @@ public class PGWRecord
 			this.lowPriorityIndicator=new ASNNull();
 		
 		if(dynamicAddressFlagExt!=null)
-		{
-			this.dynamicAddressFlagExt=new ASNBoolean();
-			this.dynamicAddressFlag.setValue(dynamicAddressFlagExt);
-		}		
+			this.dynamicAddressFlagExt=new ASNBoolean(dynamicAddressFlagExt);		
 	}
 
 	public RecordType getRecordType() 
@@ -926,7 +865,7 @@ public class PGWRecord
         if(recordExtensions!=null && recordExtensions.getValue()!=null)
         {
 	        sb.append("recordExtensions=[");
-	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
+	        sb.append(recordExtensions.printDataArr());
 	        sb.append("]");
         }
         
@@ -971,7 +910,7 @@ public class PGWRecord
         if(externalChargingID!=null && externalChargingID.getValue()!=null)
         {
 	        sb.append("externalChargingID=[");
-	        sb.append(ASNOctetString.printDataArr(getExternalChargingID()));
+	        sb.append(externalChargingID.printDataArr());
 	        sb.append("]");
         }
         
@@ -1013,14 +952,14 @@ public class PGWRecord
         if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
         {
 	        sb.append("userLocationInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
+	        sb.append(userLocationInformation.printDataArr());
 	        sb.append("]");
         }
         
         if(cAMELChargingInformation!=null && cAMELChargingInformation.getValue()!=null)
         {
 	        sb.append("cAMELChargingInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getcAMELChargingInformation()));
+	        sb.append(cAMELChargingInformation.printDataArr());
 	        sb.append("]");
         }
         
@@ -1087,7 +1026,7 @@ public class PGWRecord
         if(served3gpp2MEID!=null && served3gpp2MEID.getValue()!=null)
         {
 	        sb.append("served3gpp2MEID=[");
-	        sb.append(ASNOctetString.printDataArr(getServed3gpp2MEID()));
+	        sb.append(served3gpp2MEID.printDataArr());
 	        sb.append("]");
         }
         
@@ -1111,7 +1050,7 @@ public class PGWRecord
         if(threeGPP2UserLocationInformation!=null && threeGPP2UserLocationInformation.getValue()!=null)
         {
 	        sb.append("threeGPP2UserLocationInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getThreeGPP2UserLocationInformation()));
+	        sb.append(threeGPP2UserLocationInformation.printDataArr());
 	        sb.append("]");
         }
         

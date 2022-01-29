@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNLocationRoutingNumberSourceIndicator extends ASNEnumerated 
 {
-	public void setType(LocationRoutingNumberSourceIndicator t) 
+	public ASNLocationRoutingNumberSourceIndicator()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNLocationRoutingNumberSourceIndicator(LocationRoutingNumberSourceIndicator t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public LocationRoutingNumberSourceIndicator getType() 

@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNBasicService extends ASNEnumerated 
 {
-	public void setType(BasicService t) 
+	public ASNBasicService()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNBasicService(BasicService t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public BasicService getType() 

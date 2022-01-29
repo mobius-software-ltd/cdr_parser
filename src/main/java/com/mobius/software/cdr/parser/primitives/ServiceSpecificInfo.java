@@ -52,16 +52,10 @@ public class ServiceSpecificInfo
 	public ServiceSpecificInfo(String serviceSpecificData,Integer serviceSpecificType)
 	{
 		if(serviceSpecificData!=null)
-		{
-			this.serviceSpecificData=new ASNGraphicString();
-			this.serviceSpecificData.setValue(serviceSpecificData);
-		}
+			this.serviceSpecificData=new ASNGraphicString(serviceSpecificData);
 		
 		if(serviceSpecificType!=null)
-		{
-			this.serviceSpecificType=new ASNInteger();
-			this.serviceSpecificType.setValue(serviceSpecificType.longValue());
-		}
+			this.serviceSpecificType=new ASNInteger(serviceSpecificType.longValue());		
 	}
 
 	public String getServiceSpecificData() 

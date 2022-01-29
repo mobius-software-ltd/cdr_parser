@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNPrivateUserEquipmentInfoType extends ASNEnumerated 
 {
-	public void setType(PrivateUserEquipmentInfoType t) 
+	public ASNPrivateUserEquipmentInfoType()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNPrivateUserEquipmentInfoType(PrivateUserEquipmentInfoType t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public PrivateUserEquipmentInfoType getType() 

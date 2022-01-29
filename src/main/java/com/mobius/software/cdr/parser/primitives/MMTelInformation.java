@@ -53,10 +53,7 @@ public class MMTelInformation
 			this.listOfSupplServices=new SupplServiceListWrapper(listOfSupplServices);
 		
 		if(subscriberRole!=null)
-		{
-			this.subscriberRole=new ASNSubscriberRole();
-			this.subscriberRole.setType(subscriberRole);
-		}		
+			this.subscriberRole=new ASNSubscriberRole(subscriberRole);			
 	}
 	
 	public List<SupplService> getSupplService() 

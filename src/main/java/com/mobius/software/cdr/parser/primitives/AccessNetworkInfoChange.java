@@ -53,24 +53,15 @@ public class AccessNetworkInfoChange
 	public AccessNetworkInfoChange(byte[] accessNetworkInformation,byte[] additionalAccessNetworkInformation,TimeStamp accessChangeTime,byte[] cellularNetworkInformation)
 	{
 		if(accessNetworkInformation!=null)
-		{
-			this.accessNetworkInformation=new ASNOctetString();
-			this.accessNetworkInformation.setValue(Unpooled.wrappedBuffer(accessNetworkInformation));
-		}
+			this.accessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation));
 		
 		if(additionalAccessNetworkInformation!=null)
-		{
-			this.additionalAccessNetworkInformation=new ASNOctetString();
-			this.additionalAccessNetworkInformation.setValue(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
-		}
+			this.additionalAccessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
 		
 		this.accessChangeTime=accessChangeTime;
 		
 		if(cellularNetworkInformation!=null)
-		{
-			this.cellularNetworkInformation=new ASNOctetString();
-			this.cellularNetworkInformation.setValue(Unpooled.wrappedBuffer(cellularNetworkInformation));
-		}
+			this.cellularNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation));		
 	}
 
 	public byte[] getAccessNetworkInformation() 
@@ -128,21 +119,21 @@ public class AccessNetworkInfoChange
         if(accessNetworkInformation!=null && accessNetworkInformation.getValue()!=null)
         {
 	        sb.append("accessNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getAccessNetworkInformation()));
+	        sb.append(accessNetworkInformation.printDataArr());
 	        sb.append("]");
         }
         
         if(additionalAccessNetworkInformation!=null && additionalAccessNetworkInformation.getValue()!=null)
         {
 	        sb.append("additionalAccessNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getAdditionalAccessNetworkInformation()));
+	        sb.append(additionalAccessNetworkInformation.printDataArr());
 	        sb.append("]");
         }
         
         if(cellularNetworkInformation!=null && cellularNetworkInformation.getValue()!=null)
         {
 	        sb.append("cellularNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getCellularNetworkInformation()))	;
+	        sb.append(cellularNetworkInformation.printDataArr())	;
 	        sb.append("]");
         }
         

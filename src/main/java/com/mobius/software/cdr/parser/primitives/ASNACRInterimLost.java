@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNACRInterimLost extends ASNEnumerated 
 {
-	public void setType(ACRInterimLost t) 
+	public ASNACRInterimLost() 
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNACRInterimLost(ACRInterimLost t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public ACRInterimLost getType() 

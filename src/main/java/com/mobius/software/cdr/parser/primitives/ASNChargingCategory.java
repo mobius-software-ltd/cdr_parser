@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNChargingCategory extends ASNEnumerated 
 {
-	public void setType(ChargingCategory t) 
+	public ASNChargingCategory()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNChargingCategory(ChargingCategory t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public ChargingCategory getType() 

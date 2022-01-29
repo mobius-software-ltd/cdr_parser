@@ -47,16 +47,10 @@ public class TransmissionMedium
 	public TransmissionMedium(byte[] tmr,byte[] tmu)
 	{
 		if(tmr!=null)
-		{
-			this.tmr=new ASNOctetString();
-			this.tmr.setValue(Unpooled.wrappedBuffer(tmr));
-		}
+			this.tmr=new ASNOctetString(Unpooled.wrappedBuffer(tmr));
 		
 		if(tmu!=null)
-		{
-			this.tmu=new ASNOctetString();
-			this.tmu.setValue(Unpooled.wrappedBuffer(tmu));
-		}
+			this.tmu=new ASNOctetString(Unpooled.wrappedBuffer(tmu));		
 	}
 
 	public byte[] getTMR() 
@@ -89,14 +83,14 @@ public class TransmissionMedium
         if(tmr!=null && tmr.getValue()!=null)
         {
 	        sb.append("tmr=[");
-	        sb.append(ASNOctetString.printDataArr(getTMR()));
+	        sb.append(tmr.printDataArr());
 	        sb.append("]");
         }
         
         if(tmu!=null && tmu.getValue()!=null)
         {
 	        sb.append("tmu=[");
-	        sb.append(ASNOctetString.printDataArr(getTMU()));
+	        sb.append(tmu.printDataArr());
 	        sb.append("]");
         }
         

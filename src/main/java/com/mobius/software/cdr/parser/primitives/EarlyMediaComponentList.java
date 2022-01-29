@@ -76,17 +76,13 @@ public class EarlyMediaComponentList
 		{
 			this.sdpSessionDescription=new ArrayList<ASNGraphicString>();
 			for(String curr:sdpSessionDescription) {
-				ASNGraphicString currString=new ASNGraphicString();
-				currString.setValue(curr);
+				ASNGraphicString currString=new ASNGraphicString(curr);
 				this.sdpSessionDescription.add(currString);
 			}
 		}
 		
 		if(sdpType!=null)
-		{
-			this.sdpType=new ASNSDPType();
-			this.sdpType.setType(sdpType);
-		}
+			this.sdpType=new ASNSDPType(sdpType);		
 	}
 
 	public TimeStamp getSDPAnswerTimestamp() 

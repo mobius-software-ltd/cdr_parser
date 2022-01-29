@@ -91,51 +91,30 @@ public class SupplService
 			byte[] cugInformation,List<AoCInformation> aocInformation)
 	{
 		if(serviceType!=null)
-		{
-			this.serviceType=new ASNInteger();
-			this.serviceType.setValue(serviceType.longValue());
-		}
+			this.serviceType=new ASNInteger(serviceType.longValue());
 		
 		if(serviceMode!=null)
-		{
-			this.serviceMode=new ASNInteger();
-			this.serviceMode.setValue(serviceMode.longValue());
-		}
+			this.serviceMode=new ASNInteger(serviceMode.longValue());
 		
 		if(numberOfDiversions!=null)
-		{
-			this.numberOfDiversions=new ASNInteger();
-			this.numberOfDiversions.setValue(numberOfDiversions.longValue());
-		}
+			this.numberOfDiversions=new ASNInteger(numberOfDiversions.longValue());
 		
 		if(associatedPartyAddress!=null)
 			this.associatedPartyAddress=new InvolvedPartyWrapper(associatedPartyAddress);
 		
 		if(serviceID!=null)
-		{
-			this.serviceID=new ASNGraphicString();
-			this.serviceID.setValue(serviceID);
-		}
+			this.serviceID=new ASNGraphicString(serviceID);
 		
 		this.changeTime=changeTime;
 		
 		if(numberOfParticipants!=null)
-		{
-			this.numberOfParticipants=new ASNInteger();
-			this.numberOfParticipants.setValue(numberOfParticipants.longValue());
-		}
+			this.numberOfParticipants=new ASNInteger(numberOfParticipants.longValue());
 		
 		if(participantActionType!=null)
-		{
-			this.participantActionType=new ASNParticipantActionType();
-			this.participantActionType.setType(participantActionType);
-		}
+			this.participantActionType=new ASNParticipantActionType(participantActionType);
 		
 		if(cugInformation!=null)
-		{
-			this.cugInformation=new ASNOctetString();
-			this.cugInformation.setValue(Unpooled.wrappedBuffer(cugInformation));
-		}
+			this.cugInformation=new ASNOctetString(Unpooled.wrappedBuffer(cugInformation));
 		
 		if(aocInformation!=null)
 			this.aocInformation=new AoCInformationListWrapper(aocInformation);		
@@ -285,7 +264,7 @@ public class SupplService
         if(cugInformation!=null && cugInformation.getValue()!=null)
         {
 	        sb.append("cugInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getCugInformation()));
+	        sb.append(cugInformation.printDataArr());
 	        sb.append("]");
         }
         

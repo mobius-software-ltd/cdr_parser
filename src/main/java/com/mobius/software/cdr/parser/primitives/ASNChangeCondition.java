@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNChangeCondition extends ASNEnumerated 
 {
-	public void setType(ChangeCondition t) 
+	public ASNChangeCondition()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNChangeCondition(ChangeCondition t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public ChangeCondition getCondition() 

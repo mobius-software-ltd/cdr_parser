@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNFciFreeFormatDataManner extends ASNEnumerated 
 {
-	public void setType(FciFreeFormatDataManner t) 
+	public ASNFciFreeFormatDataManner()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNFciFreeFormatDataManner(FciFreeFormatDataManner t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public FciFreeFormatDataManner getIdentifier() 

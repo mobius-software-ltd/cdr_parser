@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNServingNodeType extends ASNEnumerated 
 {
-	public void setType(ServingNodeType t) 
+	public ASNServingNodeType()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNServingNodeType(ServingNodeType t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public ServingNodeType getType() 

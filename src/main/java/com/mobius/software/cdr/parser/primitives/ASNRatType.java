@@ -23,8 +23,13 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNRatType extends ASNEnumerated {
-	public void setType(RATType t) {
-		super.setValue(Long.valueOf(t.getCode()));
+	public ASNRatType()
+	{
+		
+	}
+	
+	public ASNRatType(RATType t) {
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public RATType getType() {

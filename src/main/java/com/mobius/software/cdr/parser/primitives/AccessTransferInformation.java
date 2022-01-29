@@ -64,31 +64,19 @@ public class AccessTransferInformation
 	public AccessTransferInformation(AccessTransferType accessTransferType,byte[] accessNetworkInformation,byte[] additionalAccessNetworkInformation,boolean interUETransfer,byte[] relatedICID,NodeAddress relatedICIDGenerationNode,TimeStamp accessTransferTime,SubscriberEquipmentNumber subscriberEquipmentNumber,byte[] instanceID,byte[] cellularNetworkInformation)
 	{
 		if(accessTransferType!=null)
-		{
-			this.accessTransferType=new ASNAccessTransferType();
-			this.accessTransferType.setType(accessTransferType);
-		}
+			this.accessTransferType=new ASNAccessTransferType(accessTransferType);
 		
 		if(accessNetworkInformation!=null) 
-		{
-			this.accessNetworkInformation=new ASNOctetString();
-			this.accessNetworkInformation.setValue(Unpooled.wrappedBuffer(accessNetworkInformation));
-		}
+			this.accessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation));
 		
 		if(additionalAccessNetworkInformation!=null) 
-		{
-			this.additionalAccessNetworkInformation=new ASNOctetString();
-			this.additionalAccessNetworkInformation.setValue(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
-		}
+			this.additionalAccessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
 		
 		if(interUETransfer)
 			this.interUETransfer=new ASNNull();
 		
 		if(relatedICID!=null) 
-		{
-			this.relatedICID=new ASNOctetString();
-			this.relatedICID.setValue(Unpooled.wrappedBuffer(relatedICID));
-		}
+			this.relatedICID=new ASNOctetString(Unpooled.wrappedBuffer(relatedICID));
 		
 		if(relatedICIDGenerationNode!=null) 
 			this.relatedICIDGenerationNode=new NodeAddressWrapper(relatedICIDGenerationNode);			
@@ -97,16 +85,10 @@ public class AccessTransferInformation
 		this.subscriberEquipmentNumber=subscriberEquipmentNumber;
 		
 		if(instanceID!=null) 
-		{
-			this.instanceID=new ASNOctetString();
-			this.instanceID.setValue(Unpooled.wrappedBuffer(instanceID));
-		}
+			this.instanceID=new ASNOctetString(Unpooled.wrappedBuffer(instanceID));
 		
 		if(cellularNetworkInformation!=null) 
-		{
-			this.cellularNetworkInformation=new ASNOctetString();
-			this.cellularNetworkInformation.setValue(Unpooled.wrappedBuffer(cellularNetworkInformation));
-		}
+			this.cellularNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation));		
 	}
 
 	public AccessTransferType getAccessTransferType() 
@@ -225,14 +207,14 @@ public class AccessTransferInformation
         if(accessNetworkInformation!=null && accessNetworkInformation.getValue()!=null)
         {
 	        sb.append("accessNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getAccessNetworkInformation()));
+	        sb.append(accessNetworkInformation.printDataArr());
 	        sb.append("]");
         }
         
         if(additionalAccessNetworkInformation!=null && additionalAccessNetworkInformation.getValue()!=null)
         {
 	        sb.append("additionalAccessNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getAdditionalAccessNetworkInformation()));
+	        sb.append(additionalAccessNetworkInformation.printDataArr());
 	        sb.append("]");
         }
         
@@ -242,7 +224,7 @@ public class AccessTransferInformation
         if(relatedICID!=null && relatedICID.getValue()!=null)
         {
 	        sb.append("relatedICID=[");
-	        sb.append(ASNOctetString.printDataArr(getRelatedICID()));
+	        sb.append(relatedICID.printDataArr());
 	        sb.append("]");
         }
         
@@ -270,14 +252,14 @@ public class AccessTransferInformation
         if(instanceID!=null && instanceID.getValue()!=null)
         {
 	        sb.append("instanceID=[");
-	        sb.append(ASNOctetString.printDataArr(getInstanceID()));
+	        sb.append(instanceID.printDataArr());
 	        sb.append("]");
         }
         
         if(cellularNetworkInformation!=null && cellularNetworkInformation.getValue()!=null)
         {
 	        sb.append("cellularNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getCellularNetworkInformation()));
+	        sb.append(cellularNetworkInformation.printDataArr());
 	        sb.append("]");
         }
         

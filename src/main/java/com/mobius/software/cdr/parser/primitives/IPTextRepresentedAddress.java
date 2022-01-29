@@ -44,18 +44,12 @@ public class IPTextRepresentedAddress
 		if(isIPV6==null || !isIPV6)
 		{
 			if(iPTextAddress!=null)
-			{
-				this.iPTextV4Address=new ASNIA5String();
-				this.iPTextV4Address.setValue(iPTextAddress);
-			}
+				this.iPTextV4Address=new ASNIA5String(iPTextAddress);			
 		}
 		else
 		{
 			if(iPTextAddress!=null)
-			{
-				this.iPTextV6Address=new ASNIA5String();
-				this.iPTextV6Address.setValue(iPTextAddress);
-			}
+				this.iPTextV6Address=new ASNIA5String(iPTextAddress);			
 		}
 	}
 

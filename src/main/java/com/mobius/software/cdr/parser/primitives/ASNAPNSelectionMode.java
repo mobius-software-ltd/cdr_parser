@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNAPNSelectionMode extends ASNEnumerated 
 {
-	public void setType(APNSelectionMode t) 
+	public ASNAPNSelectionMode()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+		
+	}
+	
+	public ASNAPNSelectionMode(APNSelectionMode t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public APNSelectionMode getType() 

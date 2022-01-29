@@ -24,9 +24,13 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNSubscriptionIDType extends ASNEnumerated 
 {
-	public void setType(SubscriptionIDType t) 
+	public ASNSubscriptionIDType() {
+		
+	}
+	
+	public ASNSubscriptionIDType(SubscriptionIDType t) 
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public SubscriptionIDType getType() 

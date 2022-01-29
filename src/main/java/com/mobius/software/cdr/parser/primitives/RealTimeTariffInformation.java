@@ -45,10 +45,8 @@ public class RealTimeTariffInformation
 	{
 		this.tariffInformation=tariffInformation;
 		
-		if(tariffXml!=null) {
-			this.tariffXml=new ASNUTF8String();
-			this.tariffXml.setValue(tariffXml);
-		}
+		if(tariffXml!=null)
+			this.tariffXml=new ASNUTF8String(tariffXml);		
 	}
 
 	public TariffInformation getTariffInformation() 

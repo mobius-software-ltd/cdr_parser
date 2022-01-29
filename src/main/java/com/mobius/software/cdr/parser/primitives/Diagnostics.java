@@ -71,10 +71,7 @@ public class Diagnostics
 		if(gsm0408Cause==null)
 			this.gsm0408Cause=null;
 		else
-		{
-			this.gsm0408Cause = new ASNInteger();
-			this.gsm0408Cause.setValue(gsm0408Cause.longValue());
-		}
+			this.gsm0408Cause = new ASNInteger(gsm0408Cause.longValue());
 		
 		setGsm0902MapErrorValue(null);
 		setItutQ767Cause(null);
@@ -97,10 +94,7 @@ public class Diagnostics
 		if(gsm0902MapErrorValue==null)
 			this.gsm0902MapErrorValue=null;
 		else
-		{
-			this.gsm0902MapErrorValue = new ASNInteger();
-			this.gsm0902MapErrorValue.setValue(gsm0902MapErrorValue.longValue());
-		}
+			this.gsm0902MapErrorValue = new ASNInteger(gsm0902MapErrorValue.longValue());
 		
 		setGsm0408Cause(null);
 		setItutQ767Cause(null);
@@ -123,10 +117,7 @@ public class Diagnostics
 		if(itutQ767Cause==null)
 			this.itutQ767Cause=null;
 		else
-		{
-			this.itutQ767Cause = new ASNInteger();
-			this.itutQ767Cause.setValue(itutQ767Cause.longValue());
-		}
+			this.itutQ767Cause = new ASNInteger(itutQ767Cause.longValue());
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -155,10 +146,7 @@ public class Diagnostics
 		if(networkSpecificCause==null)
 			this.networkSpecificCause=null;
 		else
-		{
-			this.networkSpecificCause=new ASNOctetString();
-			this.networkSpecificCause.setValue(Unpooled.wrappedBuffer(networkSpecificCause));
-		}
+			this.networkSpecificCause=new ASNOctetString(Unpooled.wrappedBuffer(networkSpecificCause));
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -187,10 +175,7 @@ public class Diagnostics
 		if(manufacturerSpecificCause==null)
 			this.manufacturerSpecificCause=null;
 		else
-		{
-			this.manufacturerSpecificCause=new ASNOctetString();
-			this.manufacturerSpecificCause.setValue(Unpooled.wrappedBuffer(manufacturerSpecificCause));
-		}
+			this.manufacturerSpecificCause=new ASNOctetString(Unpooled.wrappedBuffer(manufacturerSpecificCause));
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -213,10 +198,7 @@ public class Diagnostics
 		if(positionMethodFailureCause==null)
 			this.positionMethodFailureCause=null;
 		else
-		{
-			this.positionMethodFailureCause = new ASNInteger();
-			this.positionMethodFailureCause.setValue(positionMethodFailureCause.longValue());
-		}
+			this.positionMethodFailureCause = new ASNInteger(positionMethodFailureCause.longValue());
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -239,10 +221,7 @@ public class Diagnostics
 		if(unauthorizedLCSClientCause==null)
 			this.unauthorizedLCSClientCause=null;
 		else
-		{
-			this.unauthorizedLCSClientCause = new ASNInteger();
-			this.unauthorizedLCSClientCause.setValue(unauthorizedLCSClientCause.longValue());
-		}
+			this.unauthorizedLCSClientCause = new ASNInteger(unauthorizedLCSClientCause.longValue());
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -282,14 +261,14 @@ public class Diagnostics
         if(this.getNetworkSpecificCause()!=null)
         {
         	sb.append("networkSpecificCause=[");
-            sb.append(ASNOctetString.printDataArr(getNetworkSpecificCause()));
+            sb.append(networkSpecificCause.printDataArr());
             sb.append("]");
         }
         
         if(this.getManufacturerSpecificCause()!=null)
         {
         	sb.append("manufacturerSpecificCause=[");
-            sb.append(ASNOctetString.printDataArr(getManufacturerSpecificCause()));
+            sb.append(manufacturerSpecificCause.printDataArr());
             sb.append("]");
         }
         

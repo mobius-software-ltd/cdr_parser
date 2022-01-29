@@ -44,16 +44,10 @@ public class TrunkGroupID
 	public TrunkGroupID(String incoming,String outgoing)
 	{
 		if(incoming!=null)
-		{
-			this.incoming=new ASNGraphicString();
-			this.incoming.setValue(incoming);
-		}
+			this.incoming=new ASNGraphicString(incoming);
 		
 		if(outgoing!=null)
-		{
-			this.outgoing=new ASNGraphicString();
-			this.outgoing.setValue(outgoing);
-		}
+			this.outgoing=new ASNGraphicString(outgoing);		
 	}
 
 	public String getIncoming() 

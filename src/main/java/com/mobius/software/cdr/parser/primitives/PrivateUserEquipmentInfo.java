@@ -50,16 +50,10 @@ public class PrivateUserEquipmentInfo
 	public PrivateUserEquipmentInfo(PrivateUserEquipmentInfoType privateUserEquipmentInfoType,String privateUserEquipmentInfoValue)
 	{
 		if(privateUserEquipmentInfoType!=null)
-		{
-			this.privateUserEquipmentInfoType=new ASNPrivateUserEquipmentInfoType();
-			this.privateUserEquipmentInfoType.setType(privateUserEquipmentInfoType);
-		}
+			this.privateUserEquipmentInfoType=new ASNPrivateUserEquipmentInfoType(privateUserEquipmentInfoType);
 		
 		if(privateUserEquipmentInfoValue!=null)
-		{
-			this.privateUserEquipmentInfoValue=new ASNUTF8String();
-			this.privateUserEquipmentInfoValue.setValue(privateUserEquipmentInfoValue);
-		}
+			this.privateUserEquipmentInfoValue=new ASNUTF8String(privateUserEquipmentInfoValue);
 	}
 
 	public PrivateUserEquipmentInfoType getPrivateUserEquipmentInfoType() 

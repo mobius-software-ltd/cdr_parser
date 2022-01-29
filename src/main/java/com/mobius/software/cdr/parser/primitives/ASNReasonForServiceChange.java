@@ -24,9 +24,13 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNReasonForServiceChange extends ASNEnumerated 
 {
-	public void setType(ReasonForServiceChange t) 
+	public ASNReasonForServiceChange()
 	{
-		super.setValue(Long.valueOf(t.getCode()));
+	}
+	
+	public ASNReasonForServiceChange(ReasonForServiceChange t) 
+	{
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public ReasonForServiceChange getType() 

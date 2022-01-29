@@ -53,22 +53,13 @@ public class MessageBody
 	public MessageBody(String contentType,String contentDisposition,Integer contentLength,InvolvedParty originator)
 	{
 		if(contentType!=null)
-		{
-			this.contentType=new ASNGraphicString();
-			this.contentType.setValue(contentType);
-		}
+			this.contentType=new ASNGraphicString(contentType);
 		
 		if(contentDisposition!=null)
-		{
-			this.contentDisposition=new ASNGraphicString();
-			this.contentDisposition.setValue(contentDisposition);
-		}
+			this.contentDisposition=new ASNGraphicString(contentDisposition);
 		
 		if(contentLength!=null)
-		{
-			this.contentLength=new ASNInteger();
-			this.contentLength.setValue(contentLength.longValue());
-		}
+			this.contentLength=new ASNInteger(contentLength.longValue());
 		
 		if(originator!=null)
 			this.originator=new InvolvedPartyWrapper(originator);			

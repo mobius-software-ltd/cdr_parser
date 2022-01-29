@@ -50,16 +50,10 @@ public class TimeQuotaMechanism
 	public TimeQuotaMechanism(TimeQuotaType timeQuotaType,Integer baseTimeInterval)
 	{
 		if(timeQuotaType!=null)
-		{
-			this.timeQuotaType=new ASNTimeQuotaType();
-			this.timeQuotaType.setType(timeQuotaType);
-		}
+			this.timeQuotaType=new ASNTimeQuotaType(timeQuotaType);
 		
 		if(baseTimeInterval!=null)
-		{
-			this.baseTimeInterval=new ASNInteger();
-			this.baseTimeInterval.setValue(baseTimeInterval.longValue());
-		}
+			this.baseTimeInterval=new ASNInteger(baseTimeInterval.longValue());		
 	}
 
 	public TimeQuotaType getTimeQuotaType() 

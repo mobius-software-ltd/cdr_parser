@@ -23,8 +23,12 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNSubscriberRole extends ASNEnumerated {
-	public void setType(SubscriberRole t) {
-		super.setValue(Long.valueOf(t.getType()));
+	public ASNSubscriberRole() {
+		
+	}
+	
+	public ASNSubscriberRole(SubscriberRole t) {
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public SubscriberRole getType() {

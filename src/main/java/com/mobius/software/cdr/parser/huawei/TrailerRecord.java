@@ -77,16 +77,10 @@ public class TrailerRecord
 		this.lastCallDateTime=lastCallDateTime;
 		
 		if(noOfRecords!=null)
-		{
-			this.noOfRecords=new ASNInteger();
-			this.noOfRecords.setValue(noOfRecords.longValue());
-		}
+			this.noOfRecords=new ASNInteger(noOfRecords.longValue());
 		
 		if(extensions!=null)
-		{
-			this.extensions=new ASNOctetString();
-			this.extensions.setValue(Unpooled.wrappedBuffer(extensions));
-		}
+			this.extensions=new ASNOctetString(Unpooled.wrappedBuffer(extensions));		
 	}
 	
 	public TimeStamp getProductionDateTime() 
@@ -172,7 +166,7 @@ public class TrailerRecord
         if(extensions!=null && extensions.getValue()!=null)
         {
 	        sb.append("extensions=[");
-	        sb.append(ASNOctetString.printDataArr(getExtensions()));
+	        sb.append(extensions.printDataArr());
 	        sb.append("]");
         }
         

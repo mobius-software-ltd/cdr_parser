@@ -50,16 +50,10 @@ public class SubscriberEquipmentNumber
 	public SubscriberEquipmentNumber(SubscriberEquipmentType subscriberEquipmentType,byte[] subscriberEquipmentNumberData)
 	{
 		if(subscriberEquipmentType!=null)
-		{
-			this.subscriberEquipmentType=new ASNSubscriberEquipmentType();
-			this.subscriberEquipmentType.setType(subscriberEquipmentType);
-		}
+			this.subscriberEquipmentType=new ASNSubscriberEquipmentType(subscriberEquipmentType);
 		
 		if(subscriberEquipmentNumberData!=null)
-		{
-			this.subscriberEquipmentNumberData=new ASNOctetString();
-			this.subscriberEquipmentNumberData.setValue(Unpooled.wrappedBuffer(subscriberEquipmentNumberData));
-		}
+			this.subscriberEquipmentNumberData=new ASNOctetString(Unpooled.wrappedBuffer(subscriberEquipmentNumberData));		
 	}
 
 	public SubscriberEquipmentType getSubscriberEquipmentType() 
@@ -99,7 +93,7 @@ public class SubscriberEquipmentNumber
         if(subscriberEquipmentNumberData!=null && subscriberEquipmentNumberData.getValue()!=null)
         {
 	        sb.append("subscriberEquipmentNumberData=[");
-	        sb.append(ASNOctetString.printDataArr(getSubscriberEquipmentNumberData()));
+	        sb.append(subscriberEquipmentNumberData.printDataArr());
 	        sb.append("]");
         }
         

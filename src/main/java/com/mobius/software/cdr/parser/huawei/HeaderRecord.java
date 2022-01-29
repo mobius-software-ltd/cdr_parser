@@ -62,10 +62,7 @@ public class HeaderRecord
 		this.recordingEntity=recordingEntity;
 		
 		if(extensions!=null)
-		{
-			this.extensions=new ASNOctetString();
-			this.extensions.setValue(Unpooled.wrappedBuffer(extensions));
-		}
+			this.extensions=new ASNOctetString(Unpooled.wrappedBuffer(extensions));		
 	}
 	
 	public TimeStamp getProductionDateTime() 
@@ -112,7 +109,7 @@ public class HeaderRecord
         if(extensions!=null && extensions.getValue()!=null)
         {
 	        sb.append("extensions=[");
-	        sb.append(ASNOctetString.printDataArr(getExtensions()));
+	        sb.append(extensions.printDataArr());
 	        sb.append("]");
         }
         

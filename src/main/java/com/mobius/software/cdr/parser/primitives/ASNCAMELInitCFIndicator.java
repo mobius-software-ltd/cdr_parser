@@ -23,8 +23,13 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNCAMELInitCFIndicator extends ASNEnumerated {
-	public void setType(CAMELInitCFIndicator t) {
-		super.setValue(Long.valueOf(t.getCode()));
+	public ASNCAMELInitCFIndicator()
+	{
+		
+	}
+	
+	public ASNCAMELInitCFIndicator(CAMELInitCFIndicator t) {
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public CAMELInitCFIndicator getCode() {

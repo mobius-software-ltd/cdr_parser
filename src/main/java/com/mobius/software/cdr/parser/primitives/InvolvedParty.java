@@ -57,28 +57,16 @@ public class InvolvedParty
 	public InvolvedParty(String sipURI,String telURI,String urn,String isdnE164)
 	{
 		if(sipURI!=null)
-		{
-			this.sipURI=new ASNGraphicString();
-			this.sipURI.setValue(sipURI);
-		}
+			this.sipURI=new ASNGraphicString(sipURI);
 		
 		if(telURI!=null)
-		{
-			this.telURI=new ASNGraphicString();
-			this.telURI.setValue(telURI);
-		}
+			this.telURI=new ASNGraphicString(telURI);
 		
 		if(urn!=null)
-		{
-			this.urn=new ASNGraphicString();
-			this.urn.setValue(urn);
-		}
+			this.urn=new ASNGraphicString(urn);
 		
 		if(isdnE164!=null)
-		{
-			this.isdnE164=new ASNGraphicString();
-			this.isdnE164.setValue(isdnE164);
-		}
+			this.isdnE164=new ASNGraphicString(isdnE164);		
 	}
 
 	public String getSipURI() 

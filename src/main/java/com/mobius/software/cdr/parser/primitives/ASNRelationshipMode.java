@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNRelationshipMode extends ASNEnumerated 
 {
-	public void setType(RelationshipMode t) 
+	public ASNRelationshipMode()
 	{
-		super.setValue(Long.valueOf(t.getMode()));
+		
+	}
+	
+	public ASNRelationshipMode(RelationshipMode t) 
+	{
+		super(Long.valueOf(t.getMode()));
 	}
 	
 	public RelationshipMode getType() 

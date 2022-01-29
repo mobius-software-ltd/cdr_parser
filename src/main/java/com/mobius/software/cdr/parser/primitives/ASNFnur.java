@@ -23,8 +23,12 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNFnur extends ASNEnumerated {
-	public void setType(Fnur t) {
-		super.setValue(Long.valueOf(t.getCode()));
+	public ASNFnur() {
+		
+	}
+	
+	public ASNFnur(Fnur t) {
+		super(Long.valueOf(t.getCode()));
 	}
 	
 	public Fnur getType() {

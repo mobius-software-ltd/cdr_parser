@@ -24,9 +24,14 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  */
 public class ASNPartialRecordType extends ASNEnumerated 
 {
-	public void setType(PartialRecordType t) 
+	public ASNPartialRecordType()
 	{
-		super.setValue(Long.valueOf(t.getType()));
+		
+	}
+	
+	public ASNPartialRecordType(PartialRecordType t) 
+	{
+		super(Long.valueOf(t.getType()));
 	}
 	
 	public PartialRecordType getType() 

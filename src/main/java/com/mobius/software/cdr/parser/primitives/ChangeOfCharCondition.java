@@ -82,42 +82,24 @@ public class ChangeOfCharCondition
 			ChangeCondition changeCondition,TimeStamp changeTime,byte[] userLocationInformation,EPCQoSInformation ePCQoSInformation)
 	{
 		if(qosRequested!=null)
-		{
-			this.qosRequested=new ASNOctetString();
-			this.qosRequested.setValue(Unpooled.wrappedBuffer(qosRequested));
-		}
+			this.qosRequested=new ASNOctetString(Unpooled.wrappedBuffer(qosRequested));
 		
 		if(qosNegotiated!=null)
-		{
-			this.qosNegotiated=new ASNOctetString();
-			this.qosNegotiated.setValue(Unpooled.wrappedBuffer(qosNegotiated));
-		}
+			this.qosNegotiated=new ASNOctetString(Unpooled.wrappedBuffer(qosNegotiated));
 		
 		if(dataVolumeGPRSUplink!=null)
-		{
-			this.dataVolumeGPRSUplink=new ASNInteger();
-			this.dataVolumeGPRSUplink.setValue(dataVolumeGPRSUplink.longValue());
-		}
+			this.dataVolumeGPRSUplink=new ASNInteger(dataVolumeGPRSUplink.longValue());
 		
 		if(dataVolumeGPRSDownlink!=null)
-		{
-			this.dataVolumeGPRSDownlink=new ASNInteger();
-			this.dataVolumeGPRSDownlink.setValue(dataVolumeGPRSDownlink.longValue());
-		}
+			this.dataVolumeGPRSDownlink=new ASNInteger(dataVolumeGPRSDownlink.longValue());
 		
 		if(changeCondition!=null)
-		{
-			this.changeCondition=new ASNChangeCondition();
-			this.changeCondition.setType(changeCondition);
-		}
+			this.changeCondition=new ASNChangeCondition(changeCondition);
 		
 		this.changeTime=changeTime;
 		
 		if(userLocationInformation!=null)
-		{
-			this.userLocationInformation=new ASNOctetString();
-			this.userLocationInformation.setValue(Unpooled.wrappedBuffer(userLocationInformation));
-		}
+			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));		
 		
 		this.ePCQoSInformation=ePCQoSInformation;
 	}
@@ -206,14 +188,14 @@ public class ChangeOfCharCondition
         if(qosRequested!=null && qosRequested.getValue()!=null)
         {
 	        sb.append("qosRequested=[");
-	        sb.append(ASNOctetString.printDataArr(getQOSRequested()));
+	        sb.append(qosRequested.printDataArr());
 	        sb.append("]");
         }
         
         if(qosNegotiated!=null && qosNegotiated.getValue()!=null)
         {
 	        sb.append("qosNegotiated=[");
-	        sb.append(ASNOctetString.printDataArr(getQOSNegotiated()));
+	        sb.append(qosNegotiated.printDataArr());
 	        sb.append("]");
         }
         
@@ -248,7 +230,7 @@ public class ChangeOfCharCondition
         if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
         {
 	        sb.append("userLocationInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
+	        sb.append(userLocationInformation.printDataArr());
 	        sb.append("]");
         }
         

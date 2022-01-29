@@ -50,15 +50,11 @@ public class TariffInformation
 	
 	public TariffInformation(Integer currencyCode,Double scaleFactor,List<RateElement> rateElements)
 	{
-		if(currencyCode!=null) {
-			this.currencyCode=new ASNInteger();
-			this.currencyCode.setValue(currencyCode.longValue());
-		}
+		if(currencyCode!=null)
+			this.currencyCode=new ASNInteger(currencyCode.longValue());
 		
-		if(scaleFactor!=null) {
-			this.scaleFactor=new ASNReal();
-			this.scaleFactor.setValue(scaleFactor);
-		}
+		if(scaleFactor!=null)
+			this.scaleFactor=new ASNReal(scaleFactor);		
 		
 		this.rateElements=rateElements;			
 	}

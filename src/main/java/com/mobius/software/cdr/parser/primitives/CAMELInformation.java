@@ -120,56 +120,32 @@ public class CAMELInformation
 		this.releaseTime=releaseTime;
 		
 		if(callDuration!=null)
-		{
-			this.callDuration=new ASNInteger();
-			this.callDuration.setValue(callDuration.longValue());
-		}
+			this.callDuration=new ASNInteger(callDuration.longValue());
 		
 		if(dataVolume!=null)
-		{
-			this.dataVolume=new ASNInteger();
-			this.dataVolume.setValue(dataVolume.longValue());
-		}
+			this.dataVolume=new ASNInteger(dataVolume.longValue());
 		
 		if(camelInitCFIndicator!=null)
-		{
-			this.camelInitCFIndicator=new ASNCAMELInitCFIndicator();
-			this.camelInitCFIndicator.setType(camelInitCFIndicator);
-		}
+			this.camelInitCFIndicator=new ASNCAMELInitCFIndicator(camelInitCFIndicator);
 		
 		if(causeForTerm!=null)
-		{
-			this.causeForTerm=new ASNCauseForRecClosing();
-			this.causeForTerm.setType(causeForTerm);
-		}
+			this.causeForTerm=new ASNCauseForRecClosing(causeForTerm);
 		
 		this.changeParameters=changeParameters;
 		
 		if(freeFormatData!=null)
-		{
-			this.freeFormatData=new ASNOctetString();
-			this.freeFormatData.setValue(Unpooled.wrappedBuffer(freeFormatData));
-		}
+			this.freeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData));
 		
 		this.diagnostics=diagnostics;
 		
 		if(freeFormatDataAppend!=null)
-		{
-			this.freeFormatDataAppend=new ASNBoolean();
-			this.freeFormatDataAppend.setValue(freeFormatDataAppend);
-		}
+			this.freeFormatDataAppend=new ASNBoolean(freeFormatDataAppend);
 		
 		if(freeFormatData2!=null)
-		{
-			this.freeFormatData2=new ASNOctetString();
-			this.freeFormatData2.setValue(Unpooled.wrappedBuffer(freeFormatData2));
-		}
+			this.freeFormatData2=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData2));
 		
 		if(freeFormatDataAppend2!=null)
-		{
-			this.freeFormatDataAppend2=new ASNBoolean();
-			this.freeFormatDataAppend2.setValue(freeFormatDataAppend2);
-		}				
+			this.freeFormatDataAppend2=new ASNBoolean(freeFormatDataAppend2);				
 	}
 
 	public DestinationRoutingAddressImpl getCamelDestinationNumber() 
@@ -379,7 +355,7 @@ public class CAMELInformation
         if(freeFormatData!=null && freeFormatData.getValue()!=null)
         {
 	        sb.append("freeFormatData=[");
-	        sb.append(ASNOctetString.printDataArr(getFreeFormatData()));
+	        sb.append(freeFormatData.printDataArr());
 	        sb.append("]");
         }
         
@@ -400,7 +376,7 @@ public class CAMELInformation
         if(freeFormatData2!=null && freeFormatData2.getValue()!=null)
         {
 	        sb.append("freeFormatData2=[");
-	        sb.append(ASNOctetString.printDataArr(getFreeFormatData2()));
+	        sb.append(freeFormatData2.printDataArr());
 	        sb.append("]");
         }
         

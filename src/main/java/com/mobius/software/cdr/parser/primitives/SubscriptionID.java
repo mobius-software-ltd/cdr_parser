@@ -50,16 +50,10 @@ public class SubscriptionID
 	public SubscriptionID(SubscriptionIDType subscriptionIDType,String subscriptionIDData)
 	{
 		if(subscriptionIDType!=null)
-		{
-			this.subscriptionIDType=new ASNSubscriptionIDType();
-			this.subscriptionIDType.setType(subscriptionIDType);
-		}
+			this.subscriptionIDType=new ASNSubscriptionIDType(subscriptionIDType);
 		
 		if(subscriptionIDData!=null)
-		{
-			this.subscriptionIDData=new ASNUTF8String();
-			this.subscriptionIDData.setValue(subscriptionIDData);
-		}
+			this.subscriptionIDData=new ASNUTF8String(subscriptionIDData);
 	}
 
 	public SubscriptionIDType getSubscriptionIDType() 

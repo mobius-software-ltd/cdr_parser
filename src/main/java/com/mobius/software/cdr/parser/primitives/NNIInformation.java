@@ -50,20 +50,14 @@ public class NNIInformation
 	
 	public NNIInformation(SessionDirection sessionDirection,NNIType nniType,RelationshipMode relationshipMode,IPAddress neighbourNodeAddress)
 	{
-		if(sessionDirection!=null) {
-			this.sessionDirection=new ASNSessionDirection();
-			this.sessionDirection.setType(sessionDirection);
-		}
+		if(sessionDirection!=null)
+			this.sessionDirection=new ASNSessionDirection(sessionDirection);
 		
-		if(nniType!=null) {
-			this.nniType=new ASNNNIType();
-			this.nniType.setType(nniType);
-		}
+		if(nniType!=null)
+			this.nniType=new ASNNNIType(nniType);
 		
-		if(relationshipMode!=null) {
-			this.relationshipMode=new ASNRelationshipMode();
-			this.relationshipMode.setType(relationshipMode);
-		}
+		if(relationshipMode!=null)
+			this.relationshipMode=new ASNRelationshipMode(relationshipMode);
 		
 		if(neighbourNodeAddress!=null) {
 			this.neighbourNodeAddress=new IPAddressWrapper(neighbourNodeAddress);

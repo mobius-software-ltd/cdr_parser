@@ -229,34 +229,22 @@ public class ICSCFRecord
 			List<String> fEIdentifierList) 
 	{
 		if(recordType!=null)
-		{
-			this.recordType = new ASNRecordType();
-			this.recordType.setType(recordType);
-		}
+			this.recordType = new ASNRecordType(recordType);
 		
 		if(retransmission)
 			this.retransmission = new ASNNull();
 		
 		if(sipMethod!=null)
-		{
-			this.sipMethod = new ASNGraphicString();
-			this.sipMethod.setValue(sipMethod);
-		}
+			this.sipMethod = new ASNGraphicString(sipMethod);
 		
 		if(roleOfNode!=null)
-		{
-			this.roleOfNode = new ASNRoleOfNode();
-			this.roleOfNode.setType(roleOfNode);
-		}
+			this.roleOfNode = new ASNRoleOfNode(roleOfNode);
 		
 		if(nodeAddress!=null)
 			this.nodeAddress = new NodeAddressWrapper(nodeAddress);
 		
 		if(sessionID!=null)
-		{
-			this.sessionID = new ASNGraphicString();
-			this.sessionID.setValue(sessionID);
-		}
+			this.sessionID = new ASNGraphicString(sessionID);
 		
 		if(listOfCallingPartyAddress!=null)
 			this.listOfCallingPartyAddress = new InvolvedPartyListWrapper(listOfCallingPartyAddress);
@@ -270,107 +258,59 @@ public class ICSCFRecord
 			this.interOperatorIdentifiers = new InterOperatorIdentifiersListWrapper(interOperatorIdentifiers);
 		
 		if(localSequenceNumber!=null)
-		{
-			this.localSequenceNumber = new ASNInteger();
-			this.localSequenceNumber.setValue(localSequenceNumber.longValue());
-		}
+			this.localSequenceNumber = new ASNInteger(localSequenceNumber.longValue());
 		
 		if(causeForRecordClosing!=null)
-		{
-			this.causeForRecordClosing = new ASNCauseForRecordClosing();
-			this.causeForRecordClosing.setType(causeForRecordClosing);
-		}
+			this.causeForRecordClosing = new ASNCauseForRecordClosing(causeForRecordClosing);
 		
 		this.incompleteCDRIndication = incompleteCDRIndication;
 		
 		if(imsChargingIdentifier!=null)
-		{
-			this.imsChargingIdentifier = new ASNOctetString();
-			this.imsChargingIdentifier.setValue(Unpooled.wrappedBuffer(imsChargingIdentifier));
-		}
+			this.imsChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsChargingIdentifier));
 		
 		if(serviceReasonReturnCode!=null)
-		{
-			this.serviceReasonReturnCode = new ASNUTF8String();
-			this.serviceReasonReturnCode.setValue(serviceReasonReturnCode);
-		}
+			this.serviceReasonReturnCode = new ASNUTF8String(serviceReasonReturnCode);
 		
 		if(recordExtensions!=null)
-		{
-			this.recordExtensions = new ASNOctetString();
-			this.recordExtensions.setValue(Unpooled.wrappedBuffer(recordExtensions));
-		}
+			this.recordExtensions = new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
 		
 		if(expiresInformation!=null)
-		{
-			this.expiresInformation = new ASNInteger();
-			this.expiresInformation.setValue(expiresInformation.longValue());
-		}
+			this.expiresInformation = new ASNInteger(expiresInformation.longValue());
 		
 		if(listOfAssociatedURI!=null)
 			this.listOfAssociatedURI = new InvolvedPartyListWrapper(listOfAssociatedURI);
 		
 		if(event!=null)
-		{
-			this.event = new ASNUTF8String();
-			this.event.setValue(event);
-		}
+			this.event = new ASNUTF8String(event);
 		
 		if(accessNetworkInformation!=null)
-		{
-			this.accessNetworkInformation = new ASNOctetString();
-			this.accessNetworkInformation.setValue(Unpooled.wrappedBuffer(accessNetworkInformation));
-		}
+			this.accessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation));
 		
 		if(serviceContextID!=null)
-		{
-			this.serviceContextID = new ASNUTF8String();
-			this.serviceContextID.setValue(serviceContextID);
-		}
+			this.serviceContextID = new ASNUTF8String(serviceContextID);
 		
 		if(numberPortabilityRouting!=null)
-		{
-			this.numberPortabilityRouting = new ASNGraphicString();
-			this.numberPortabilityRouting.setValue(numberPortabilityRouting);
-		}
+			this.numberPortabilityRouting = new ASNGraphicString(numberPortabilityRouting);
 		
 		if(carrierSelectRouting!=null)
-		{
-			this.carrierSelectRouting = new ASNGraphicString();
-			this.carrierSelectRouting.setValue(carrierSelectRouting);
-		}
+			this.carrierSelectRouting = new ASNGraphicString(carrierSelectRouting);
 		
 		if(sessionPriority!=null)
-		{
-			this.sessionPriority = new ASNSessionPriority();
-			this.sessionPriority.setType(sessionPriority);
-		}
+			this.sessionPriority = new ASNSessionPriority(sessionPriority);
 		
 		if(serviceRequestTimeStampFraction!=null)
-		{
-			this.serviceRequestTimeStampFraction = new ASNInteger();
-			this.serviceRequestTimeStampFraction.setValue(serviceRequestTimeStampFraction.longValue());
-		}
+			this.serviceRequestTimeStampFraction = new ASNInteger(serviceRequestTimeStampFraction.longValue());
 		
 		if(transitIOIList!=null)
-		{
-			this.transitIOIList=new ASNGraphicString();
-			this.transitIOIList.setValue(transitIOIList);
-		}
+			this.transitIOIList=new ASNGraphicString(transitIOIList);
 		
 		if(userLocationInformation!=null)
-		{
-			this.userLocationInformation = new ASNOctetString();
-			this.userLocationInformation.setValue(Unpooled.wrappedBuffer(userLocationInformation));
-		}
+			this.userLocationInformation = new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
 		
 		this.msTimeZone = msTimeZone;
 		
 		if(fromAddress!=null)
-		{
-			this.fromAddress = new ASNOctetString();
-			this.fromAddress.setValue(Unpooled.wrappedBuffer(fromAddress));
-		}
+			this.fromAddress = new ASNOctetString(Unpooled.wrappedBuffer(fromAddress));
 		
 		if(imsEmergencyIndicator)
 			this.imsEmergencyIndicator = new ASNNull();
@@ -380,38 +320,27 @@ public class ICSCFRecord
 			this.listOfReasonHeader = new ArrayList<ASNGraphicString>();
 			for(String curr:listOfReasonHeader)
 			{
-				ASNGraphicString currStr=new ASNGraphicString();
-				currStr.setValue(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr);
 				this.listOfReasonHeader.add(currStr);
 			}
 		}
 		
 		if(additionalAccessNetworkInformation!=null)
-		{
-			this.additionalAccessNetworkInformation = new ASNOctetString();
-			this.additionalAccessNetworkInformation.setValue(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
-		}
+			this.additionalAccessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
 		
 		if(routeHeaderTransmitted!=null)
-		{
-			this.routeHeaderTransmitted = new ASNOctetString();
-			this.routeHeaderTransmitted.setValue(Unpooled.wrappedBuffer(routeHeaderTransmitted));
-		}
+			this.routeHeaderTransmitted = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderTransmitted));
 		
 		this.scscfInformation=scscfInformation;
 		if(cellularNetworkInformation!=null)
-		{
-			this.cellularNetworkInformation = new ASNOctetString();
-			this.cellularNetworkInformation.setValue(Unpooled.wrappedBuffer(cellularNetworkInformation));
-		}
+			this.cellularNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation));
 		
 		if(fEIdentifierList!=null)
 		{
 			this.fEIdentifierList = new ArrayList<ASNGraphicString>();
 			for(String curr:fEIdentifierList)
 			{
-				ASNGraphicString currStr=new ASNGraphicString();
-				currStr.setValue(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr);
 				this.fEIdentifierList.add(currStr);
 			}
 		}
@@ -851,7 +780,7 @@ public class ICSCFRecord
         if(imsChargingIdentifier!=null && imsChargingIdentifier.getValue()!=null)
         {
 	        sb.append("imsChargingIdentifier=[");
-	        sb.append(ASNOctetString.printDataArr(getImsChargingIdentifier()));
+	        sb.append(imsChargingIdentifier.printDataArr());
 	        sb.append("]");
         }
         
@@ -872,7 +801,7 @@ public class ICSCFRecord
         if(recordExtensions!=null && recordExtensions.getValue()!=null)
         {
 	        sb.append("recordExtensions=[");
-	        sb.append(ASNOctetString.printDataArr(getRecordExtensions()));
+	        sb.append(recordExtensions.printDataArr());
 	        sb.append("]");
         }
         
@@ -908,7 +837,7 @@ public class ICSCFRecord
         if(accessNetworkInformation!=null && accessNetworkInformation.getValue()!=null)
         {
 	        sb.append("accessNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getAccessNetworkInformation()));
+	        sb.append(accessNetworkInformation.printDataArr());
 	        sb.append("]");
         }
         
@@ -957,7 +886,7 @@ public class ICSCFRecord
         if(userLocationInformation!=null && userLocationInformation.getValue()!=null)
         {
 	        sb.append("userLocationInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getUserLocationInformation()));
+	        sb.append(userLocationInformation.printDataArr());
 	        sb.append("]");
         }
         
@@ -971,7 +900,7 @@ public class ICSCFRecord
         if(fromAddress!=null && fromAddress.getValue()!=null)
         {
 	        sb.append("fromAddress=[");
-	        sb.append(ASNOctetString.printDataArr(getFromAddress()));
+	        sb.append(fromAddress.printDataArr());
 	        sb.append("]");
         }
         
@@ -998,14 +927,14 @@ public class ICSCFRecord
         if(additionalAccessNetworkInformation!=null && additionalAccessNetworkInformation.getValue()!=null)
         {
 	        sb.append("additionalAccessNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getAdditionalAccessNetworkInformation()));
+	        sb.append(additionalAccessNetworkInformation.printDataArr());
 	        sb.append("]");
         }
         
         if(routeHeaderTransmitted!=null && routeHeaderTransmitted.getValue()!=null)
         {
 	        sb.append("routeHeaderTransmitted=[");
-	        sb.append(ASNOctetString.printDataArr(getRouteHeaderTransmitted()));
+	        sb.append(routeHeaderTransmitted.printDataArr());
 	        sb.append("]");
         }
         
@@ -1019,7 +948,7 @@ public class ICSCFRecord
         if(cellularNetworkInformation!=null && cellularNetworkInformation.getValue()!=null)
         {
 	        sb.append("cellularNetworkInformation=[");
-	        sb.append(ASNOctetString.printDataArr(getCellularNetworkInformation()));
+	        sb.append(cellularNetworkInformation.printDataArr());
 	        sb.append("]");
         }
         

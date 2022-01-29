@@ -41,16 +41,10 @@ public class PSFurnishChargingInformation
 	public PSFurnishChargingInformation(byte[] freeFormData,Boolean pSFFDAppendIndicator)
 	{
 		if(freeFormData!=null)
-		{
-			this.pSFreeFormatData=new ASNOctetString();
-			this.pSFreeFormatData.setValue(Unpooled.wrappedBuffer(freeFormData));
-		}
+			this.pSFreeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormData));
 		
 		if(pSFFDAppendIndicator!=null)
-		{
-			this.pSFFDAppendIndicator=new ASNBoolean();
-			this.pSFFDAppendIndicator.setValue(pSFFDAppendIndicator);
-		}
+			this.pSFFDAppendIndicator=new ASNBoolean(pSFFDAppendIndicator);		
 	}
 
 	public byte[] getpSFreeFormatData() 
@@ -83,7 +77,7 @@ public class PSFurnishChargingInformation
         if(pSFreeFormatData!=null && pSFreeFormatData.getValue()!=null)
         {
 	        sb.append("freeFormData=[");
-	        sb.append(ASNOctetString.printDataArr(getpSFreeFormatData()));
+	        sb.append(pSFreeFormatData.printDataArr());
 	        sb.append("]");
         }
         

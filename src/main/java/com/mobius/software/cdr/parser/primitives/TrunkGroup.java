@@ -50,16 +50,10 @@ public class TrunkGroup
 	public TrunkGroup(Integer tkgpNumber,String tkgpName)
 	{
 		if(tkgpNumber!=null)
-		{
-			this.tkgpNumber=new ASNInteger();
-			this.tkgpNumber.setValue(tkgpNumber.longValue());
-		}
+			this.tkgpNumber=new ASNInteger(tkgpNumber.longValue());
 		
 		if(tkgpName!=null)
-		{
-			this.tkgpName=new ASNGraphicString();
-			this.tkgpName.setValue(tkgpName);
-		}
+			this.tkgpName=new ASNGraphicString(tkgpName);		
 	}
 
 	public Integer getTkgpNumber() 

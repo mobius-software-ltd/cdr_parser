@@ -23,8 +23,12 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  *
  */
 public class ASNStatus extends ASNEnumerated {
-	public void setType(Status t) {
-		super.setValue(Long.valueOf(t.getStatus()));
+	public ASNStatus() {
+		
+	}
+	
+	public ASNStatus(Status t) {
+		super(Long.valueOf(t.getStatus()));
 	}
 	
 	public Status getType() {
