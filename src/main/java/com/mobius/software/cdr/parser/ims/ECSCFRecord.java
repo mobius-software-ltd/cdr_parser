@@ -110,6 +110,12 @@ ECSCFRecord ::= SET
  cellularNetworkInformation [64] OCTET STRING OPTIONAL,
  fEIdentifierList [65] FEIdentifierList OPTIONAL
 } 
+
+HAWEI ADDITIONAL DATA
+{
+ ringing-duration [200] INTEGER OPTIONAL 
+ urgent-call-ID [205] INTEGER OPTIONAL
+}
  */
 /**
  * @author yulian.oifa
@@ -262,6 +268,12 @@ public class ECSCFRecord
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 65,constructed = false,index = -1)
 	private List<ASNGraphicString> fEIdentifierList;
 	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 200,constructed = false,index = -1)
+	private ASNInteger duration;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 205,constructed = false,index = -1)
+	private ASNInteger urgentCallID;
+	
 	public ECSCFRecord()
 	{
 		
@@ -290,7 +302,7 @@ public class ECSCFRecord
 			byte[] additionalAccessNetworkInformation,
 			List<AccessNetworkInfoChange> listOfAccessNetworkInfoChange,
 			List<CalledIdentityChange> listOfCalledIdentityChanges, byte[] cellularNetworkInformation,
-			List<String> fEIdentifierList) {
+			List<String> fEIdentifierList,Integer duration,Integer urgentCallID) {
 		if(recordType!=null)
 			this.recordType = new ASNRecordType(recordType);
 		
@@ -438,6 +450,12 @@ public class ECSCFRecord
 				this.fEIdentifierList.add(currStr);
 			}
 		}
+		
+		if(duration!=null)
+			this.duration=new ASNInteger(duration);
+		
+		if(urgentCallID!=null)
+			this.urgentCallID=new ASNInteger(duration);
 	}
 
 	public RecordType getRecordType() 
@@ -836,6 +854,22 @@ public class ECSCFRecord
 			result.add(curr.getValue());
 		
 		return result;
+	}
+
+	public Integer getDuration() 
+	{
+		if(duration==null)
+			return null;
+		
+		return duration.getIntValue();
+	}
+
+	public Integer getUrgentCallID() 
+	{
+		if(urgentCallID==null)
+			return null;
+		
+		return urgentCallID.getIntValue();
 	}
 	
 	@Override
@@ -1287,6 +1321,20 @@ public class ECSCFRecord
 	        	sb.append(curr.getValue());
 	        }
 	        
+	        sb.append("]");
+        }
+        
+        if(duration!=null && duration.getValue()!=null)
+        {
+	        sb.append("duration=[");
+	        sb.append(duration.getValue());
+	        sb.append("]");
+        }
+        
+        if(urgentCallID!=null && urgentCallID.getValue()!=null)
+        {
+	        sb.append("urgentCallID=[");
+	        sb.append(urgentCallID.getValue());
 	        sb.append("]");
         }
         
