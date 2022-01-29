@@ -47,6 +47,7 @@ import com.mobius.software.cdr.parser.primitives.RoleOfNode;
 import com.mobius.software.cdr.parser.primitives.SDPMediaIdentifier;
 import com.mobius.software.cdr.parser.primitives.ServiceSpecificInfo;
 import com.mobius.software.cdr.parser.primitives.SessionPriority;
+import com.mobius.software.cdr.parser.primitives.SpecifiedTreatmentField;
 import com.mobius.software.cdr.parser.primitives.SubscriberEquipmentNumber;
 import com.mobius.software.cdr.parser.primitives.SubscriptionID;
 import com.mobius.software.cdr.parser.primitives.SubscriptionIDListWrapper;
@@ -170,6 +171,8 @@ HAWEI ADDITIONAL DATA
  TADS-Indication [410] TADS-Indication OPTIONAL
  List-Of-IN-Information [413] List-Of-IN-Information OPTIONAL
  PrivateUserEquipmentInfo [418] PrivateUserEquipmentInfo OPTIONAL
+ Recording-Entity-ID [429] UTF8String OPTIONAL
+ SpecifiedTreatmentField [446] SpecifiedTreatmentField OPTIONAL
 }
  */
 /**
@@ -419,6 +422,11 @@ public class ASRecord
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 418,constructed = true,index = -1)
 	private PrivateUserEquipmentInfo privateUserEquipmentInfo;
 	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 429,constructed = false,index = -1)
+	private ASNUTF8String recordingEntityID;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 446,constructed = true,index = -1)
+	private SpecifiedTreatmentField specifiedTreatmentField;
 	
 	public ASRecord()
 	{
@@ -459,7 +467,7 @@ public class ASRecord
 			Integer duration,InvolvedParty dialedPartyAddress,Integer ringingDuration,
 			CallProperty callProperty,ChargingCategory chargingCategory,AccountingRecordType accountingRecordType,
 			SDPMediaIdentifier sdpMediaIdentifier,String mscNumber,TADSIndication tadsIndication,List<InInformation> inInformation,
-			PrivateUserEquipmentInfo privateUserEquipmentInfo) 
+			PrivateUserEquipmentInfo privateUserEquipmentInfo,String recordingEntityID,SpecifiedTreatmentField specifiedTreatmentField) 
 	{
 		if(recordType!=null)
 			this.recordType = new ASNRecordType(recordType);
@@ -689,7 +697,12 @@ public class ASRecord
 		if(inInformation!=null)
 			this.inInformation=new InInformationListWrapper(inInformation);
 		
-		this.privateUserEquipmentInfo=privateUserEquipmentInfo;		
+		this.privateUserEquipmentInfo=privateUserEquipmentInfo;
+		
+		if(recordingEntityID!=null)
+			this.recordingEntityID=new ASNUTF8String(recordingEntityID);
+		
+		this.specifiedTreatmentField=specifiedTreatmentField;
 	}
 
 	public RecordType getRecordType() 
@@ -1340,6 +1353,19 @@ public class ASRecord
 	public PrivateUserEquipmentInfo getPrivateUserEquipmentInfo() 
 	{
 		return privateUserEquipmentInfo;
+	}
+	
+	public String getRecordingEntityID() 
+	{
+		if(recordingEntityID==null)
+			return null;
+		
+		return recordingEntityID.getValue();
+	}
+	
+	public SpecifiedTreatmentField getSpecifiedTreatmentField() 
+	{
+		return specifiedTreatmentField;
 	}
 	
 	@Override
@@ -2055,6 +2081,20 @@ public class ASRecord
 			sb.append(privateUserEquipmentInfo);
 			sb.append("]");
 		}
+        
+        if(recordingEntityID!=null && recordingEntityID.getValue()!=null)
+		{
+			sb.append("recordingEntityID=[");
+			sb.append(recordingEntityID.getValue());
+			sb.append("]");
+		}
+        
+        if(specifiedTreatmentField!=null)
+		{
+			sb.append("specifiedTreatmentField=[");
+			sb.append(specifiedTreatmentField);
+			sb.append("]");
+		}               
                 
         sb.append("]");
         return sb.toString();
