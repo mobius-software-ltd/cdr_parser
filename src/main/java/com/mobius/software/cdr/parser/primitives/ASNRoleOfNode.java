@@ -28,7 +28,7 @@ public class ASNRoleOfNode extends ASNEnumerated {
 	}
 	
 	public ASNRoleOfNode(RoleOfNode t) {
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public RoleOfNode getType() {

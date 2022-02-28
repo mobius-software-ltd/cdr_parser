@@ -31,7 +31,7 @@ public class ASNPartialRecordType extends ASNEnumerated
 	
 	public ASNPartialRecordType(PartialRecordType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public PartialRecordType getType() 

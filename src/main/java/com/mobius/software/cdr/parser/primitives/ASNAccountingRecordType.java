@@ -31,7 +31,7 @@ public class ASNAccountingRecordType extends ASNEnumerated
 	
 	public ASNAccountingRecordType(AccountingRecordType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public AccountingRecordType getType() 

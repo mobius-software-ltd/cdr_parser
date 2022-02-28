@@ -17,29 +17,44 @@ package com.mobius.software.cdr.parser.primitives;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
-import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
+/*
+SMSNode ::= ENUMERATED
+{
+ Success (0),
+ Failure (1)
+} 
+ */
 /**
  * @author yulian.oifa
  *
  */
-public class ASNFciFreeFormatDataManner extends ASNEnumerated 
+public enum SMSResult 
 {
-	public ASNFciFreeFormatDataManner()
-	{
-		
-	}
+	Success (0),
+	Failure (1);
 	
-	public ASNFciFreeFormatDataManner(FciFreeFormatDataManner t) 
+	private int type;
+
+	private SMSResult(int type) 
 	{
-		super(t.getType(),null,null,null,false);
+		this.type = type;
 	}
-	
-	public FciFreeFormatDataManner getIdentifier() 
+
+	public int getType() 
 	{
-		Long realValue=super.getValue();
-		if(realValue==null)
-			return null;
-		
-		return FciFreeFormatDataManner.getType(getValue().intValue());
+		return this.type;
+	}
+
+	public static SMSResult fromType(int type) 
+	{
+		switch (type) 
+		{
+			case 0:
+				return Success;
+			case 1:
+				return Failure;
+			default:
+				return null;
+		}
 	}
 }

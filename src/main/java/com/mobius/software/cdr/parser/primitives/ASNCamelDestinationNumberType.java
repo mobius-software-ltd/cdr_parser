@@ -31,7 +31,7 @@ public class ASNCamelDestinationNumberType extends ASNEnumerated
 	
 	public ASNCamelDestinationNumberType(CamelDestinationNumberType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public CamelDestinationNumberType getIdentifier() 

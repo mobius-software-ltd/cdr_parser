@@ -53,15 +53,15 @@ public class AccessNetworkInfoChange
 	public AccessNetworkInfoChange(byte[] accessNetworkInformation,byte[] additionalAccessNetworkInformation,TimeStamp accessChangeTime,byte[] cellularNetworkInformation)
 	{
 		if(accessNetworkInformation!=null)
-			this.accessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation));
+			this.accessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation),null,null,null,false);
 		
 		if(additionalAccessNetworkInformation!=null)
-			this.additionalAccessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
+			this.additionalAccessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation),null,null,null,false);
 		
 		this.accessChangeTime=accessChangeTime;
 		
 		if(cellularNetworkInformation!=null)
-			this.cellularNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation));		
+			this.cellularNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation),null,null,null,false);		
 	}
 
 	public byte[] getAccessNetworkInformation() 

@@ -236,7 +236,7 @@ public class TermCamelRecord
 		this.gsmSCFAddress=gsmSCFAddress;
 		
 		if(serviceKey!=null)
-			this.serviceKey=new ASNInteger(serviceKey);
+			this.serviceKey=new ASNInteger(serviceKey,null,null,null,false);
 		
 		this.networkCallReference=networkCallReference;
 		this.mscAddress=mscAddress;
@@ -245,7 +245,7 @@ public class TermCamelRecord
 			this.defaultCallHandling=new ASNDefaultCallHandling(defaultCallHandling);
 		
 		if(recordExtensions!=null)
-			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions),null,null,null,false);
 		
 		this.calledNumber=calledNumber;
 		this.callingNumber=callingNumber;
@@ -256,10 +256,10 @@ public class TermCamelRecord
 		this.releaseTime=releaseTime;
 		
 		if(callDuration!=null)
-			this.callDuration=new ASNInteger(callDuration.longValue());
+			this.callDuration=new ASNInteger(callDuration.longValue(),null,null,null,false);
 		
 		if(dataVolume!=null)
-			this.dataVolume=new ASNInteger(dataVolume.longValue());
+			this.dataVolume=new ASNInteger(dataVolume.longValue(),null,null,null,false);
 		
 		if(causeForTerm!=null)
 			this.causeForTerm=new ASNCauseForRecClosing(causeForTerm);
@@ -268,37 +268,37 @@ public class TermCamelRecord
 		this.callReferenceNumber=callReferenceNumber;
 		
 		if(sequenceNumber!=null)
-			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue());
+			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue(),null,null,null,false);
 		
 		if(numberOfDPEncountered!=null)
-			this.numberOfDPEncountered=new ASNInteger(numberOfDPEncountered.longValue());
+			this.numberOfDPEncountered=new ASNInteger(numberOfDPEncountered.longValue(),null,null,null,false);
 		
 		this.levelOfCAMELService=levelOfCAMELService;
 		
 		if(freeFormatData!=null)
-			this.freeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData));
+			this.freeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData),null,null,null,false);
 		
 		if(camelCallLegInformation!=null)
 			this.camelCallLegInformation=new CamelInformationListWrapper(camelCallLegInformation);
 		
 		if(freeFormatDataAppend!=null)
-			this.freeFormatDataAppend=new ASNBoolean(freeFormatDataAppend);
+			this.freeFormatDataAppend=new ASNBoolean(freeFormatDataAppend,null,false,false);
 		
 		if(defaultCallHandling2!=null)
 			this.defaultCallHandling2=new ASNDefaultCallHandling(defaultCallHandling2);
 		
 		this.gsmSCFAddress2=gsmSCFAddress2;
 		if(serviceKey2!=null)
-			this.serviceKey2=new ASNInteger(serviceKey2);
+			this.serviceKey2=new ASNInteger(serviceKey2,null,null,null,false);
 		
 		if(freeFormatData2!=null)
-			this.freeFormatData2=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData2));
+			this.freeFormatData2=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData2),null,null,null,false);
 		
 		if(freeFormatDataAppend2!=null)
-			this.freeFormatDataAppend2=new ASNBoolean(freeFormatDataAppend2);
+			this.freeFormatDataAppend2=new ASNBoolean(freeFormatDataAppend2,null,false,false);
 		
 		if(mscServerIndication!=null)
-			this.mscServerIndication=new ASNBoolean(mscServerIndication);
+			this.mscServerIndication=new ASNBoolean(mscServerIndication,null,false,false);
 		
 		this.locationRoutNum=locationRoutNum;
 		

@@ -120,10 +120,10 @@ public class CAMELInformation
 		this.releaseTime=releaseTime;
 		
 		if(callDuration!=null)
-			this.callDuration=new ASNInteger(callDuration.longValue());
+			this.callDuration=new ASNInteger(callDuration.longValue(),null,null,null,false);
 		
 		if(dataVolume!=null)
-			this.dataVolume=new ASNInteger(dataVolume.longValue());
+			this.dataVolume=new ASNInteger(dataVolume.longValue(),null,null,null,false);
 		
 		if(camelInitCFIndicator!=null)
 			this.camelInitCFIndicator=new ASNCAMELInitCFIndicator(camelInitCFIndicator);
@@ -134,18 +134,18 @@ public class CAMELInformation
 		this.changeParameters=changeParameters;
 		
 		if(freeFormatData!=null)
-			this.freeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData));
+			this.freeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData),null,null,null,false);
 		
 		this.diagnostics=diagnostics;
 		
 		if(freeFormatDataAppend!=null)
-			this.freeFormatDataAppend=new ASNBoolean(freeFormatDataAppend);
+			this.freeFormatDataAppend=new ASNBoolean(freeFormatDataAppend,null,false,false);
 		
 		if(freeFormatData2!=null)
-			this.freeFormatData2=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData2));
+			this.freeFormatData2=new ASNOctetString(Unpooled.wrappedBuffer(freeFormatData2),null,null,null,false);
 		
 		if(freeFormatDataAppend2!=null)
-			this.freeFormatDataAppend2=new ASNBoolean(freeFormatDataAppend2);				
+			this.freeFormatDataAppend2=new ASNBoolean(freeFormatDataAppend2,null,false,false);				
 	}
 
 	public DestinationRoutingAddressImpl getCamelDestinationNumber() 

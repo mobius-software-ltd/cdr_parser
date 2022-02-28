@@ -31,7 +31,7 @@ public class ASNBasicService extends ASNEnumerated
 	
 	public ASNBasicService(BasicService t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public BasicService getType() 

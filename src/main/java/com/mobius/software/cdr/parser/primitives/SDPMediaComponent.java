@@ -72,13 +72,13 @@ public class SDPMediaComponent
 	public SDPMediaComponent(String sdpMediaName,List<String> sdpMediaDescription,AccessCorrelationID accessCorrelationID,Boolean localGWInsertedIndication,Boolean ipRealmDefaultIndication,Boolean transcoderInsertedIndication)
 	{
 		if(sdpMediaName!=null)
-			this.sdpMediaName=new ASNGraphicString(sdpMediaName);
+			this.sdpMediaName=new ASNGraphicString(sdpMediaName,null,null,null,false);
 		
 		if(sdpMediaDescription!=null)
 		{
 			this.sdpMediaDescription=new ArrayList<ASNGraphicString>();
 			for(String curr:sdpMediaDescription) {
-				ASNGraphicString currString=new ASNGraphicString(curr);
+				ASNGraphicString currString=new ASNGraphicString(curr,null,null,null,false);
 				this.sdpMediaDescription.add(currString);
 			}
 		}
@@ -86,13 +86,13 @@ public class SDPMediaComponent
 		this.accessCorrelationID=accessCorrelationID;
 		
 		if(localGWInsertedIndication!=null)
-			this.localGWInsertedIndication=new ASNBoolean(localGWInsertedIndication);
+			this.localGWInsertedIndication=new ASNBoolean(localGWInsertedIndication,null,false,false);
 		
 		if(ipRealmDefaultIndication!=null)
-			this.ipRealmDefaultIndication=new ASNBoolean(ipRealmDefaultIndication);
+			this.ipRealmDefaultIndication=new ASNBoolean(ipRealmDefaultIndication,null,false,false);
 		
 		if(transcoderInsertedIndication!=null)
-			this.transcoderInsertedIndication=new ASNBoolean(transcoderInsertedIndication);
+			this.transcoderInsertedIndication=new ASNBoolean(transcoderInsertedIndication,null,false,false);
 	}
 
 	public String getSDPMediaName() 

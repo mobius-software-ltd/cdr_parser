@@ -170,10 +170,10 @@ public class TransitRecord
 		this.releaseTime=releaseTime;
 		
 		if(callDuration!=null)
-			this.callDuration=new ASNInteger(callDuration.longValue());
+			this.callDuration=new ASNInteger(callDuration.longValue(),null,null,null,false);
 		
 		if(dataVolume!=null)
-			this.dataVolume=new ASNInteger(dataVolume.longValue());
+			this.dataVolume=new ASNInteger(dataVolume.longValue(),null,null,null,false);
 		
 		if(causeForTerm!=null)
 			this.causeForTerm=new ASNCauseForRecClosing(causeForTerm);
@@ -182,10 +182,10 @@ public class TransitRecord
 		this.callReferenceNumber=callReferenceNumber;
 		
 		if(sequenceNumber!=null)
-			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue());
+			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue(),null,null,null,false);
 		
 		if(recordExtensions!=null)
-			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions),null,null,null,false);
 		
 		this.locationRoutNum=locationRoutNum;
 		

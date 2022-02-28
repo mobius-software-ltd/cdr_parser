@@ -29,7 +29,7 @@ public class ASNOnlineChargingFlag extends ASNEnumerated {
 	}
 	
 	public ASNOnlineChargingFlag(OnlineChargingFlag t) {
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public OnlineChargingFlag getType() {

@@ -164,13 +164,13 @@ public class InInformation
 			String inCompositeCDR,String cgiInformation,String mscGTWhenINBypass,String vlrGTWhenINBypass)
 	{
 		if(serviceKey!=null)
-			this.serviceKey=new ASNInteger(serviceKey.longValue());
+			this.serviceKey=new ASNInteger(serviceKey.longValue(),null,null,null,false);
 		
 		if(serviceNumber!=null)
-			this.serviceNumber=new ASNUTF8String(serviceNumber);
+			this.serviceNumber=new ASNUTF8String(serviceNumber,null,null,null,false);
 		
 		if(fciFreeFormatData!=null)
-			this.fciFreeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(fciFreeFormatData));
+			this.fciFreeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(fciFreeFormatData),null,null,null,false);
 		
 		if(fciFreeFormatDataManner!=null)
 			this.fciFreeFormatDataManner=new ASNFciFreeFormatDataManner(fciFreeFormatDataManner);
@@ -179,70 +179,70 @@ public class InInformation
 			this.defaultCallHandling=new ASNDefaultCallHandling(defaultCallHandling);
 		
 		if(scfAddress!=null)
-			this.scfAddress=new ASNOctetString(Unpooled.wrappedBuffer(scfAddress));
+			this.scfAddress=new ASNOctetString(Unpooled.wrappedBuffer(scfAddress),null,null,null,false);
 		
 		if(genericNumber!=null)
-			this.genericNumber=new ASNUTF8String(genericNumber);
+			this.genericNumber=new ASNUTF8String(genericNumber,null,null,null,false);
 		
 		if(levelOfCamelService!=null)
-			this.levelOfCamelService=new ASNUTF8String(levelOfCamelService);
+			this.levelOfCamelService=new ASNUTF8String(levelOfCamelService,null,null,null,false);
 		
 		if(chargeClass!=null)
-			this.chargeClass=new ASNInteger(chargeClass.longValue());
+			this.chargeClass=new ASNInteger(chargeClass.longValue(),null,null,null,false);
 		
 		if(inBypass!=null)
-			this.inBypass=new ASNInteger(inBypass.longValue());
+			this.inBypass=new ASNInteger(inBypass.longValue(),null,null,null,false);
 		
 		if(camelDestinationNumber!=null)
-			this.camelDestinationNumber=new ASNUTF8String(camelDestinationNumber);
+			this.camelDestinationNumber=new ASNUTF8String(camelDestinationNumber,null,null,null,false);
 		
 		if(camelDestinationNumberType!=null)
 			this.camelDestinationNumberType=new ASNCamelDestinationNumberType(camelDestinationNumberType);
 		
 		if(sciChargeNumber!=null)
-			this.sciChargeNumber=new ASNUTF8String(sciChargeNumber);
+			this.sciChargeNumber=new ASNUTF8String(sciChargeNumber,null,null,null,false);
 		
 		if(fciChargeNumber!=null)
-			this.fciChargeNumber=new ASNUTF8String(fciChargeNumber);
+			this.fciChargeNumber=new ASNUTF8String(fciChargeNumber,null,null,null,false);
 		
 		if(fciChargedPartyID!=null)
-			this.fciChargedPartyID=new ASNUTF8String(fciChargedPartyID);
+			this.fciChargedPartyID=new ASNUTF8String(fciChargedPartyID,null,null,null,false);
 		
 		if(aOCParameters!=null)
-			this.aOCParameters=new ASNOctetString(Unpooled.wrappedBuffer(aOCParameters));
+			this.aOCParameters=new ASNOctetString(Unpooled.wrappedBuffer(aOCParameters),null,null,null,false);
 		
 		if(interactionWithIP!=null)
-			this.interactionWithIP=new ASNUTF8String(interactionWithIP);
+			this.interactionWithIP=new ASNUTF8String(interactionWithIP,null,null,null,false);
 		
 		if(resourceChargeIPNumber!=null)
-			this.resourceChargeIPNumber=new ASNUTF8String(resourceChargeIPNumber);
+			this.resourceChargeIPNumber=new ASNUTF8String(resourceChargeIPNumber,null,null,null,false);
 		
 		if(triggerDetectionPoint!=null)
-			this.triggerDetectionPoint=new ASNUTF8String(triggerDetectionPoint);
+			this.triggerDetectionPoint=new ASNUTF8String(triggerDetectionPoint,null,null,null,false);
 		
 		if(timeForTHEOS!=null)
-			this.timeForTHEOS=new ASNUTF8String(timeForTHEOS);
+			this.timeForTHEOS=new ASNUTF8String(timeForTHEOS,null,null,null,false);
 		
 		if(inServiceTrigger!=null)
-			this.inServiceTrigger=new ASNUTF8String(inServiceTrigger);
+			this.inServiceTrigger=new ASNUTF8String(inServiceTrigger,null,null,null,false);
 		
 		if(ssfChargingCase!=null)
-			this.ssfChargingCase=new ASNUTF8String(ssfChargingCase);
+			this.ssfChargingCase=new ASNUTF8String(ssfChargingCase,null,null,null,false);
 		
 		if(globalTitleSubsystem!=null)
-			this.globalTitleSubsystem=new ASNUTF8String(globalTitleSubsystem);
+			this.globalTitleSubsystem=new ASNUTF8String(globalTitleSubsystem,null,null,null,false);
 		
 		if(inCompositeCDR!=null)
-			this.inCompositeCDR=new ASNUTF8String(inCompositeCDR);
+			this.inCompositeCDR=new ASNUTF8String(inCompositeCDR,null,null,null,false);
 		
 		if(cgiInformation!=null)
-			this.cgiInformation=new ASNUTF8String(cgiInformation);
+			this.cgiInformation=new ASNUTF8String(cgiInformation,null,null,null,false);
 		
 		if(mscGTWhenINBypass!=null)
-			this.mscGTWhenINBypass=new ASNUTF8String(mscGTWhenINBypass);
+			this.mscGTWhenINBypass=new ASNUTF8String(mscGTWhenINBypass,null,null,null,false);
 		
 		if(vlrGTWhenINBypass!=null)
-			this.vlrGTWhenINBypass=new ASNUTF8String(vlrGTWhenINBypass);		
+			this.vlrGTWhenINBypass=new ASNUTF8String(vlrGTWhenINBypass,null,null,null,false);
 	}
 
 	public Integer getServiceKey() 

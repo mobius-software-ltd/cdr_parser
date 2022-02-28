@@ -22,24 +22,20 @@ import com.mobius.software.telco.protocols.ss7.asn.primitives.ASNEnumerated;
  * @author yulian.oifa
  *
  */
-public class ASNFciFreeFormatDataManner extends ASNEnumerated 
-{
-	public ASNFciFreeFormatDataManner()
-	{
+public class ASNSMSResult extends ASNEnumerated {
+	public ASNSMSResult() {
 		
 	}
 	
-	public ASNFciFreeFormatDataManner(FciFreeFormatDataManner t) 
-	{
+	public ASNSMSResult(SMSResult t) {
 		super(t.getType(),null,null,null,false);
 	}
 	
-	public FciFreeFormatDataManner getIdentifier() 
-	{
+	public SMSResult getType() {
 		Long realValue=super.getValue();
 		if(realValue==null)
 			return null;
 		
-		return FciFreeFormatDataManner.getType(getValue().intValue());
+		return SMSResult.fromType(getValue().intValue());
 	}
 }

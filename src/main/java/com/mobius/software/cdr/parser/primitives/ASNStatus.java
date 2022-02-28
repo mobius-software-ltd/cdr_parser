@@ -28,7 +28,7 @@ public class ASNStatus extends ASNEnumerated {
 	}
 	
 	public ASNStatus(Status t) {
-		super(Long.valueOf(t.getStatus()));
+		super(t.getStatus(),null,null,null,false);
 	}
 	
 	public Status getType() {

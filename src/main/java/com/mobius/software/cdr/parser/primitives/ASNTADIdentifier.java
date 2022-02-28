@@ -30,7 +30,7 @@ public class ASNTADIdentifier extends ASNEnumerated
 	
 	public ASNTADIdentifier(TADIdentifier t) 
 	{
-		super(Long.valueOf(t.getTAD()));
+		super(t.getTAD(),null,null,null,false);
 	}
 	
 	public TADIdentifier getType() 

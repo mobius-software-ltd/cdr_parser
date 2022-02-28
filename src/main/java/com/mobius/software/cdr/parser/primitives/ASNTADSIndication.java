@@ -30,7 +30,7 @@ public class ASNTADSIndication extends ASNEnumerated
 	
 	public ASNTADSIndication(TADSIndication t) 
 	{
-		super(Long.valueOf(t.getTAD()));
+		super(t.getTAD(),null,null,null,false);
 	}
 	
 	public TADSIndication getType() 

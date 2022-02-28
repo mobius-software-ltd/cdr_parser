@@ -31,7 +31,7 @@ public class ASNServingNodeType extends ASNEnumerated
 	
 	public ASNServingNodeType(ServingNodeType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public ServingNodeType getType() 

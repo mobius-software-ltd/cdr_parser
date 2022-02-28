@@ -53,7 +53,7 @@ public class SubscriberEquipmentNumber
 			this.subscriberEquipmentType=new ASNSubscriberEquipmentType(subscriberEquipmentType);
 		
 		if(subscriberEquipmentNumberData!=null)
-			this.subscriberEquipmentNumberData=new ASNOctetString(Unpooled.wrappedBuffer(subscriberEquipmentNumberData));		
+			this.subscriberEquipmentNumberData=new ASNOctetString(Unpooled.wrappedBuffer(subscriberEquipmentNumberData),null,null,null,false);		
 	}
 
 	public SubscriberEquipmentType getSubscriberEquipmentType() 

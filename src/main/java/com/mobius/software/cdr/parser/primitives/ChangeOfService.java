@@ -65,7 +65,7 @@ public class ChangeOfService
 		this.changeTime=changeTime;
 		
 		if(rateIndication!=null)
-			this.rateIndication=new ASNSingleByte(rateIndication);
+			this.rateIndication=new ASNSingleByte(rateIndication,null,null,null,false);
 		
 		if(fnur!=null)
 			this.fnur=new ASNFnur(fnur);

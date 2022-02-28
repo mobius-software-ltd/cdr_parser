@@ -28,7 +28,7 @@ public class ASNFnur extends ASNEnumerated {
 	}
 	
 	public ASNFnur(Fnur t) {
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public Fnur getType() {

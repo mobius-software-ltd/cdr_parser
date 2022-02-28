@@ -76,7 +76,7 @@ public class EarlyMediaComponentList
 		{
 			this.sdpSessionDescription=new ArrayList<ASNGraphicString>();
 			for(String curr:sdpSessionDescription) {
-				ASNGraphicString currString=new ASNGraphicString(curr);
+				ASNGraphicString currString=new ASNGraphicString(curr,null,null,null,false);
 				this.sdpSessionDescription.add(currString);
 			}
 		}

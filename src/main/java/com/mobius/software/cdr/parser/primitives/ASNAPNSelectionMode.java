@@ -31,7 +31,7 @@ public class ASNAPNSelectionMode extends ASNEnumerated
 	
 	public ASNAPNSelectionMode(APNSelectionMode t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public APNSelectionMode getType() 

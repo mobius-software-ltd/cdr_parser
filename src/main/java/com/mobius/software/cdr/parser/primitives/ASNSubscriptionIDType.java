@@ -30,7 +30,7 @@ public class ASNSubscriptionIDType extends ASNEnumerated
 	
 	public ASNSubscriptionIDType(SubscriptionIDType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public SubscriptionIDType getType() 

@@ -1,4 +1,6 @@
 package com.mobius.software.cdr.parser.primitives;
+import java.util.concurrent.ConcurrentHashMap;
+
 /*
  * Mobius Software LTD
  * Copyright 2021, Mobius Software LTD and individual contributors
@@ -69,7 +71,7 @@ public class TimeStamp {
     }
     
     @ASNDecode
-	public Boolean decode(ASNParser parser,Object parent,ByteBuf buffer,Boolean skipErrors) throws MAPException {
+	public Boolean decode(ASNParser parser,Object parent,ByteBuf buffer,ConcurrentHashMap<Integer,Object> mappedData,Boolean skipErrors) throws MAPException {
     	createMessage(buffer);
     	return false;
     }

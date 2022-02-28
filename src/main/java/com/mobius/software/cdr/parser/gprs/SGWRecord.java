@@ -256,7 +256,7 @@ public class SGWRecord
 			this.sgwAddress=new IPAddressWrapper(sgwAddress);
 		
 		if(chargingID!=null)
-			this.chargingID=new ASNInteger(chargingID.longValue());
+			this.chargingID=new ASNInteger(chargingID.longValue(),null,null,null,false);
 		
 		if(servingNodeAddress!=null)
 		{
@@ -266,7 +266,7 @@ public class SGWRecord
 		}
 		
 		if(accessPointNameNI!=null)
-			this.accessPointNameNI=new ASNIA5String(accessPointNameNI);
+			this.accessPointNameNI=new ASNIA5String(accessPointNameNI,null,null,null,false);
 		
 		this.pdpPDNType=pdpPDNType;
 		
@@ -274,7 +274,7 @@ public class SGWRecord
 			this.servedPDPPDNAddress=new PDPAddressWrapper(servedPDPPDNAddress);
 		
 		if(dynamicAddressFlag!=null)
-			this.dynamicAddressFlag=new ASNBoolean(dynamicAddressFlag);
+			this.dynamicAddressFlag=new ASNBoolean(dynamicAddressFlag,null,false,false);
 		
 		if(listOfTrafficVolumes!=null)
 			this.listOfTrafficVolumes=new ChangeOfCharConditionListWrapper(listOfTrafficVolumes);
@@ -282,7 +282,7 @@ public class SGWRecord
 		this.recordOpeningTime=recordOpeningTime;
 		
 		if(this.duration!=null)
-			this.duration=new ASNInteger(duration.longValue());
+			this.duration=new ASNInteger(duration.longValue(),null,null,null,false);
 		
 		if(causeForRecClosing!=null)
 			this.causeForRecClosing=new ASNCauseForRecClosing(causeForRecClosing);
@@ -290,16 +290,16 @@ public class SGWRecord
 		this.diagnostics=diagnostics;
 		
 		if(recordSequenceNumber!=null)
-			this.recordSequenceNumber=new ASNInteger(recordSequenceNumber.longValue());
+			this.recordSequenceNumber=new ASNInteger(recordSequenceNumber.longValue(),null,null,null,false);
 		
 		if(nodeID!=null)
-			this.nodeID=new ASNIA5String(nodeID);
+			this.nodeID=new ASNIA5String(nodeID,null,null,null,false);
 		
 		if(recordExtensions!=null)
-			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions),null,null,null,false);
 		
 		if(localSequenceNumber!=null)
-			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue());
+			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue(),null,null,null,false);
 		
 		if(apnSelectionMode!=null)
 			this.apnSelectionMode=new ASNAPNSelectionMode(apnSelectionMode);
@@ -322,10 +322,10 @@ public class SGWRecord
 		this.mSTimeZone=mSTimeZone;
 		
 		if(userLocationInformation!=null)
-			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
+			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation),null,null,null,false);
 		
 		if(sGWChange!=null)
-			this.sGWChange=new ASNBoolean(sGWChange);
+			this.sGWChange=new ASNBoolean(sGWChange,null,false,false);
 		
 		if(servingNodeType!=null)
 		{
@@ -347,7 +347,7 @@ public class SGWRecord
 		this.stopTime=stopTime;
 		
 		if(pDNConnectionChargingID!=null)
-			this.pDNConnectionChargingID=new ASNInteger(pDNConnectionChargingID.longValue());
+			this.pDNConnectionChargingID=new ASNInteger(pDNConnectionChargingID.longValue(),null,null,null,false);
 		
 		if(iMSIunauthenticatedFlag)
 			this.iMSIunauthenticatedFlag=new ASNNull();
@@ -361,7 +361,7 @@ public class SGWRecord
 			this.lowPriorityIndicator=new ASNNull();
 		
 		if(dynamicAddressFlagExt!=null)
-			this.dynamicAddressFlagExt=new ASNBoolean(dynamicAddressFlagExt);
+			this.dynamicAddressFlagExt=new ASNBoolean(dynamicAddressFlagExt,null,false,false);
 	}
 
 	public RecordType getRecordType() 

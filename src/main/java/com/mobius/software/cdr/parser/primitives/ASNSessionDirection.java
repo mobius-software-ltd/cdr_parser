@@ -31,7 +31,7 @@ public class ASNSessionDirection extends ASNEnumerated
 	
 	public ASNSessionDirection(SessionDirection t) 
 	{
-		super(Long.valueOf(t.getDirection()));
+		super(t.getDirection(),null,null,null,false);
 	}
 	
 	public SessionDirection getType() 

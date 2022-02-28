@@ -31,7 +31,7 @@ public class ASNACRInterimLost extends ASNEnumerated
 	
 	public ASNACRInterimLost(ACRInterimLost t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public ACRInterimLost getType() 

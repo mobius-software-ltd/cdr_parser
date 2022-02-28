@@ -51,7 +51,7 @@ public class NodeAddress
 		this.ipAddress = ipAddress;
 		
 		if(domainName!=null)
-			this.domainName=new ASNGraphicString(domainName);		
+			this.domainName=new ASNGraphicString(domainName,null,null,null,false);		
 	}
 
 	public IPAddress getIPAddress() 

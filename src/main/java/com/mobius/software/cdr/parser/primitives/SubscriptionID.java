@@ -53,7 +53,7 @@ public class SubscriptionID
 			this.subscriptionIDType=new ASNSubscriptionIDType(subscriptionIDType);
 		
 		if(subscriptionIDData!=null)
-			this.subscriptionIDData=new ASNUTF8String(subscriptionIDData);
+			this.subscriptionIDData=new ASNUTF8String(subscriptionIDData,null,null,null,false);
 	}
 
 	public SubscriptionIDType getSubscriptionIDType() 

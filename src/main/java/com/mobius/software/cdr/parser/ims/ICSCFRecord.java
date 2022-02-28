@@ -235,7 +235,7 @@ public class ICSCFRecord
 			this.retransmission = new ASNNull();
 		
 		if(sipMethod!=null)
-			this.sipMethod = new ASNGraphicString(sipMethod);
+			this.sipMethod = new ASNGraphicString(sipMethod,null,null,null,false);
 		
 		if(roleOfNode!=null)
 			this.roleOfNode = new ASNRoleOfNode(roleOfNode);
@@ -244,7 +244,7 @@ public class ICSCFRecord
 			this.nodeAddress = new NodeAddressWrapper(nodeAddress);
 		
 		if(sessionID!=null)
-			this.sessionID = new ASNGraphicString(sessionID);
+			this.sessionID = new ASNGraphicString(sessionID,null,null,null,false);
 		
 		if(listOfCallingPartyAddress!=null)
 			this.listOfCallingPartyAddress = new InvolvedPartyListWrapper(listOfCallingPartyAddress);
@@ -258,7 +258,7 @@ public class ICSCFRecord
 			this.interOperatorIdentifiers = new InterOperatorIdentifiersListWrapper(interOperatorIdentifiers);
 		
 		if(localSequenceNumber!=null)
-			this.localSequenceNumber = new ASNInteger(localSequenceNumber.longValue());
+			this.localSequenceNumber = new ASNInteger(localSequenceNumber.longValue(),null,null,null,false);
 		
 		if(causeForRecordClosing!=null)
 			this.causeForRecordClosing = new ASNCauseForRecordClosing(causeForRecordClosing);
@@ -266,51 +266,51 @@ public class ICSCFRecord
 		this.incompleteCDRIndication = incompleteCDRIndication;
 		
 		if(imsChargingIdentifier!=null)
-			this.imsChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsChargingIdentifier));
+			this.imsChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsChargingIdentifier),null,null,null,false);
 		
 		if(serviceReasonReturnCode!=null)
-			this.serviceReasonReturnCode = new ASNUTF8String(serviceReasonReturnCode);
+			this.serviceReasonReturnCode = new ASNUTF8String(serviceReasonReturnCode,null,null,null,false);
 		
 		if(recordExtensions!=null)
-			this.recordExtensions = new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
+			this.recordExtensions = new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions),null,null,null,false);
 		
 		if(expiresInformation!=null)
-			this.expiresInformation = new ASNInteger(expiresInformation.longValue());
+			this.expiresInformation = new ASNInteger(expiresInformation.longValue(),null,null,null,false);
 		
 		if(listOfAssociatedURI!=null)
 			this.listOfAssociatedURI = new InvolvedPartyListWrapper(listOfAssociatedURI);
 		
 		if(event!=null)
-			this.event = new ASNUTF8String(event);
+			this.event = new ASNUTF8String(event,null,null,null,false);
 		
 		if(accessNetworkInformation!=null)
-			this.accessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation));
+			this.accessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation),null,null,null,false);
 		
 		if(serviceContextID!=null)
-			this.serviceContextID = new ASNUTF8String(serviceContextID);
+			this.serviceContextID = new ASNUTF8String(serviceContextID,null,null,null,false);
 		
 		if(numberPortabilityRouting!=null)
-			this.numberPortabilityRouting = new ASNGraphicString(numberPortabilityRouting);
+			this.numberPortabilityRouting = new ASNGraphicString(numberPortabilityRouting,null,null,null,false);
 		
 		if(carrierSelectRouting!=null)
-			this.carrierSelectRouting = new ASNGraphicString(carrierSelectRouting);
+			this.carrierSelectRouting = new ASNGraphicString(carrierSelectRouting,null,null,null,false);
 		
 		if(sessionPriority!=null)
 			this.sessionPriority = new ASNSessionPriority(sessionPriority);
 		
 		if(serviceRequestTimeStampFraction!=null)
-			this.serviceRequestTimeStampFraction = new ASNInteger(serviceRequestTimeStampFraction.longValue());
+			this.serviceRequestTimeStampFraction = new ASNInteger(serviceRequestTimeStampFraction.longValue(),null,null,null,false);
 		
 		if(transitIOIList!=null)
-			this.transitIOIList=new ASNGraphicString(transitIOIList);
+			this.transitIOIList=new ASNGraphicString(transitIOIList,null,null,null,false);
 		
 		if(userLocationInformation!=null)
-			this.userLocationInformation = new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
+			this.userLocationInformation = new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation),null,null,null,false);
 		
 		this.msTimeZone = msTimeZone;
 		
 		if(fromAddress!=null)
-			this.fromAddress = new ASNOctetString(Unpooled.wrappedBuffer(fromAddress));
+			this.fromAddress = new ASNOctetString(Unpooled.wrappedBuffer(fromAddress),null,null,null,false);
 		
 		if(imsEmergencyIndicator)
 			this.imsEmergencyIndicator = new ASNNull();
@@ -320,27 +320,27 @@ public class ICSCFRecord
 			this.listOfReasonHeader = new ArrayList<ASNGraphicString>();
 			for(String curr:listOfReasonHeader)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.listOfReasonHeader.add(currStr);
 			}
 		}
 		
 		if(additionalAccessNetworkInformation!=null)
-			this.additionalAccessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
+			this.additionalAccessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation),null,null,null,false);
 		
 		if(routeHeaderTransmitted!=null)
-			this.routeHeaderTransmitted = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderTransmitted));
+			this.routeHeaderTransmitted = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderTransmitted),null,null,null,false);
 		
 		this.scscfInformation=scscfInformation;
 		if(cellularNetworkInformation!=null)
-			this.cellularNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation));
+			this.cellularNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation),null,null,null,false);
 		
 		if(fEIdentifierList!=null)
 		{
 			this.fEIdentifierList = new ArrayList<ASNGraphicString>();
 			for(String curr:fEIdentifierList)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.fEIdentifierList.add(currStr);
 			}
 		}

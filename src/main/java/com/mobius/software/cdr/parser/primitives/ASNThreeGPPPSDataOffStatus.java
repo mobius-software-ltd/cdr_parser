@@ -31,7 +31,7 @@ public class ASNThreeGPPPSDataOffStatus extends ASNEnumerated
 	
 	public ASNThreeGPPPSDataOffStatus(ThreeGPPPSDataOffStatus t) 
 	{
-		super(Long.valueOf(t.getStatus()));
+		super(t.getStatus(),null,null,null,false);
 	}
 	
 	public ThreeGPPPSDataOffStatus getStatus() 

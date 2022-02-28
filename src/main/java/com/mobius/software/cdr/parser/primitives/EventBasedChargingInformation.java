@@ -52,7 +52,7 @@ public class EventBasedChargingInformation
 	public EventBasedChargingInformation(Integer numberOfEvents,List<TimeStamp> eventTimeStamps)
 	{
 		if(numberOfEvents!=null)
-			this.numberOfEvents=new ASNInteger(numberOfEvents.longValue());
+			this.numberOfEvents=new ASNInteger(numberOfEvents.longValue(),null,null,null,false);
 		
 		this.eventTimeStamps=eventTimeStamps;
 	}

@@ -28,7 +28,7 @@ public class ASNSessionPriority extends ASNEnumerated {
 	}
 	
 	public ASNSessionPriority(SessionPriority t) {
-		super(Long.valueOf(t.getPriority()));
+		super(t.getPriority(),null,null,null,false);
 	}
 	
 	public SessionPriority getType() {

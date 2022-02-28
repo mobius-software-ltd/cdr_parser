@@ -28,7 +28,7 @@ public class ASNSubscriberRole extends ASNEnumerated {
 	}
 	
 	public ASNSubscriberRole(SubscriberRole t) {
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public SubscriberRole getType() {

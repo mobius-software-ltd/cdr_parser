@@ -47,10 +47,10 @@ public class TransmissionMedium
 	public TransmissionMedium(byte[] tmr,byte[] tmu)
 	{
 		if(tmr!=null)
-			this.tmr=new ASNOctetString(Unpooled.wrappedBuffer(tmr));
+			this.tmr=new ASNOctetString(Unpooled.wrappedBuffer(tmr),null,null,null,false);
 		
 		if(tmu!=null)
-			this.tmu=new ASNOctetString(Unpooled.wrappedBuffer(tmu));		
+			this.tmu=new ASNOctetString(Unpooled.wrappedBuffer(tmu),null,null,null,false);		
 	}
 
 	public byte[] getTMR() 

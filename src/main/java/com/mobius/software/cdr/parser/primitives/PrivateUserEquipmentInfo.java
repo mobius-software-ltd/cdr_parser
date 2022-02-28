@@ -53,7 +53,7 @@ public class PrivateUserEquipmentInfo
 			this.privateUserEquipmentInfoType=new ASNPrivateUserEquipmentInfoType(privateUserEquipmentInfoType);
 		
 		if(privateUserEquipmentInfoValue!=null)
-			this.privateUserEquipmentInfoValue=new ASNUTF8String(privateUserEquipmentInfoValue);
+			this.privateUserEquipmentInfoValue=new ASNUTF8String(privateUserEquipmentInfoValue,null,null,null,false);
 	}
 
 	public PrivateUserEquipmentInfoType getPrivateUserEquipmentInfoType() 

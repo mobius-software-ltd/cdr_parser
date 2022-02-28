@@ -146,22 +146,22 @@ public class ChangeOfServiceCondition
 	TimeQuotaMechanism timeQuotaMechanism,List<ServiceSpecificInfo> serviceSpecificInfo,byte[] threeGPP2UserLocationInformation)
 	{
 		if(ratingGroupId!=null)
-			this.ratingGroupId=new ASNInteger(ratingGroupId.longValue());
+			this.ratingGroupId=new ASNInteger(ratingGroupId.longValue(),null,null,null,false);
 		
 		if(chargingRuleBaseName!=null)
-			this.chargingRuleBaseName=new ASNIA5String(chargingRuleBaseName);
+			this.chargingRuleBaseName=new ASNIA5String(chargingRuleBaseName,null,null,null,false);
 		
 		if(resultCode!=null)
-			this.resultCode=new ASNInteger(resultCode.longValue());
+			this.resultCode=new ASNInteger(resultCode.longValue(),null,null,null,false);
 		
 		if(localSequenceNumber!=null)
-			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue());
+			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue(),null,null,null,false);
 		
 		this.timeOfFirstUsage=timeOfFirstUsage;
 		this.timeOfLastUsage=timeOfLastUsage;
 		
 		if(timeUsage!=null)
-			this.timeUsage=new ASNInteger(timeUsage.longValue());
+			this.timeUsage=new ASNInteger(timeUsage.longValue(),null,null,null,false);
 		
 		this.serviceConditionChange=serviceConditionChange;
 		this.qoSInformationNeg=qoSInformationNeg;
@@ -170,31 +170,31 @@ public class ChangeOfServiceCondition
 			this.servingNodeAddress=new IPAddressWrapper(servingNodeAddress);
 
 		if(dataVolumeFBCUplink!=null)
-			this.dataVolumeFBCUplink=new ASNInteger(dataVolumeFBCUplink.longValue());
+			this.dataVolumeFBCUplink=new ASNInteger(dataVolumeFBCUplink.longValue(),null,null,null,false);
 		
 		if(dataVolumeFBCDownlink!=null)
-			this.dataVolumeFBCDownlink=new ASNInteger(dataVolumeFBCDownlink.longValue());
+			this.dataVolumeFBCDownlink=new ASNInteger(dataVolumeFBCDownlink.longValue(),null,null,null,false);
 		
 		this.timeOfReport=timeOfReport;
 		
 		if(failureHandlingContinue!=null)
-			this.failureHandlingContinue=new ASNBoolean(failureHandlingContinue);
+			this.failureHandlingContinue=new ASNBoolean(failureHandlingContinue,null,false,false);
 		
 		if(serviceIdentifier!=null)
-			this.serviceIdentifier=new ASNInteger(serviceIdentifier.longValue());
+			this.serviceIdentifier=new ASNInteger(serviceIdentifier.longValue(),null,null,null,false);
 		
 		this.pSFurnishChargingInformation=pSFurnishChargingInformation;
 		this.aFRecordInformation=aFRecordInformation;
 		
 		if(userLocationInformation!=null)
-			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
+			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation),null,null,null,false);
 		
 		this.eventBasedChargingInformation=eventBasedChargingInformation;
 		this.timeQuotaMechanism=timeQuotaMechanism;
 		this.serviceSpecificInfo=serviceSpecificInfo;
 		
 		if(threeGPP2UserLocationInformation!=null)
-			this.threeGPP2UserLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(threeGPP2UserLocationInformation));		
+			this.threeGPP2UserLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(threeGPP2UserLocationInformation),null,null,null,false);		
 	}
 
 	public Integer getRatingGroupId() 

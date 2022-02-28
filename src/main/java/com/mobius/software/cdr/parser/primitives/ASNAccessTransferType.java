@@ -28,7 +28,7 @@ public class ASNAccessTransferType extends ASNEnumerated {
 	}
 	
 	public ASNAccessTransferType(AccessTransferType t) {
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public AccessTransferType getType() {

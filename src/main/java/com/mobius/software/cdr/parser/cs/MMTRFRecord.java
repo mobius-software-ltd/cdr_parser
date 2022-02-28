@@ -163,7 +163,7 @@ public class MMTRFRecord
 		this.releaseTime=releaseTime;
 		
 		if(callDuration!=null)
-			this.callDuration=new ASNInteger(callDuration.longValue());
+			this.callDuration=new ASNInteger(callDuration.longValue(),null,null,null,false);
 		
 		if(causeForTerm!=null)
 			this.causeForTerm=new ASNCauseForRecClosing(causeForTerm);
@@ -172,10 +172,10 @@ public class MMTRFRecord
 		this.callReferenceNumber=callReferenceNumber;
 		
 		if(sequenceNumber!=null)
-			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue());
+			this.sequenceNumber=new ASNInteger(sequenceNumber.longValue(),null,null,null,false);
 		
 		if(recordExtensions!=null)
-			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions),null,null,null,false);
 		
 		if(partialRecordType!=null)
 			this.partialRecordType=new ASNPartialRecordType(partialRecordType);		

@@ -28,7 +28,7 @@ public class ASNSDPType extends ASNEnumerated {
 	}
 	
 	public ASNSDPType(SDPType t) {
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public SDPType getType() {

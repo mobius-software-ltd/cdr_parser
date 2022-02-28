@@ -29,7 +29,7 @@ public class ASNCAMELInitCFIndicator extends ASNEnumerated {
 	}
 	
 	public ASNCAMELInitCFIndicator(CAMELInitCFIndicator t) {
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public CAMELInitCFIndicator getCode() {

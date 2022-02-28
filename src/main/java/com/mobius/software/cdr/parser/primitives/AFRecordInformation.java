@@ -53,7 +53,7 @@ public class AFRecordInformation
 	public AFRecordInformation(byte[] aFChargingIdentifier,Flows flows)
 	{
 		if(aFChargingIdentifier!=null)
-			this.aFChargingIdentifier=new ASNOctetString(Unpooled.wrappedBuffer(aFChargingIdentifier));
+			this.aFChargingIdentifier=new ASNOctetString(Unpooled.wrappedBuffer(aFChargingIdentifier),null,null,null,false);
 		
 		this.flows=flows;
 	}

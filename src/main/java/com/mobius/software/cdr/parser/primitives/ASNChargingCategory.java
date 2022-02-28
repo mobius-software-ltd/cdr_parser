@@ -31,7 +31,7 @@ public class ASNChargingCategory extends ASNEnumerated
 	
 	public ASNChargingCategory(ChargingCategory t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public ChargingCategory getType() 

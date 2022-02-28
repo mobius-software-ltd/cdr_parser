@@ -31,7 +31,7 @@ public class ASNRelationshipMode extends ASNEnumerated
 	
 	public ASNRelationshipMode(RelationshipMode t) 
 	{
-		super(Long.valueOf(t.getMode()));
+		super(t.getMode(),null,null,null,false);
 	}
 	
 	public RelationshipMode getType() 

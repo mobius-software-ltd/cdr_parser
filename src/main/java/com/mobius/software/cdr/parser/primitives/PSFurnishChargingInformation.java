@@ -41,10 +41,10 @@ public class PSFurnishChargingInformation
 	public PSFurnishChargingInformation(byte[] freeFormData,Boolean pSFFDAppendIndicator)
 	{
 		if(freeFormData!=null)
-			this.pSFreeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormData));
+			this.pSFreeFormatData=new ASNOctetString(Unpooled.wrappedBuffer(freeFormData),null,null,null,false);
 		
 		if(pSFFDAppendIndicator!=null)
-			this.pSFFDAppendIndicator=new ASNBoolean(pSFFDAppendIndicator);		
+			this.pSFFDAppendIndicator=new ASNBoolean(pSFFDAppendIndicator,null,false,false);		
 	}
 
 	public byte[] getpSFreeFormatData() 

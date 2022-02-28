@@ -31,7 +31,7 @@ public class ASNRecordType extends ASNEnumerated
 	
 	public ASNRecordType(RecordType t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public RecordType getType() 

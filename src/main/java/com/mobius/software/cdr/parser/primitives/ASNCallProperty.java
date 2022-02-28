@@ -31,7 +31,7 @@ public class ASNCallProperty extends ASNEnumerated
 	
 	public ASNCallProperty(CallProperty t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public CallProperty getType() 

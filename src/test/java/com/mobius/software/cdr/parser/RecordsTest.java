@@ -38,8 +38,8 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mobius.software.telco.protocols.ss7.asn.ASNDecodeResult;
-import com.mobius.software.telco.protocols.ss7.asn.ASNException;
 import com.mobius.software.telco.protocols.ss7.asn.ASNParser;
+import com.mobius.software.telco.protocols.ss7.asn.exceptions.ASNException;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -77,7 +77,7 @@ public class RecordsTest
 	}
 	
 	@Test
-	public void testGPRSRecords() throws ASNException, IOException
+	public void testGPRSRecords() throws IOException, ASNException
 	{
 		ASNParser parser=new ASNParser();
 		parser.loadClass(GPRSRecordsContainer.class);
@@ -114,7 +114,7 @@ public class RecordsTest
 	}
 
 	@Test
-	public void testCSRecords() throws ASNException, IOException
+	public void testCSRecords() throws IOException, ASNException
 	{
 		ASNParser parser=new ASNParser();
 		parser.loadClass(CSRecordsContainer.class);

@@ -77,28 +77,28 @@ public class EPCQoSInformation
 	public EPCQoSInformation(Long qCI,Long maxRequestedBandwithUL,Long maxRequestedBandwithDL,Long guaranteedBitrateUL,Long guaranteedBitrateDL,Long aRP,Long aPNAggregateMaxBitrateUL,Long aPNAggregateMaxBitrateDL)
 	{
 		if(qCI!=null)
-			this.qCI=new ASNInteger(qCI.longValue());
+			this.qCI=new ASNInteger(qCI.longValue(),null,null,null,false);
 		
 		if(maxRequestedBandwithDL!=null)
-			this.maxRequestedBandwithDL=new ASNInteger(maxRequestedBandwithDL.longValue());
+			this.maxRequestedBandwithDL=new ASNInteger(maxRequestedBandwithDL.longValue(),null,null,null,false);
 		
 		if(maxRequestedBandwithDL!=null)
-			this.maxRequestedBandwithDL=new ASNInteger(maxRequestedBandwithDL.longValue());
+			this.maxRequestedBandwithDL=new ASNInteger(maxRequestedBandwithDL.longValue(),null,null,null,false);
 		
 		if(guaranteedBitrateUL!=null)
-			this.guaranteedBitrateUL=new ASNInteger(guaranteedBitrateUL.longValue());
+			this.guaranteedBitrateUL=new ASNInteger(guaranteedBitrateUL.longValue(),null,null,null,false);
 		
 		if(guaranteedBitrateDL!=null)
-			this.guaranteedBitrateDL=new ASNInteger(guaranteedBitrateDL.longValue());
+			this.guaranteedBitrateDL=new ASNInteger(guaranteedBitrateDL.longValue(),null,null,null,false);
 		
 		if(aRP!=null)
-			this.aRP=new ASNInteger(aRP.longValue());
+			this.aRP=new ASNInteger(aRP.longValue(),null,null,null,false);
 		
 		if(aPNAggregateMaxBitrateUL!=null)
-			this.aPNAggregateMaxBitrateUL=new ASNInteger(aPNAggregateMaxBitrateUL.longValue());
+			this.aPNAggregateMaxBitrateUL=new ASNInteger(aPNAggregateMaxBitrateUL.longValue(),null,null,null,false);
 		
 		if(aPNAggregateMaxBitrateDL!=null)
-			this.aPNAggregateMaxBitrateDL=new ASNInteger(qCI.longValue());		
+			this.aPNAggregateMaxBitrateDL=new ASNInteger(qCI.longValue(),null,null,null,false);		
 	}
 
 	public Long getqCI() 

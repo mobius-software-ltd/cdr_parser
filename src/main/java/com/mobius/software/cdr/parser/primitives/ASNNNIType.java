@@ -31,7 +31,7 @@ public class ASNNNIType extends ASNEnumerated
 	
 	public ASNNNIType(NNIType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public NNIType getType() 

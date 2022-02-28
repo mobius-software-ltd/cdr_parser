@@ -31,7 +31,7 @@ public class ASNParticipantActionType extends ASNEnumerated
 	
 	public ASNParticipantActionType(ParticipantActionType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public ParticipantActionType getType() 

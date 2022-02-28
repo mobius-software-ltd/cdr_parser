@@ -28,7 +28,7 @@ public class ASNSubscriberEquipmentType extends ASNEnumerated {
 	}
 	
 	public ASNSubscriberEquipmentType(SubscriberEquipmentType t) {
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public SubscriberEquipmentType getType() {

@@ -42,7 +42,7 @@ HeaderRecord            ::= SEQUENCE
 @ASNTag(asnClass = ASNClass.UNIVERSAL,tag = 16,constructed = true,lengthIndefinite = false)
 public class HeaderRecord 
 {
-	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 0,constructed = true,index = -1)
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 0,constructed = false,index = -1)
 	private TimeStamp productionDateTime;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 1,constructed = false,index = -1)
@@ -62,7 +62,7 @@ public class HeaderRecord
 		this.recordingEntity=recordingEntity;
 		
 		if(extensions!=null)
-			this.extensions=new ASNOctetString(Unpooled.wrappedBuffer(extensions));		
+			this.extensions=new ASNOctetString(Unpooled.wrappedBuffer(extensions),null,null,null,false);		
 	}
 	
 	public TimeStamp getProductionDateTime() 

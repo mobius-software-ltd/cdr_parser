@@ -55,7 +55,7 @@ public class SCSCFInformation
 			this.mandatoryCapabilities=new ArrayList<ASNGraphicString>();
 			for(String curr:mandatoryCapabilities)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.mandatoryCapabilities.add(currStr);
 			}
 		}
@@ -65,13 +65,13 @@ public class SCSCFInformation
 			this.optionalCapabilities=new ArrayList<ASNGraphicString>();
 			for(String curr:optionalCapabilities)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.optionalCapabilities.add(currStr);
 			}
 		}
 		
 		if(serverName!=null)
-			this.serverName=new ASNGraphicString(serverName);		
+			this.serverName=new ASNGraphicString(serverName,null,null,null,false);		
 	}
 
 	public List<String> getMandatoryCapabilities() 

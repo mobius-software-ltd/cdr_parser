@@ -279,7 +279,7 @@ public class PGWRecord
 			this.pgwAddress=new IPAddressWrapper(pgwAddress);
 		
 		if(chargingID!=null)
-			this.chargingID=new ASNInteger(chargingID.longValue());
+			this.chargingID=new ASNInteger(chargingID.longValue(),null,null,null,false);
 		
 		if(servingNodeAddress!=null)
 		{
@@ -289,7 +289,7 @@ public class PGWRecord
 		}
 		
 		if(accessPointNameNI!=null)
-			this.accessPointNameNI=new ASNIA5String(accessPointNameNI);
+			this.accessPointNameNI=new ASNIA5String(accessPointNameNI,null,null,null,false);
 		
 		this.pdpPDNType=pdpPDNType;
 		
@@ -297,12 +297,12 @@ public class PGWRecord
 			this.servedPDPPDNAddress=new PDPAddressWrapper(servedPDPPDNAddress);
 		
 		if(dynamicAddressFlag!=null)
-			this.dynamicAddressFlag=new ASNBoolean(dynamicAddressFlag);
+			this.dynamicAddressFlag=new ASNBoolean(dynamicAddressFlag,null,false,false);
 		
 		this.recordOpeningTime=recordOpeningTime;
 		
 		if(this.duration!=null)
-			this.duration=new ASNInteger(duration.longValue());
+			this.duration=new ASNInteger(duration.longValue(),null,null,null,false);
 		
 		if(causeForRecClosing!=null)
 			this.causeForRecClosing=new ASNCauseForRecClosing(causeForRecClosing);
@@ -310,16 +310,16 @@ public class PGWRecord
 		this.diagnostics=diagnostics;
 		
 		if(recordSequenceNumber!=null)
-			this.recordSequenceNumber=new ASNInteger(recordSequenceNumber.longValue());
+			this.recordSequenceNumber=new ASNInteger(recordSequenceNumber.longValue(),null,null,null,false);
 		
 		if(nodeID!=null)
-			this.nodeID=new ASNIA5String(nodeID);
+			this.nodeID=new ASNIA5String(nodeID,null,null,null,false);
 		
 		if(recordExtensions!=null)
-			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
+			this.recordExtensions=new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions),null,null,null,false);
 		
 		if(localSequenceNumber!=null)
-			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue());
+			this.localSequenceNumber=new ASNInteger(localSequenceNumber.longValue(),null,null,null,false);
 		
 		if(apnSelectionMode!=null)
 			this.apnSelectionMode=new ASNAPNSelectionMode(apnSelectionMode);
@@ -334,7 +334,7 @@ public class PGWRecord
 			this.iMSsignalingContext=new ASNNull();
 		
 		if(externalChargingID!=null)
-			this.externalChargingID=new ASNOctetString(Unpooled.wrappedBuffer(externalChargingID));
+			this.externalChargingID=new ASNOctetString(Unpooled.wrappedBuffer(externalChargingID),null,null,null,false);
 		
 		this.plmnID=plmnID;
 		this.pSFurnishChargingInformation=pSFurnishChargingInformation;
@@ -346,10 +346,10 @@ public class PGWRecord
 		this.mSTimeZone=mSTimeZone;
 		
 		if(userLocationInformation!=null)
-			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
+			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation),null,null,null,false);
 		
 		if(cAMELChargingInformation!=null)
-			this.cAMELChargingInformation=new ASNOctetString(Unpooled.wrappedBuffer(cAMELChargingInformation));
+			this.cAMELChargingInformation=new ASNOctetString(Unpooled.wrappedBuffer(cAMELChargingInformation),null,null,null,false);
 		
 		if(listOfServiceData!=null)
 			this.listOfServiceData=new ChangeOfServiceConditionListWrapper(listOfServiceData);
@@ -372,10 +372,10 @@ public class PGWRecord
 		this.stopTime=stopTime;
 		
 		if(served3gpp2MEID!=null)
-			this.served3gpp2MEID=new ASNOctetString(Unpooled.wrappedBuffer(served3gpp2MEID));
+			this.served3gpp2MEID=new ASNOctetString(Unpooled.wrappedBuffer(served3gpp2MEID),null,null,null,false);
 		
 		if(pDNConnectionChargingID!=null)
-			this.pDNConnectionChargingID=new ASNInteger(pDNConnectionChargingID.longValue());
+			this.pDNConnectionChargingID=new ASNInteger(pDNConnectionChargingID.longValue(),null,null,null,false);
 		
 		if(iMSIunauthenticatedFlag)
 			this.iMSIunauthenticatedFlag=new ASNNull();
@@ -383,7 +383,7 @@ public class PGWRecord
 		this.userCSGInformation=userCSGInformation;
 		
 		if(threeGPP2UserLocationInformation!=null)
-			this.threeGPP2UserLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(threeGPP2UserLocationInformation));
+			this.threeGPP2UserLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(threeGPP2UserLocationInformation),null,null,null,false);
 		
 		if(servedPDPPDNAddressExt!=null)
 			this.servedPDPPDNAddressExt=new PDPAddressWrapper(servedPDPPDNAddressExt);
@@ -392,7 +392,7 @@ public class PGWRecord
 			this.lowPriorityIndicator=new ASNNull();
 		
 		if(dynamicAddressFlagExt!=null)
-			this.dynamicAddressFlagExt=new ASNBoolean(dynamicAddressFlagExt);		
+			this.dynamicAddressFlagExt=new ASNBoolean(dynamicAddressFlagExt,null,false,false);		
 	}
 
 	public RecordType getRecordType() 

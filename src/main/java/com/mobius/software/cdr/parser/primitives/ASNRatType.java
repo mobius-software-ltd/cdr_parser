@@ -29,7 +29,7 @@ public class ASNRatType extends ASNEnumerated {
 	}
 	
 	public ASNRatType(RATType t) {
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public RATType getType() {

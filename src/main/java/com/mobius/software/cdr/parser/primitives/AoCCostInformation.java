@@ -49,13 +49,13 @@ public class AoCCostInformation
 	public AoCCostInformation(Double accumulatedCost,Double incrementalCost,Integer currencyCode)
 	{
 		if(accumulatedCost!=null)
-			this.accumulatedCost=new ASNReal(accumulatedCost);
+			this.accumulatedCost=new ASNReal(accumulatedCost,null,null,null,false);
 		
 		if(incrementalCost!=null)
-			this.incrementalCost=new ASNReal(incrementalCost);
+			this.incrementalCost=new ASNReal(incrementalCost,null,null,null,false);
 		
 		if(currencyCode!=null)
-			this.currencyCode=new ASNInteger(currencyCode.longValue());		
+			this.currencyCode=new ASNInteger(currencyCode.longValue(),null,null,null,false);		
 	}
 
 	public Double getAccumulatedCost() 

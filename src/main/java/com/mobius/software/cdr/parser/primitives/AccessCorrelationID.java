@@ -46,10 +46,10 @@ public class AccessCorrelationID
 	public AccessCorrelationID(Integer gprsChargingId,String accessNetworkChargingIdentifier)
 	{
 		if(gprsChargingId!=null)
-			this.gprsChargingId=new ASNInteger(gprsChargingId.longValue());
+			this.gprsChargingId=new ASNInteger(gprsChargingId.longValue(),null,null,null,false);
 		
 		if(accessNetworkChargingIdentifier!=null)
-			this.accessNetworkChargingIdentifier=new ASNGraphicString(accessNetworkChargingIdentifier);		
+			this.accessNetworkChargingIdentifier=new ASNGraphicString(accessNetworkChargingIdentifier,null,null,null,false);		
 	}
 
 	public Integer getGPRSChargingId() 

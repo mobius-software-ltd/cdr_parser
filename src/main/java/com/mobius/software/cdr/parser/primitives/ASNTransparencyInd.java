@@ -31,7 +31,7 @@ public class ASNTransparencyInd extends ASNEnumerated
 	
 	public ASNTransparencyInd(TransparencyInd t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public TransparencyInd getInd() 

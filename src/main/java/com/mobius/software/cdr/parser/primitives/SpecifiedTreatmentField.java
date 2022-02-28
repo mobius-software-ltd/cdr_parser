@@ -98,43 +98,43 @@ public class SpecifiedTreatmentField
 			String translatedNumber,String mtcRoamingNumber,String redirectingNumber,String rcfRoamingNumber,Integer rcfIndication)
 	{
 		if(callIdentificationNumber!=null)
-			this.callIdentificationNumber=new ASNUTF8String(callIdentificationNumber);
+			this.callIdentificationNumber=new ASNUTF8String(callIdentificationNumber,null,null,null,false);
 		
 		if(interruptionTime!=null)
-			this.interruptionTime=new ASNInteger(interruptionTime);
+			this.interruptionTime=new ASNInteger(interruptionTime,null,null,null,false);
 		
 		if(originForCharging!=null)
-			this.originForCharging=new ASNUTF8String(originForCharging);
+			this.originForCharging=new ASNUTF8String(originForCharging,null,null,null,false);
 		
 		if(outgoingRoute!=null)
-			this.outgoingRoute=new ASNUTF8String(outgoingRoute);
+			this.outgoingRoute=new ASNUTF8String(outgoingRoute,null,null,null,false);
 		
 		if(incomingRoute!=null)
-			this.incomingRoute=new ASNUTF8String(incomingRoute);
+			this.incomingRoute=new ASNUTF8String(incomingRoute,null,null,null,false);
 		
 		if(initialVisitCGI!=null)
-			this.initialVisitCGI=new ASNUTF8String(initialVisitCGI);
+			this.initialVisitCGI=new ASNUTF8String(initialVisitCGI,null,null,null,false);
 		
 		if(calledMNPInfo!=null)
-			this.calledMNPInfo=new ASNUTF8String(calledMNPInfo);
+			this.calledMNPInfo=new ASNUTF8String(calledMNPInfo,null,null,null,false);
 		
 		if(subscriptionType!=null)
-			this.subscriptionType=new ASNInteger(subscriptionType);
+			this.subscriptionType=new ASNInteger(subscriptionType,null,null,null,false);
 		
 		if(translatedNumber!=null)
-			this.translatedNumber=new ASNUTF8String(translatedNumber);
+			this.translatedNumber=new ASNUTF8String(translatedNumber,null,null,null,false);
 		
 		if(mtcRoamingNumber!=null)
-			this.mtcRoamingNumber=new ASNUTF8String(mtcRoamingNumber);
+			this.mtcRoamingNumber=new ASNUTF8String(mtcRoamingNumber,null,null,null,false);
 		
 		if(redirectingNumber!=null)
-			this.redirectingNumber=new ASNUTF8String(redirectingNumber);
+			this.redirectingNumber=new ASNUTF8String(redirectingNumber,null,null,null,false);
 		
 		if(rcfRoamingNumber!=null)
-			this.rcfRoamingNumber=new ASNUTF8String(rcfRoamingNumber);
+			this.rcfRoamingNumber=new ASNUTF8String(rcfRoamingNumber,null,null,null,false);
 		
 		if(rcfIndication!=null)
-			this.rcfIndication=new ASNInteger(rcfIndication);
+			this.rcfIndication=new ASNInteger(rcfIndication,null,null,null,false);
 	}
 	
 	public String getCallIdentificationNumber() 

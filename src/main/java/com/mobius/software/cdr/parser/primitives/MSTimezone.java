@@ -20,6 +20,8 @@ package com.mobius.software.cdr.parser.primitives;
 
 import io.netty.buffer.ByteBuf;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 import org.restcomm.protocols.ss7.map.api.MAPException;
 
 import com.mobius.software.telco.protocols.ss7.asn.ASNClass;
@@ -57,7 +59,7 @@ public class MSTimezone {
     }
        
     @ASNDecode
-   	public Boolean decode(ASNParser parser,Object parent,ByteBuf buffer,Boolean skipErrors) throws MAPException {
+   	public Boolean decode(ASNParser parser,Object parent,ByteBuf buffer,ConcurrentHashMap<Integer,Object> mappedData,Boolean skipErrors) throws MAPException {
        	createMessage(buffer);
        	return false;
     }

@@ -71,7 +71,7 @@ public class Diagnostics
 		if(gsm0408Cause==null)
 			this.gsm0408Cause=null;
 		else
-			this.gsm0408Cause = new ASNInteger(gsm0408Cause.longValue());
+			this.gsm0408Cause = new ASNInteger(gsm0408Cause.longValue(),null,null,null,false);
 		
 		setGsm0902MapErrorValue(null);
 		setItutQ767Cause(null);
@@ -94,7 +94,7 @@ public class Diagnostics
 		if(gsm0902MapErrorValue==null)
 			this.gsm0902MapErrorValue=null;
 		else
-			this.gsm0902MapErrorValue = new ASNInteger(gsm0902MapErrorValue.longValue());
+			this.gsm0902MapErrorValue = new ASNInteger(gsm0902MapErrorValue.longValue(),null,null,null,false);
 		
 		setGsm0408Cause(null);
 		setItutQ767Cause(null);
@@ -117,7 +117,7 @@ public class Diagnostics
 		if(itutQ767Cause==null)
 			this.itutQ767Cause=null;
 		else
-			this.itutQ767Cause = new ASNInteger(itutQ767Cause.longValue());
+			this.itutQ767Cause = new ASNInteger(itutQ767Cause.longValue(),null,null,null,false);
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -146,7 +146,7 @@ public class Diagnostics
 		if(networkSpecificCause==null)
 			this.networkSpecificCause=null;
 		else
-			this.networkSpecificCause=new ASNOctetString(Unpooled.wrappedBuffer(networkSpecificCause));
+			this.networkSpecificCause=new ASNOctetString(Unpooled.wrappedBuffer(networkSpecificCause),null,null,null,false);
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -175,7 +175,7 @@ public class Diagnostics
 		if(manufacturerSpecificCause==null)
 			this.manufacturerSpecificCause=null;
 		else
-			this.manufacturerSpecificCause=new ASNOctetString(Unpooled.wrappedBuffer(manufacturerSpecificCause));
+			this.manufacturerSpecificCause=new ASNOctetString(Unpooled.wrappedBuffer(manufacturerSpecificCause),null,null,null,false);
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -198,7 +198,7 @@ public class Diagnostics
 		if(positionMethodFailureCause==null)
 			this.positionMethodFailureCause=null;
 		else
-			this.positionMethodFailureCause = new ASNInteger(positionMethodFailureCause.longValue());
+			this.positionMethodFailureCause = new ASNInteger(positionMethodFailureCause.longValue(),null,null,null,false);
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);
@@ -221,7 +221,7 @@ public class Diagnostics
 		if(unauthorizedLCSClientCause==null)
 			this.unauthorizedLCSClientCause=null;
 		else
-			this.unauthorizedLCSClientCause = new ASNInteger(unauthorizedLCSClientCause.longValue());
+			this.unauthorizedLCSClientCause = new ASNInteger(unauthorizedLCSClientCause.longValue(),null,null,null,false);
 		
 		setGsm0408Cause(null);
 		setGsm0902MapErrorValue(null);

@@ -30,7 +30,7 @@ public class ASNTimeQuotaType extends ASNEnumerated
 	
 	public ASNTimeQuotaType(TimeQuotaType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public TimeQuotaType getType() 

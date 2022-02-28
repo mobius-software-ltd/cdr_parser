@@ -31,7 +31,7 @@ public class ASNSDPMediaIdentifier extends ASNEnumerated
 	
 	public ASNSDPMediaIdentifier(SDPMediaIdentifier t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public SDPMediaIdentifier getIdentifier() 

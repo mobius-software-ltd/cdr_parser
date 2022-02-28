@@ -52,13 +52,13 @@ public class ISUPCause
 	public ISUPCause(Integer isupCauseLocation,Integer isupCauseValue,byte[] isupCauseDiagnostics)
 	{
 		if(isupCauseLocation!=null)
-			this.isupCauseLocation=new ASNInteger(isupCauseLocation.longValue());
+			this.isupCauseLocation=new ASNInteger(isupCauseLocation.longValue(),null,null,null,false);
 		
 		if(isupCauseValue!=null)
-			this.isupCauseValue=new ASNInteger(isupCauseValue.longValue());
+			this.isupCauseValue=new ASNInteger(isupCauseValue.longValue(),null,null,null,false);
 		
 		if(isupCauseDiagnostics!=null)
-			this.isupCauseDiagnostics=new ASNOctetString(Unpooled.wrappedBuffer(isupCauseDiagnostics));
+			this.isupCauseDiagnostics=new ASNOctetString(Unpooled.wrappedBuffer(isupCauseDiagnostics),null,null,null,false);
 	}
 
 	public Integer getISUPCauseLocation() 

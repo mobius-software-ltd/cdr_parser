@@ -91,30 +91,30 @@ public class SupplService
 			byte[] cugInformation,List<AoCInformation> aocInformation)
 	{
 		if(serviceType!=null)
-			this.serviceType=new ASNInteger(serviceType.longValue());
+			this.serviceType=new ASNInteger(serviceType.longValue(),null,null,null,false);
 		
 		if(serviceMode!=null)
-			this.serviceMode=new ASNInteger(serviceMode.longValue());
+			this.serviceMode=new ASNInteger(serviceMode.longValue(),null,null,null,false);
 		
 		if(numberOfDiversions!=null)
-			this.numberOfDiversions=new ASNInteger(numberOfDiversions.longValue());
+			this.numberOfDiversions=new ASNInteger(numberOfDiversions.longValue(),null,null,null,false);
 		
 		if(associatedPartyAddress!=null)
 			this.associatedPartyAddress=new InvolvedPartyWrapper(associatedPartyAddress);
 		
 		if(serviceID!=null)
-			this.serviceID=new ASNGraphicString(serviceID);
+			this.serviceID=new ASNGraphicString(serviceID,null,null,null,false);
 		
 		this.changeTime=changeTime;
 		
 		if(numberOfParticipants!=null)
-			this.numberOfParticipants=new ASNInteger(numberOfParticipants.longValue());
+			this.numberOfParticipants=new ASNInteger(numberOfParticipants.longValue(),null,null,null,false);
 		
 		if(participantActionType!=null)
 			this.participantActionType=new ASNParticipantActionType(participantActionType);
 		
 		if(cugInformation!=null)
-			this.cugInformation=new ASNOctetString(Unpooled.wrappedBuffer(cugInformation));
+			this.cugInformation=new ASNOctetString(Unpooled.wrappedBuffer(cugInformation),null,null,null,false);
 		
 		if(aocInformation!=null)
 			this.aocInformation=new AoCInformationListWrapper(aocInformation);		

@@ -31,7 +31,7 @@ public class ASNCauseForRecClosing extends ASNEnumerated
 	
 	public ASNCauseForRecClosing(CauseForRecClosing t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public CauseForRecClosing getType() 

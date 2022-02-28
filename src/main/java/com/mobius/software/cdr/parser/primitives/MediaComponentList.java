@@ -95,7 +95,7 @@ public class MediaComponentList
 		{
 			this.sdpSessionDescription=new ArrayList<ASNGraphicString>();
 			for(String curr:sdpSessionDescription) {
-				ASNGraphicString currString=new ASNGraphicString(curr);
+				ASNGraphicString currString=new ASNGraphicString(curr,null,null,null,false);
 				this.sdpSessionDescription.add(currString);
 			}
 		}
@@ -104,10 +104,10 @@ public class MediaComponentList
 			this.mediaInitiatorParty=new InvolvedPartyWrapper(mediaInitiatorParty);
 		
 		if(sipRequestTimestampFraction!=null)
-			this.sipRequestTimestampFraction=new ASNInteger(sipRequestTimestampFraction.longValue());
+			this.sipRequestTimestampFraction=new ASNInteger(sipRequestTimestampFraction.longValue(),null,null,null,false);
 		
 		if(sipResponseTimestampFraction!=null)
-			this.sipResponseTimestampFraction=new ASNInteger(sipResponseTimestampFraction.longValue());	
+			this.sipResponseTimestampFraction=new ASNInteger(sipResponseTimestampFraction.longValue(),null,null,null,false);	
 	}
 
 	public TimeStamp getSIPResponseTimestamp() 

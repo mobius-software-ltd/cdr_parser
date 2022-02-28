@@ -53,7 +53,7 @@ public class TimeQuotaMechanism
 			this.timeQuotaType=new ASNTimeQuotaType(timeQuotaType);
 		
 		if(baseTimeInterval!=null)
-			this.baseTimeInterval=new ASNInteger(baseTimeInterval.longValue());		
+			this.baseTimeInterval=new ASNInteger(baseTimeInterval.longValue(),null,null,null,false);		
 	}
 
 	public TimeQuotaType getTimeQuotaType() 

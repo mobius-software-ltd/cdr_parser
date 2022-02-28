@@ -365,7 +365,7 @@ public class PCSCFRecord
 			this.retransmission = new ASNNull();
 		
 		if(sipMethod!=null)
-			this.sipMethod = new ASNGraphicString(sipMethod);
+			this.sipMethod = new ASNGraphicString(sipMethod,null,null,null,false);
 		
 		if(roleOfNode!=null)
 			this.roleOfNode = new ASNRoleOfNode(roleOfNode);
@@ -374,7 +374,7 @@ public class PCSCFRecord
 			this.nodeAddress = new NodeAddressWrapper(nodeAddress);
 		
 		if(sessionID!=null)
-			this.sessionID = new ASNGraphicString(sessionID);
+			this.sessionID = new ASNGraphicString(sessionID,null,null,null,false);
 		
 		if(listOfCallingPartyAddress!=null)
 			this.listOfCallingPartyAddress = new InvolvedPartyListWrapper(listOfCallingPartyAddress);
@@ -383,7 +383,7 @@ public class PCSCFRecord
 			this.calledPartyAddress = new InvolvedPartyWrapper(calledPartyAddress);
 		
 		if(privateUserID!=null)
-			this.privateUserID = new ASNGraphicString(privateUserID);
+			this.privateUserID = new ASNGraphicString(privateUserID,null,null,null,false);
 		
 		this.serviceRequestTimeStamp = serviceRequestTimeStamp;
 		this.serviceDeliveryStartTimeStamp = serviceDeliveryStartTimeStamp;
@@ -395,10 +395,10 @@ public class PCSCFRecord
 			this.interOperatorIdentifiers = new InterOperatorIdentifiersListWrapper(interOperatorIdentifiers);
 		
 		if(localSequenceNumber!=null)
-			this.localSequenceNumber = new ASNInteger(localSequenceNumber.longValue());
+			this.localSequenceNumber = new ASNInteger(localSequenceNumber.longValue(),null,null,null,false);
 		
 		if(recordSequenceNumber!=null)
-			this.recordSequenceNumber = new ASNInteger(recordSequenceNumber.longValue());
+			this.recordSequenceNumber = new ASNInteger(recordSequenceNumber.longValue(),null,null,null,false);
 		
 		if(causeForRecordClosing!=null)
 			this.causeForRecordClosing = new ASNCauseForRecordClosing(causeForRecordClosing);
@@ -406,7 +406,7 @@ public class PCSCFRecord
 		this.incompleteCDRIndication = incompleteCDRIndication;
 		
 		if(imsChargingIdentifier!=null)
-			this.imsChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsChargingIdentifier));
+			this.imsChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsChargingIdentifier),null,null,null,false);
 		
 		if(mediaComponentList!=null)
 			this.mediaComponentList = new MediaComponentListWrapper(mediaComponentList);
@@ -415,27 +415,27 @@ public class PCSCFRecord
 			this.ggsnAddress = new NodeAddressWrapper(ggsnAddress);
 		
 		if(serviceReasonReturnCode!=null)
-			this.serviceReasonReturnCode = new ASNUTF8String(serviceReasonReturnCode);
+			this.serviceReasonReturnCode = new ASNUTF8String(serviceReasonReturnCode,null,null,null,false);
 		
 		this.listOfMessageBodies = listOfMessageBodies;
 		
 		if(recordExtensions!=null)
-			this.recordExtensions = new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
+			this.recordExtensions = new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions),null,null,null,false);
 		
 		if(expiresInformation!=null)
-			this.expiresInformation = new ASNInteger(expiresInformation.longValue());
+			this.expiresInformation = new ASNInteger(expiresInformation.longValue(),null,null,null,false);
 		
 		if(listOfAssociatedURI!=null)
 			this.listOfAssociatedURI = new InvolvedPartyListWrapper(listOfAssociatedURI);
 		
 		if(event!=null)
-			this.event = new ASNUTF8String(event);
+			this.event = new ASNUTF8String(event,null,null,null,false);
 		
 		if(accessNetworkInformation!=null)
-			this.accessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation));
+			this.accessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation),null,null,null,false);
 		
 		if(serviceContextID!=null)
-			this.serviceContextID = new ASNUTF8String(serviceContextID);
+			this.serviceContextID = new ASNUTF8String(serviceContextID,null,null,null,false);
 		
 		if(listOfSubscriptionID!=null)
 			this.listOfSubscriptionID = new SubscriptionIDListWrapper(listOfSubscriptionID);
@@ -443,19 +443,19 @@ public class PCSCFRecord
 		this.listOfEarlySDPMediaComponents = listOfEarlySDPMediaComponents;
 		
 		if(imsCommunicationServiceIdentifier!=null)
-			this.imsCommunicationServiceIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsCommunicationServiceIdentifier));
+			this.imsCommunicationServiceIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsCommunicationServiceIdentifier),null,null,null,false);
 		
 		if(sessionPriority!=null)
 			this.sessionPriority = new ASNSessionPriority(sessionPriority);
 		
 		if(serviceRequestTimeStampFraction!=null)
-			this.serviceRequestTimeStampFraction = new ASNInteger(serviceRequestTimeStampFraction.longValue());
+			this.serviceRequestTimeStampFraction = new ASNInteger(serviceRequestTimeStampFraction.longValue(),null,null,null,false);
 		
 		if(serviceDeliveryStartTimeStampFraction!=null)
-			this.serviceDeliveryStartTimeStampFraction = new ASNInteger(serviceDeliveryStartTimeStampFraction.longValue());
+			this.serviceDeliveryStartTimeStampFraction = new ASNInteger(serviceDeliveryStartTimeStampFraction.longValue(),null,null,null,false);
 		
 		if(serviceDeliveryEndTimeStampFraction!=null)
-			this.serviceDeliveryEndTimeStampFraction = new ASNInteger(serviceDeliveryEndTimeStampFraction.longValue());
+			this.serviceDeliveryEndTimeStampFraction = new ASNInteger(serviceDeliveryEndTimeStampFraction.longValue(),null,null,null,false);
 		
 		if(listOfRequestedPartyAddress!=null)
 			this.listOfRequestedPartyAddress = new InvolvedPartyListWrapper(listOfRequestedPartyAddress);
@@ -464,7 +464,7 @@ public class PCSCFRecord
 			this.listOfCalledAssertedIdentity = new InvolvedPartyListWrapper(listOfCalledAssertedIdentity);
 		
 		if(userLocationInformation!=null)
-			this.userLocationInformation = new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
+			this.userLocationInformation = new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation),null,null,null,false);
 		
 		this.msTimeZone = msTimeZone;
 		this.nniInformation = nniInformation;
@@ -473,58 +473,58 @@ public class PCSCFRecord
 			this.servedPartyIPAddress=new IPAddressWrapper(servedPartyIPAddress);
 		
 		if(fromAddress!=null)
-			this.fromAddress = new ASNOctetString(Unpooled.wrappedBuffer(fromAddress));
+			this.fromAddress = new ASNOctetString(Unpooled.wrappedBuffer(fromAddress),null,null,null,false);
 		
 		if(transitIOILists!=null)
 		{
 			this.transitIOILists = new ArrayList<ASNGraphicString>();
 			for(String curr:transitIOILists)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.transitIOILists.add(currStr);
 			}
 		}
 		
 		if(imsVisitedNetworkIdentifier!=null)
-			this.imsVisitedNetworkIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsVisitedNetworkIdentifier));
+			this.imsVisitedNetworkIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsVisitedNetworkIdentifier),null,null,null,false);
 		
 		if(listOfReasonHeader!=null)
 		{
 			this.listOfReasonHeader = new ArrayList<ASNGraphicString>();
 			for(String curr:listOfReasonHeader)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.listOfReasonHeader.add(currStr);
 			}
 		}
 		
 		if(additionalAccessNetworkInformation!=null)
-			this.additionalAccessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
+			this.additionalAccessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation),null,null,null,false);
 		
 		if(instanceId!=null)
-			this.instanceId = new ASNOctetString(Unpooled.wrappedBuffer(instanceId));
+			this.instanceId = new ASNOctetString(Unpooled.wrappedBuffer(instanceId),null,null,null,false);
 		
 		this.subscriberEquipmentNumber = subscriberEquipmentNumber;
 		
 		if(routeHeaderReceived!=null)
-			this.routeHeaderReceived = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderReceived));
+			this.routeHeaderReceived = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderReceived),null,null,null,false);
 		
 		if(routeHeaderTransmitted!=null)
-			this.routeHeaderTransmitted = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderTransmitted));
+			this.routeHeaderTransmitted = new ASNOctetString(Unpooled.wrappedBuffer(routeHeaderTransmitted),null,null,null,false);
 		
 		this.listOfAccessNetworkInfoChange = listOfAccessNetworkInfoChange;
 		this.listOfCalledIdentityChanges = listOfCalledIdentityChanges;
 		
 		if(cellularNetworkInformation!=null)
-			this.cellularNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation));
+			this.cellularNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation),null,null,null,false);
 		
 		if(initialIMSChargingIdentifier!=null)
-			this.initialIMSChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(initialIMSChargingIdentifier));
+			this.initialIMSChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(initialIMSChargingIdentifier),null,null,null,false);
 		
 		this.listOfAccessTransferInformation = listOfAccessTransferInformation;
 		
 		if(relatedICID!=null)
-			this.relatedICID = new ASNOctetString(Unpooled.wrappedBuffer(relatedICID));
+			this.relatedICID = new ASNOctetString(Unpooled.wrappedBuffer(relatedICID),null,null,null,false);
 		
 		if(relatedICIDGenerationNode!=null)
 			this.relatedICIDGenerationNode = new NodeAddressWrapper(relatedICIDGenerationNode);
@@ -534,7 +534,7 @@ public class PCSCFRecord
 			this.fEIdentifierList = new ArrayList<ASNGraphicString>();
 			for(String curr:fEIdentifierList)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.fEIdentifierList.add(currStr);
 			}
 		}				

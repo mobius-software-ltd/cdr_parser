@@ -31,7 +31,7 @@ public class ASNChChSelectionMode extends ASNEnumerated
 	
 	public ASNChChSelectionMode(ChChSelectionMode t) 
 	{
-		super(Long.valueOf(t.getCode()));
+		super(t.getCode(),null,null,null,false);
 	}
 	
 	public ChChSelectionMode getType() 

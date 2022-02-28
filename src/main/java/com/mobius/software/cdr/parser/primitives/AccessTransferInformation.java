@@ -67,16 +67,16 @@ public class AccessTransferInformation
 			this.accessTransferType=new ASNAccessTransferType(accessTransferType);
 		
 		if(accessNetworkInformation!=null) 
-			this.accessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation));
+			this.accessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation),null,null,null,false);
 		
 		if(additionalAccessNetworkInformation!=null) 
-			this.additionalAccessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
+			this.additionalAccessNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation),null,null,null,false);
 		
 		if(interUETransfer)
 			this.interUETransfer=new ASNNull();
 		
 		if(relatedICID!=null) 
-			this.relatedICID=new ASNOctetString(Unpooled.wrappedBuffer(relatedICID));
+			this.relatedICID=new ASNOctetString(Unpooled.wrappedBuffer(relatedICID),null,null,null,false);
 		
 		if(relatedICIDGenerationNode!=null) 
 			this.relatedICIDGenerationNode=new NodeAddressWrapper(relatedICIDGenerationNode);			
@@ -85,10 +85,10 @@ public class AccessTransferInformation
 		this.subscriberEquipmentNumber=subscriberEquipmentNumber;
 		
 		if(instanceID!=null) 
-			this.instanceID=new ASNOctetString(Unpooled.wrappedBuffer(instanceID));
+			this.instanceID=new ASNOctetString(Unpooled.wrappedBuffer(instanceID),null,null,null,false);
 		
 		if(cellularNetworkInformation!=null) 
-			this.cellularNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation));		
+			this.cellularNetworkInformation=new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation),null,null,null,false);		
 	}
 
 	public AccessTransferType getAccessTransferType() 

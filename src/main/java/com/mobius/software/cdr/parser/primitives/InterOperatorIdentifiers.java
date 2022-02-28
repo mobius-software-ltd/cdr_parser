@@ -49,10 +49,10 @@ public class InterOperatorIdentifiers
 	public InterOperatorIdentifiers(String originatingIOI,String terminatingIOI)
 	{
 		if(originatingIOI!=null)
-			this.originatingIOI=new ASNGraphicString(originatingIOI);
+			this.originatingIOI=new ASNGraphicString(originatingIOI,null,null,null,false);
 		
 		if(terminatingIOI!=null)
-			this.terminatingIOI=new ASNGraphicString(terminatingIOI);		
+			this.terminatingIOI=new ASNGraphicString(terminatingIOI,null,null,null,false);		
 	}
 
 	public String getoriginatingIOI() 

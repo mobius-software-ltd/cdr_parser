@@ -53,16 +53,16 @@ public class RateElement
 	public RateElement(Integer unitType,Double unitValue,Double unitCost,Double unitQuotaThreshold)
 	{
 		if(unitType!=null)
-			this.unitType=new ASNInteger(unitType.longValue());
+			this.unitType=new ASNInteger(unitType.longValue(),null,null,null,false);
 		
 		if(unitValue!=null)
-			this.unitValue=new ASNReal(unitValue);
+			this.unitValue=new ASNReal(unitValue,null,null,null,false);
 		
 		if(unitCost!=null)
-			this.unitCost=new ASNReal(unitCost);
+			this.unitCost=new ASNReal(unitCost,null,null,null,false);
 		
 		if(unitQuotaThreshold!=null)
-			this.unitQuotaThreshold=new ASNReal(unitQuotaThreshold);		
+			this.unitQuotaThreshold=new ASNReal(unitQuotaThreshold,null,null,null,false);		
 	}
 
 	public Integer getUnitType() 

@@ -31,7 +31,7 @@ public class ASNPrivateUserEquipmentInfoType extends ASNEnumerated
 	
 	public ASNPrivateUserEquipmentInfoType(PrivateUserEquipmentInfoType t) 
 	{
-		super(Long.valueOf(t.getType()));
+		super(t.getType(),null,null,null,false);
 	}
 	
 	public PrivateUserEquipmentInfoType getType() 

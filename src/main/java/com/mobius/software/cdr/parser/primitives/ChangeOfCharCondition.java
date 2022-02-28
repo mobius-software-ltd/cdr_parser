@@ -82,16 +82,16 @@ public class ChangeOfCharCondition
 			ChangeCondition changeCondition,TimeStamp changeTime,byte[] userLocationInformation,EPCQoSInformation ePCQoSInformation)
 	{
 		if(qosRequested!=null)
-			this.qosRequested=new ASNOctetString(Unpooled.wrappedBuffer(qosRequested));
+			this.qosRequested=new ASNOctetString(Unpooled.wrappedBuffer(qosRequested),null,null,null,false);
 		
 		if(qosNegotiated!=null)
-			this.qosNegotiated=new ASNOctetString(Unpooled.wrappedBuffer(qosNegotiated));
+			this.qosNegotiated=new ASNOctetString(Unpooled.wrappedBuffer(qosNegotiated),null,null,null,false);
 		
 		if(dataVolumeGPRSUplink!=null)
-			this.dataVolumeGPRSUplink=new ASNInteger(dataVolumeGPRSUplink.longValue());
+			this.dataVolumeGPRSUplink=new ASNInteger(dataVolumeGPRSUplink.longValue(),null,null,null,false);
 		
 		if(dataVolumeGPRSDownlink!=null)
-			this.dataVolumeGPRSDownlink=new ASNInteger(dataVolumeGPRSDownlink.longValue());
+			this.dataVolumeGPRSDownlink=new ASNInteger(dataVolumeGPRSDownlink.longValue(),null,null,null,false);
 		
 		if(changeCondition!=null)
 			this.changeCondition=new ASNChangeCondition(changeCondition);
@@ -99,7 +99,7 @@ public class ChangeOfCharCondition
 		this.changeTime=changeTime;
 		
 		if(userLocationInformation!=null)
-			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));		
+			this.userLocationInformation=new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation),null,null,null,false);		
 		
 		this.ePCQoSInformation=ePCQoSInformation;
 	}

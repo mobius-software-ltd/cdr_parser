@@ -77,10 +77,10 @@ public class TrailerRecord
 		this.lastCallDateTime=lastCallDateTime;
 		
 		if(noOfRecords!=null)
-			this.noOfRecords=new ASNInteger(noOfRecords.longValue());
+			this.noOfRecords=new ASNInteger(noOfRecords.longValue(),null,null,null,false);
 		
 		if(extensions!=null)
-			this.extensions=new ASNOctetString(Unpooled.wrappedBuffer(extensions));		
+			this.extensions=new ASNOctetString(Unpooled.wrappedBuffer(extensions),null,null,null,false);		
 	}
 	
 	public TimeStamp getProductionDateTime() 

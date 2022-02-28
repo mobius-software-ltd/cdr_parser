@@ -45,6 +45,7 @@ import com.mobius.software.cdr.parser.primitives.RealTimeTariffInformation;
 import com.mobius.software.cdr.parser.primitives.RecordType;
 import com.mobius.software.cdr.parser.primitives.RoleOfNode;
 import com.mobius.software.cdr.parser.primitives.SDPMediaIdentifier;
+import com.mobius.software.cdr.parser.primitives.SMSInformation;
 import com.mobius.software.cdr.parser.primitives.ServiceSpecificInfo;
 import com.mobius.software.cdr.parser.primitives.SessionPriority;
 import com.mobius.software.cdr.parser.primitives.SpecifiedTreatmentField;
@@ -161,6 +162,7 @@ HAWEI ADDITIONAL DATA
  onlineChargingFlag [150] OnlineChargingFlag OPTIONAL,
  charged-party [156] InvolvedParty OPTIONAL,
  duration [200] INTEGER OPTIONAL,
+ origin-Callee-Party-Address [202] InvolvedParty OPTIONAL,
  dialed-party-address [203] InvolvedParty OPTIONAL,
  ringing-duration [204] INTEGER OPTIONAL,
  chargingCategory [216] ChargingCategory OPTIONAL,
@@ -168,10 +170,13 @@ HAWEI ADDITIONAL DATA
  accountingRecordType [227] AccountingRecordType OPTIONAL,
  sdpMediaIdentifier [233] SDPMediaIdentifier OPTIONAL,
  mscNumber [235] UTF8String OPTIONAL,
+ sms-information [257] sms-information OPTIONAL,
  TADS-Indication [410] TADS-Indication OPTIONAL
  List-Of-IN-Information [413] List-Of-IN-Information OPTIONAL
  PrivateUserEquipmentInfo [418] PrivateUserEquipmentInfo OPTIONAL
+ network-Call-Reference [426] UTF8String OPTIONAL
  Recording-Entity-ID [429] UTF8String OPTIONAL
+ Enhanced-Category [443] Unsigned32 OPTIONAL
  SpecifiedTreatmentField [446] SpecifiedTreatmentField OPTIONAL
 }
  */
@@ -392,6 +397,9 @@ public class ASRecord
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 200,constructed = false,index = -1)
 	private ASNInteger duration;
 	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 202,constructed = true,index = -1)
+	private InvolvedPartyWrapper originCalleePartyAddress;
+	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 203,constructed = true,index = -1)
 	private InvolvedPartyWrapper dialedPartyAddress;
 	
@@ -413,6 +421,9 @@ public class ASRecord
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 235,constructed = false,index = -1)
 	private ASNUTF8String mscNumber;
 	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 257,constructed = true,index = -1)
+	private SMSInformation smsInformation;
+	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 410,constructed = false,index = -1)
 	private ASNTADSIndication tadsIndication;
 	
@@ -422,8 +433,14 @@ public class ASRecord
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 418,constructed = true,index = -1)
 	private PrivateUserEquipmentInfo privateUserEquipmentInfo;
 	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 426,constructed = false,index = -1)
+	private ASNUTF8String networkCallReference;
+	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 429,constructed = false,index = -1)
 	private ASNUTF8String recordingEntityID;
+	
+	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 443,constructed = false,index = -1)
+	private ASNInteger enhancedCategory;
 	
 	@ASNProperty(asnClass = ASNClass.CONTEXT_SPECIFIC,tag = 446,constructed = true,index = -1)
 	private SpecifiedTreatmentField specifiedTreatmentField;
@@ -464,10 +481,11 @@ public class ASRecord
 			List<AccessTransferInformation> listOfAccessTransferInformation, TADIdentifier tadsIdentifier,
 			AddressStringImpl vlrNumber, MMTelInformation mMTelInformation, AddressStringImpl mscAddress, ThreeGPPPSDataOffStatus threeGPPPSDataOffStatus,
 			List<String> fEIdentifierList,OnlineChargingFlag onlineChargingFlagEnum,InvolvedParty chargedParty,
-			Integer duration,InvolvedParty dialedPartyAddress,Integer ringingDuration,
+			Integer duration,InvolvedParty originCalleePartyAddress,InvolvedParty dialedPartyAddress,Integer ringingDuration,
 			CallProperty callProperty,ChargingCategory chargingCategory,AccountingRecordType accountingRecordType,
-			SDPMediaIdentifier sdpMediaIdentifier,String mscNumber,TADSIndication tadsIndication,List<InInformation> inInformation,
-			PrivateUserEquipmentInfo privateUserEquipmentInfo,String recordingEntityID,SpecifiedTreatmentField specifiedTreatmentField) 
+			SDPMediaIdentifier sdpMediaIdentifier,String mscNumber,SMSInformation smsInformation,
+			TADSIndication tadsIndication,List<InInformation> inInformation,PrivateUserEquipmentInfo privateUserEquipmentInfo,
+			String networkCallReference,String recordingEntityID,Integer enhancedCategory, SpecifiedTreatmentField specifiedTreatmentField) 
 	{
 		if(recordType!=null)
 			this.recordType = new ASNRecordType(recordType);
@@ -476,7 +494,7 @@ public class ASRecord
 			this.retransmission = new ASNNull();
 		
 		if(sipMethod!=null)
-			this.sipMethod = new ASNGraphicString(sipMethod);
+			this.sipMethod = new ASNGraphicString(sipMethod,null,null,null,false);
 		
 		if(roleOfNode!=null)
 			this.roleOfNode = new ASNRoleOfNode(roleOfNode);
@@ -485,7 +503,7 @@ public class ASRecord
 			this.nodeAddress = new NodeAddressWrapper(nodeAddress);
 		
 		if(sessionID!=null)
-			this.sessionID = new ASNGraphicString(sessionID);
+			this.sessionID = new ASNGraphicString(sessionID,null,null,null,false);
 		
 		if(listOfCallingPartyAddress!=null)
 			this.listOfCallingPartyAddress = new InvolvedPartyListWrapper(listOfCallingPartyAddress);
@@ -494,7 +512,7 @@ public class ASRecord
 			this.calledPartyAddress = new InvolvedPartyWrapper(calledPartyAddress);
 		
 		if(privateUserID!=null)
-			this.privateUserID = new ASNGraphicString(privateUserID);
+			this.privateUserID = new ASNGraphicString(privateUserID,null,null,null,false);
 		
 		this.serviceRequestTimeStamp = serviceRequestTimeStamp;
 		this.serviceDeliveryStartTimeStamp = serviceDeliveryStartTimeStamp;
@@ -506,10 +524,10 @@ public class ASRecord
 			this.interOperatorIdentifiers = new InterOperatorIdentifiersListWrapper(interOperatorIdentifiers);
 		
 		if(localSequenceNumber!=null)
-			this.localSequenceNumber = new ASNInteger(localSequenceNumber.longValue());
+			this.localSequenceNumber = new ASNInteger(localSequenceNumber.longValue(),null,null,null,false);
 		
 		if(recordSequenceNumber!=null)
-			this.recordSequenceNumber = new ASNInteger(recordSequenceNumber.longValue());
+			this.recordSequenceNumber = new ASNInteger(recordSequenceNumber.longValue(),null,null,null,false);
 		
 		if(causeForRecordClosing!=null)
 			this.causeForRecordClosing = new ASNCauseForRecordClosing(causeForRecordClosing);
@@ -517,7 +535,7 @@ public class ASRecord
 		this.incompleteCDRIndication = incompleteCDRIndication;
 		
 		if(imsChargingIdentifier!=null)
-			this.imsChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsChargingIdentifier));
+			this.imsChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsChargingIdentifier),null,null,null,false);
 		
 		if(mediaComponentList!=null)
 			this.mediaComponentList = new MediaComponentListWrapper(mediaComponentList);
@@ -526,24 +544,24 @@ public class ASRecord
 			this.ggsnAddress = new NodeAddressWrapper(ggsnAddress);
 		
 		if(serviceReasonReturnCode!=null)
-			this.serviceReasonReturnCode = new ASNUTF8String(serviceReasonReturnCode);
+			this.serviceReasonReturnCode = new ASNUTF8String(serviceReasonReturnCode,null,null,null,false);
 		
 		this.listOfMessageBodies = listOfMessageBodies;
 		
 		if(recordExtensions!=null)
-			this.recordExtensions = new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions));
+			this.recordExtensions = new ASNOctetString(Unpooled.wrappedBuffer(recordExtensions),null,null,null,false);
 		
 		if(expiresInformation!=null)
-			this.expiresInformation = new ASNInteger(expiresInformation.longValue());
+			this.expiresInformation = new ASNInteger(expiresInformation.longValue(),null,null,null,false);
 		
 		if(event!=null)
-			this.event = new ASNUTF8String(event);
+			this.event = new ASNUTF8String(event,null,null,null,false);
 		
 		if(accessNetworkInformation!=null)
-			this.accessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation));
+			this.accessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(accessNetworkInformation),null,null,null,false);
 		
 		if(serviceContextID!=null)
-			this.serviceContextID = new ASNUTF8String(serviceContextID);
+			this.serviceContextID = new ASNUTF8String(serviceContextID,null,null,null,false);
 		
 		if(listOfSubscriptionID!=null)
 			this.listOfSubscriptionID = new SubscriptionIDListWrapper(listOfSubscriptionID);
@@ -551,25 +569,25 @@ public class ASRecord
 		this.listOfEarlySDPMediaComponents = listOfEarlySDPMediaComponents;
 		
 		if(imsCommunicationServiceIdentifier!=null)
-			this.imsCommunicationServiceIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsCommunicationServiceIdentifier));
+			this.imsCommunicationServiceIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsCommunicationServiceIdentifier),null,null,null,false);
 		
 		if(numberPortabilityRouting!=null)
-			this.numberPortabilityRouting = new ASNGraphicString(numberPortabilityRouting);
+			this.numberPortabilityRouting = new ASNGraphicString(numberPortabilityRouting,null,null,null,false);
 		
 		if(carrierSelectRouting!=null)
-			this.carrierSelectRouting = new ASNGraphicString(carrierSelectRouting);
+			this.carrierSelectRouting = new ASNGraphicString(carrierSelectRouting,null,null,null,false);
 		
 		if(sessionPriority!=null)
 			this.sessionPriority = new ASNSessionPriority(sessionPriority);
 		
 		if(serviceRequestTimeStampFraction!=null)
-			this.serviceRequestTimeStampFraction = new ASNInteger(serviceRequestTimeStampFraction.longValue());
+			this.serviceRequestTimeStampFraction = new ASNInteger(serviceRequestTimeStampFraction.longValue(),null,null,null,false);
 		
 		if(serviceDeliveryStartTimeStampFraction!=null)
-			this.serviceDeliveryStartTimeStampFraction = new ASNInteger(serviceDeliveryStartTimeStampFraction.longValue());
+			this.serviceDeliveryStartTimeStampFraction = new ASNInteger(serviceDeliveryStartTimeStampFraction.longValue(),null,null,null,false);
 		
 		if(serviceDeliveryEndTimeStampFraction!=null)
-			this.serviceDeliveryEndTimeStampFraction = new ASNInteger(serviceDeliveryEndTimeStampFraction.longValue());
+			this.serviceDeliveryEndTimeStampFraction = new ASNInteger(serviceDeliveryEndTimeStampFraction.longValue(),null,null,null,false);
 		
 		if(listOfRequestedPartyAddress!=null)
 			this.listOfRequestedPartyAddress=new InvolvedPartyListWrapper(listOfRequestedPartyAddress);
@@ -580,42 +598,42 @@ public class ASRecord
 		this.realTimeTariffInformation = realTimeTariffInformation;
 		
 		if(userLocationInformation!=null)
-			this.userLocationInformation = new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation));
+			this.userLocationInformation = new ASNOctetString(Unpooled.wrappedBuffer(userLocationInformation),null,null,null,false);
 		
 		this.msTimeZone = msTimeZone;
 		this.nniInformation = nniInformation;
 		
 		if(fromAddress!=null)
-			this.fromAddress = new ASNOctetString(Unpooled.wrappedBuffer(fromAddress));
+			this.fromAddress = new ASNOctetString(Unpooled.wrappedBuffer(fromAddress),null,null,null,false);
 		
 		if(transitIOILists!=null)
 		{
 			this.transitIOILists = new ArrayList<ASNGraphicString>();
 			for(String curr:transitIOILists)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.transitIOILists.add(currStr);
 			}
 		}
 		
 		if(imsVisitedNetworkIdentifier!=null)
-			this.imsVisitedNetworkIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsVisitedNetworkIdentifier));
+			this.imsVisitedNetworkIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(imsVisitedNetworkIdentifier),null,null,null,false);
 		
 		if(listOfReasonHeader!=null)
 		{
 			this.listOfReasonHeader = new ArrayList<ASNGraphicString>();
 			for(String curr:listOfReasonHeader)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.listOfReasonHeader.add(currStr);
 			}
 		}
 		
 		if(additionalAccessNetworkInformation!=null)
-			this.additionalAccessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation));
+			this.additionalAccessNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(additionalAccessNetworkInformation),null,null,null,false);
 		
 		if(instanceId!=null)
-			this.instanceId = new ASNOctetString(Unpooled.wrappedBuffer(instanceId));
+			this.instanceId = new ASNOctetString(Unpooled.wrappedBuffer(instanceId),null,null,null,false);
 		
 		this.subscriberEquipmentNumber = subscriberEquipmentNumber;
 		
@@ -623,7 +641,7 @@ public class ASRecord
 		this.listOfCalledIdentityChanges = listOfCalledIdentityChanges;
 		
 		if(cellularNetworkInformation!=null)
-			this.cellularNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation));
+			this.cellularNetworkInformation = new ASNOctetString(Unpooled.wrappedBuffer(cellularNetworkInformation),null,null,null,false);
 		
 		this.serviceSpecificInfo = serviceSpecificInfo;
 		
@@ -634,13 +652,13 @@ public class ASRecord
 			this.listOfCalledAssertedIdentity = new InvolvedPartyListWrapper(listOfCalledAssertedIdentity);
 		
 		if(alternateChargedPartyAddress!=null)
-			this.alternateChargedPartyAddress = new ASNUTF8String(alternateChargedPartyAddress);
+			this.alternateChargedPartyAddress = new ASNUTF8String(alternateChargedPartyAddress,null,null,null,false);
 		
 		if(outgoingSessionID!=null)
-			this.outgoingSessionID = new ASNGraphicString(outgoingSessionID);
+			this.outgoingSessionID = new ASNGraphicString(outgoingSessionID,null,null,null,false);
 		
 		if(initialIMSChargingIdentifier!=null)
-			this.initialIMSChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(initialIMSChargingIdentifier));
+			this.initialIMSChargingIdentifier = new ASNOctetString(Unpooled.wrappedBuffer(initialIMSChargingIdentifier),null,null,null,false);
 		
 		this.listOfAccessTransferInformation = listOfAccessTransferInformation;
 		this.tadsIdentifier = tadsIdentifier;
@@ -656,7 +674,7 @@ public class ASRecord
 			this.fEIdentifierList = new ArrayList<ASNGraphicString>();
 			for(String curr:fEIdentifierList)
 			{
-				ASNGraphicString currStr=new ASNGraphicString(curr);
+				ASNGraphicString currStr=new ASNGraphicString(curr,null,null,null,false);
 				this.fEIdentifierList.add(currStr);
 			}
 		}		
@@ -668,13 +686,16 @@ public class ASRecord
 			this.chargedParty=new InvolvedPartyWrapper(chargedParty);
 		
 		if(duration!=null)
-			this.duration=new ASNInteger(duration.longValue());
+			this.duration=new ASNInteger(duration.longValue(),null,null,null,false);
+		
+		if(originCalleePartyAddress!=null)
+			this.originCalleePartyAddress=new InvolvedPartyWrapper(originCalleePartyAddress);
 		
 		if(dialedPartyAddress!=null)
 			this.dialedPartyAddress=new InvolvedPartyWrapper(dialedPartyAddress);
 		
 		if(ringingDuration!=null)
-			this.ringingDuration=new ASNInteger(ringingDuration.longValue());
+			this.ringingDuration=new ASNInteger(ringingDuration.longValue(),null,null,null,false);
 		
 		if(chargingCategory!=null)
 			this.chargingCategory=new ASNChargingCategory(chargingCategory);
@@ -688,8 +709,10 @@ public class ASRecord
 		if(sdpMediaIdentifier!=null)
 			this.sdpMediaIdentifier=new ASNSDPMediaIdentifier(sdpMediaIdentifier);
 		
+		this.smsInformation=smsInformation;
+		
 		if(mscNumber!=null)
-			this.mscNumber=new ASNUTF8String(mscNumber);
+			this.mscNumber=new ASNUTF8String(mscNumber,null,null,null,false);
 		
 		if(tadsIndication!=null)
 			this.tadsIndication=new ASNTADSIndication(tadsIndication);
@@ -699,8 +722,14 @@ public class ASRecord
 		
 		this.privateUserEquipmentInfo=privateUserEquipmentInfo;
 		
+		if(networkCallReference!=null)
+			this.networkCallReference=new ASNUTF8String(networkCallReference,null,null,null,false);
+		
 		if(recordingEntityID!=null)
-			this.recordingEntityID=new ASNUTF8String(recordingEntityID);
+			this.recordingEntityID=new ASNUTF8String(recordingEntityID,null,null,null,false);
+		
+		if(enhancedCategory!=null)
+			this.enhancedCategory=new ASNInteger(enhancedCategory,null,null,null,false);
 		
 		this.specifiedTreatmentField=specifiedTreatmentField;
 	}
@@ -1278,6 +1307,14 @@ public class ASRecord
 		return duration.getValue().intValue();
 	}
 	
+	public InvolvedParty getOriginCalleePartyAddress() 
+	{
+		if(originCalleePartyAddress==null || originCalleePartyAddress.getInvolvedParty()==null)
+			return null;
+		
+		return originCalleePartyAddress.getInvolvedParty();
+	}
+	
 	public InvolvedParty getDialedPartyAddress() 
 	{
 		if(dialedPartyAddress==null || dialedPartyAddress.getInvolvedParty()==null)
@@ -1334,6 +1371,11 @@ public class ASRecord
 		return mscNumber.getValue();
 	}
 	
+	public SMSInformation getSMSInformation() 
+	{
+		return smsInformation;
+	}
+	
 	public TADSIndication getTADSIndication() 
 	{
 		if(tadsIndication==null)
@@ -1355,12 +1397,28 @@ public class ASRecord
 		return privateUserEquipmentInfo;
 	}
 	
+	public String getNetworkCallReference() 
+	{
+		if(networkCallReference==null)
+			return null;
+		
+		return networkCallReference.getValue();
+	}
+	
 	public String getRecordingEntityID() 
 	{
 		if(recordingEntityID==null)
 			return null;
 		
 		return recordingEntityID.getValue();
+	}
+	
+	public Integer getEnhancedCategory() 
+	{
+		if(enhancedCategory==null)
+			return null;
+		
+		return enhancedCategory.getIntValue();
 	}
 	
 	public SpecifiedTreatmentField getSpecifiedTreatmentField() 
@@ -1961,6 +2019,13 @@ public class ASRecord
 			sb.append("]"); 
 		}
         
+		if(smsInformation!=null)
+		{
+			sb.append("smsInformation=[");
+			sb.append(smsInformation);
+			sb.append("]"); 
+		}
+        
 		if(threeGPPPSDataOffStatus!=null && threeGPPPSDataOffStatus.getStatus()!=null)
 		{
 			sb.append("threeGPPPSDataOffStatus=[");
@@ -2001,6 +2066,13 @@ public class ASRecord
 		{
 			sb.append("duration=[");
 			sb.append(duration.getValue());
+			sb.append("]");
+		}
+        
+        if(originCalleePartyAddress!=null && originCalleePartyAddress.getInvolvedParty()!=null)
+		{
+			sb.append("originCalleePartyAddress=[");
+			sb.append(originCalleePartyAddress.getInvolvedParty());
 			sb.append("]");
 		}
         
@@ -2082,10 +2154,24 @@ public class ASRecord
 			sb.append("]");
 		}
         
+        if(networkCallReference!=null && networkCallReference.getValue()!=null)
+		{
+			sb.append("networkCallReference=[");
+			sb.append(networkCallReference.getValue());
+			sb.append("]");
+		}
+        
         if(recordingEntityID!=null && recordingEntityID.getValue()!=null)
 		{
 			sb.append("recordingEntityID=[");
 			sb.append(recordingEntityID.getValue());
+			sb.append("]");
+		}
+        
+        if(enhancedCategory!=null && enhancedCategory.getValue()!=null)
+		{
+			sb.append("enhancedCategory=[");
+			sb.append(enhancedCategory.getValue());
 			sb.append("]");
 		}
         

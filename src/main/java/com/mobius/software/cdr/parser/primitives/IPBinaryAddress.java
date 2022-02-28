@@ -67,12 +67,12 @@ public class IPBinaryAddress
 		if(isIPV6==null || !isIPV6)
 		{
 			if(data!=null)
-				this.iPV4Address=new ASNOctetString(Unpooled.wrappedBuffer(data));			
+				this.iPV4Address=new ASNOctetString(Unpooled.wrappedBuffer(data),null,null,null,false);			
 		}
 		else
 		{
 			if(data!=null)
-				this.iPV6Address=new ASNOctetString(Unpooled.wrappedBuffer(data));			
+				this.iPV6Address=new ASNOctetString(Unpooled.wrappedBuffer(data),null,null,null,false);			
 		}
 	}
 
